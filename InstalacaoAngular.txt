@@ -1,0 +1,43 @@
+Configuração para instalar e utilizar o @Angular/Cli (ng) nas máquinas (do Senac):
+
+1) Abra o Power Shell
+2) Atualize o proxy:  npm config set proxy http://192.168.7.253:8080
+3) Teste o funcionamento do npm: "npm -v"
+4) Instale o typescript: npm install -g typescript
+5) Instale o angula/cli: npm install -g "@angular/cli"
+
+[Para trabalhar com a ferramenta]
+6) Vai para o Git Bash
+7) Crie um path para a ferramenta ng. No caso do usuário ries:
+PATH=$PATH:/c/Users/lhries/AppData/Roaming/npm/node_modules/@angular/cli/bin
+8) Teste a ferramenta: ng help
+
+[Criando e testando um projeto]
+9) Crie o projeto: ng new MeuProjeto
+10) Entre na pasta: cd MeuProjeto
+11) Execute o servidor: ng serve
+12) Abra o navegador e acesse http://localhost:4200
+
+Desafio:
+Altere o conteúdo da página de "App Works" para "Hello World!" 
+
+===========================================================================
+
+... ou crie um novo repositório na linha de comando
+
+echo "# Lab2" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/Neimarmg/Lab2.git
+git push -u origin master
+
+
+... ou empurre um repositório existente a partir da linha de comando
+
+git remote add origin https://github.com/Neimarmg/Lab2.git
+git push -u origin master
+
+
+... ou importar código de outro repositório
+Você pode inicializar este repositório com o código de um projeto Subversion, Mercurial ou TFS.
