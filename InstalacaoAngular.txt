@@ -18,7 +18,7 @@ PATH=$PATH:/c/Users/lhries/AppData/Roaming/npm/node_modules/@angular/cli/bin
 11) Execute o servidor: ng serve
 12) Abra o navegador e acesse http://localhost:4200
 
-
+4
 Desafio:
 Altere o conteúdo da página de "App Works" para "Hello World!" 
 
