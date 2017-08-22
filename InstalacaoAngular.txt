@@ -1,4 +1,4 @@
-Configuração para instalar e utilizar o @Angular/Cli (ng) nas máquinas (do Senac):
+﻿12:12 22/08/2017Configuração para instalar e utilizar o @Angular/Cli (ng) nas máquinas (do Senac):
 
 1) Abra o Power Shell
 2) Atualize o proxy:  npm config set proxy http://192.168.7.253:8080
@@ -18,7 +18,7 @@ PATH=$PATH:/c/Users/lhries/AppData/Roaming/npm/node_modules/@angular/cli/bin
 11) Execute o servidor: ng serve
 12) Abra o navegador e acesse http://localhost:4200
 
-1
+12
 Desafio:
 Altere o conteúdo da página de "App Works" para "Hello World!" 
 
