@@ -24,6 +24,9 @@ Altere o conteúdo da página de "App Works" para "Hello World!"
 
 ===========================================================================
 https://gist.github.com/leocomelli/2545add34e4fec21ec16
+http://rafaeljeffman.com/_.php?c=git
+
+
 
 ... ou crie um novo repositório na linha de comando
 
@@ -31,13 +34,13 @@ echo "# Lab2" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
-git remote add origin https://github.com/Neimarmg/Lab2.git
+git remote add origin c
 git push -u origin master
 
 
 ... ou empurre um repositório existente a partir da linha de comando
 
-git remote add origin https://github.com/Neimarmg/Lab2.git
+c
 git push -u origin master
 
 
