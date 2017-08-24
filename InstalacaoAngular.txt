@@ -40,7 +40,7 @@ git push -u origin master
 
 ... ou empurre um repositório existente a partir da linha de comando
 
-c
+
 git push -u origin master
 
 
