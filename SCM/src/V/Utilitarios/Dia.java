@@ -4,8 +4,6 @@ package V.Utilitarios;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import V.View;
-
 
 public class Dia {
 	static Pressagios pressagios = new Pressagios();
@@ -23,7 +21,7 @@ public class Dia {
 	 * @param hora
 	 */
 	public static void defineCabecalho(Object hora) {
-		View.msg("\nOlá!" +
+		View.msg("\nOlÃ¡!" +
 			  "\n" + defineNomenclatura() + hora + "\n");
 	}
 
@@ -33,8 +31,8 @@ public class Dia {
 		int hora =  diaHora.get(Calendar.HOUR_OF_DAY);
 
 		if (hora == 0) {
-			return "É ";
-		} return "São ";
+			return " ";
+		} return "SÃ£o ";
 	}
 
 	public static void defineSaudacao() {
@@ -43,7 +41,7 @@ public class Dia {
 		int hora =  diaHora.get(Calendar.HOUR_OF_DAY);
 
 		if (hora >= 0 && hora < 12) {
-			defineCabecalho(sdf.format(diaHora.getTime()) + " da manhã." + "");
+			defineCabecalho(sdf.format(diaHora.getTime()) + " da manhÃ£." + "");
 			pressagios.desejaBomDia();
 		}
 

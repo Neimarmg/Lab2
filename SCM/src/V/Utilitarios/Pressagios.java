@@ -1,6 +1,5 @@
 package V.Utilitarios;
 
-import V.View;
 
 public class Pressagios {
 	String sauda;
