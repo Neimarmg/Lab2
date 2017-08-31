@@ -28,6 +28,7 @@ http://rafaeljeffman.com/_.php?c=git
 
 
 
+
 ... ou crie um novo repositório na linha de comando
 
 echo "# Lab2" >> README.md
