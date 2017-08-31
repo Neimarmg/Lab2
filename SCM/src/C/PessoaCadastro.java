@@ -8,12 +8,13 @@ package C;
 import M.Pessoa;
 import V.Utilitarios.View;
 import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author 181100053
  */
 public class PessoaCadastro{
-    ArrayList<Pessoa> pessoa = new ArrayList<Pessoa>();
+    List<Pessoa> pessoa = new ArrayList<Pessoa>();
     
     public void CriaPessoa(){
         Pessoa pessoa = new Pessoa(
@@ -23,11 +24,14 @@ public class PessoaCadastro{
             ,View.digitaNumero("CPF")
             ,View.digitaString("Nome")); 
         
+        insereListaPessoa();
     }
     
     public void insereListaPessoa(){
-        pessoa.add();
+        pessoa.addAll(pessoa);
     }
+    
+    
     
 
       
