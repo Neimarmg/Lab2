@@ -1,5 +1,5 @@
 package C;
-
+/* Pesquisar */
 import M.Menu;
 import V.Utilitarios.View;
 
@@ -23,7 +23,7 @@ public class MenuControle {
                 
             default:
                 View.opcaoInvalida();
-                carregaApp()
+                carregaApp();
                 break;
             }
     }       

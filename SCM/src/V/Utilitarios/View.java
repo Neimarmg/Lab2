@@ -50,7 +50,7 @@ public class View {
 	
 		
 	public static void opcaoInvalida() {
-		System .err.println("\nComando inv�lido. Tente novamente.");
+		System .err.println("\nComando inválido. Tente novamente.");
 	}
 	
 	
