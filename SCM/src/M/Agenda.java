@@ -12,7 +12,7 @@ import java.util.Date;
  * @author 181100053
  */
 public class Agenda {
-    int codAgenda, codHabilitacoaPessoa, codHorario, codMarcação,codProntuario;
+    int codAgenda, codHabilitacoaPessoa, codHorario, codMarcacao, codProntuario;
     boolean confimacao;
     Date tataAgendamento;
     

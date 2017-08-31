@@ -1,6 +1,7 @@
 package C;
 /* Pesquisar */
 import M.Menu;
+import M.Pessoa;
 import V.Utilitarios.View;
 
 /**
@@ -18,6 +19,7 @@ public class MenuControle {
         switch (menu.getDescMenu()) {
 
             case "paciente":
+               new PessoaCadastro().CriaPessoa();
                 
                 break;
                 
