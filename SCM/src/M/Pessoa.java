@@ -14,9 +14,7 @@ public class Pessoa {
         this.cpf = cpf;
         this.nome = nome;
     }
- 
-    
-    
+     
     public int getCodPessoa() {
         return codPessoa;
     }
