@@ -29,8 +29,8 @@ public class MenuView {
 
     public  void menuProdutos(){
         Menu.setDescMenu(
-                "\n 1 - Lista de produtos"
-                +"\n 2 - Novo produto"
+                "\n 1 - Novo produto"
+                +"\n 2 - Imprimir"
                 +"\n 3 - Sair\n"                
         );
         View.msgr(Menu.getDescMenu());

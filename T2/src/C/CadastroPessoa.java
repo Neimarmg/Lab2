@@ -8,14 +8,13 @@ import V.View;
  * @author 181100053
  */
 public class CadastroPessoa extends  Pessoa{
-
-
-    
+   
     public void CriaPessoa(){
         setCodPessoa(Controlador.getCodAuto());
         setNome(View.digitaString("Nome"));  
         setCodTipo(View.digitaString("CodTipo"));
-        setCpf(View.digitaString("CPF"));           
+        setCpf(View.digitaString("CPF"));
+        View.msgl();
     }
     
     
@@ -31,7 +30,7 @@ public class CadastroPessoa extends  Pessoa{
     
     public void recarregaMenu() throws Exception{
        new Controlador().selecionaMenu(false);
-        executaPessoa();            
+       executaPessoa();            
     }
     
 

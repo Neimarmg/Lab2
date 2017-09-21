@@ -31,13 +31,14 @@ public class Controlador {
                 
         switch (Menu.getCod()) {
             case 1:
-               
+               mv.carregaMenu();
+                selecionaMenu(false);
+                new CadastroProdutos().executaProduto();
                 break;
             
             case 2:
                 mv.carregaMenu();
                 selecionaMenu(false);
-                View.msg(Menu.getCod()); 
                 new CadastroPessoa().executaPessoa();
                 break;
  
