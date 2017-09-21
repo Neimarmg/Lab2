@@ -6,85 +6,105 @@
 package V.Utilitarios;
 
 import M.Menu;
-import static V.Utilitarios.View.msgr;
+import V.View;
 
 /**
  *
- * @author 181100053
+ * @author Neimar
  */
 public class MenuView {
-     Menu menu = new Menu();
             
     public  void menuPrincipal(){
-        menu.setDescMenu(
-                 "\n 1 - Cadastro paciente"
-                +"\n 2 - Cadastro de medicamento"
-                +"\n 3 - Agenda de consultas"
-                +"\n 4 - Registro de consultas"
-                +"\n 5 - Histórico de consultas"
+        Menu.setDescMenu(
+                "\n 1 - Produtos"
+                +"\n 2 - Clientes"                
+                +"\n 3 - Compras"
+                +"\n 4 - Relatórios"
+                +"\n 5 - Operações"
                 +"\n 6 - Sair\n"        
         );
-        View.msgr(menu.getDescMenu());
+        View.msgr(Menu.getDescMenu());
     }   
     
-  
-    public  void menuCadastroPacientes(){
-        menu.setDescMenu(
-                 "\n 1 - Adiconaonar paciente"
-                +"\n 2 - Visualizar pacientes"
-                +"\n 3 - Voltar"
-                +"\n 4 - Sair\n"        
+
+    public  void menuProdutos(){
+        Menu.setDescMenu(
+                "\n 1 - Lista de produtos"
+                +"\n 2 - Novo produto"
+                +"\n 3 - Sair\n"                
         );
-        View.msgr(menu.getDescMenu());
+        View.msgr(Menu.getDescMenu());
     }   
-         
     
-    public  void menuCadastroMedicamentos(){
-        menu.setDescMenu(
-                 "\n 1 - Adicionar medicamentos"
-                +"\n 2 - Visualizar Medicamentos"
-                +"\n 3 - Voltar"
+    
+    public  void menuOpercoes(){
+        Menu.setDescMenu(
+                "\n 1 - Nova conta"
+                +"\n 2 - Novo Depósito"
+                +"\n 3 - Novo Saque"
+                +"\n 4 - Saldo"
+                +"\n 5 - Imprimir"
+                +"\n 6 - Sair\n"                 
+        );
+        View.msgr(Menu.getDescMenu());
+    }  
+       
+       
+    public  void menuClientes(){
+        Menu.setDescMenu(
+                 "\n 1 - Novo Cliente"
+                +"\n 2 - Consultar conta"
+                +"\n 3 - Imprimir"
                 +"\n 4 - Sair\n" 
                 
         );
-        View.msgr(menu.getDescMenu());
-    }   
-    
-    
-    public  void menuAgendamentosConsultas(){
-        menu.setDescMenu(
-                 "\n 1 - Agendar Consultas"
-                +"\n 2 - Visualizar consultas"
-                +"\n 3 - Voltar"
-                +"\n 4 - Sair\n" 
-                
-        );
-        View.msgr(menu.getDescMenu());
+        View.msgr(Menu.getDescMenu());
     }  
     
+       
+    public  void menuVendas(){
+        Menu.setDescMenu(
+                 "\n 1 - Novo Compra"
+                +"\n 2 - "
+                +"\n 3 - Imprimir"
+                +"\n 4 - Sair\n" 
+                
+        );
+        View.msgr(Menu.getDescMenu());
+    }  
+       
     
     public void carregaMenu(){      
         
-        switch (menu.getCod()) {
+        switch (Menu.getCod()) {
             case 1:
-                menuCadastroPacientes();
+               menuProdutos();
                 break;
             
             case 2:
-                menuCadastroMedicamentos();
+                menuClientes();
                 break;
  
             case 3:
-                menuAgendamentosConsultas();
+                menuVendas();
+                break;
+
+            case 4:
+                menuVendas();
+                break;
+                
+            case 6:
+                menuOpercoes();
                 break;
             
-            case 6:
+            case 7:
                 View.sair();
                 break;
                 
             default:
-                View.opcaoInvalida();
-                carregaMenu();
+                V.View.msg(Menu.getCod());
+                //View.opcaoInvalida();
+                //carregaMenu();
                 break;
             }
     }

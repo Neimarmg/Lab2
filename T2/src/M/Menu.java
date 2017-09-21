@@ -1,43 +1,37 @@
 package M;
 
 public class Menu {
-    int cod, codTipoMenu;
-    String descMenu;
+    static int cod, codTipoMenu;
+    static String descMenu;
 
-   public Menu(){       
-   }
-    
-    public Menu(int cod, int codTipoMenu, String descMenu) {
-        this.cod = cod;
-        this.codTipoMenu = codTipoMenu;
-        this.descMenu = descMenu;
-    }
-    
-    public void setCod(int cod) {
-        this.cod = cod;
+
+    public Menu() {
     }
 
-    public void setCodTipoMenu(int codTipoMenu) {
-        this.codTipoMenu = codTipoMenu;
-    }
-
-    public void setDescMenu(String descMenu) {
-        this.descMenu = descMenu;
-    }
-
-    public int getCod() {
+    public static int getCod() {
         return cod;
     }
 
-    public int getCodTipoMenu() {
+    public static void setCod(int cod) {
+        Menu.cod = cod;
+    }
+
+    public static int getCodTipoMenu() {
         return codTipoMenu;
     }
 
-    public String getDescMenu() {
+    public static void setCodTipoMenu(int codTipoMenu) {
+        Menu.codTipoMenu = codTipoMenu;
+    }
+
+    public static String getDescMenu() {
         return descMenu;
     }
-    
-    
-    
-    
+
+    public static void setDescMenu(String descMenu) {
+        Menu.descMenu = descMenu;
+    }
+
+  
+   
 }

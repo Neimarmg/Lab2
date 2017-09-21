@@ -1,57 +1,66 @@
 package C;
 /* Pesquisar */
+
 import M.Menu;
-import M.Menu;
-import M.Pessoa;
 import V.Utilitarios.MenuView;
-import V.Utilitarios.View;
+import V.View;
+
 
 /**
  * @author neimarmoises
  */
 public class Controlador {
-    Menu menu = new Menu();
-    MenuView mv  = new MenuView();
+    static int cod = 0;
+    private MenuView mv = new MenuView();
+    
 
     public void selecionaMenu(boolean exibeMenuPrincipal){
        if (exibeMenuPrincipal == true) {           
            mv.menuPrincipal();
-           menu.setCod(View.digitaNumero(""));
-       }else{
-           menu.setCod(View.digitaNumero(""));
-           mv.carregaMenu();
-       }        
+           Menu.setCod(View.digitaNumero(""));
+           View.msgl();
+       }else{           
+           Menu.setCod(View.digitaNumero(""));
+           View.msgl();
+       }   
+       
+     }
+ 
+     
+    public void carregaApp() throws Exception{       
                 
-    }
-  
-    
-    
-    public void carregaApp(){    
-        
-        selecionaMenu(true);        
-        switch (menu.getCod()) {
-
+        switch (Menu.getCod()) {
             case 1:
-                mv.menuCadastroPacientes();
-                selecionaMenu(false);                
+               
                 break;
             
             case 2:
-                mv.menuCadastroMedicamentos();
-                selecionaMenu(false);                
+                mv.carregaMenu();
+                selecionaMenu(false);
+                View.msg(Menu.getCod()); 
+                new CadastroPessoa().executaPessoa();
                 break;
-                
+ 
             case 3:
-                mv.menuAgendamentosConsultas();
-                selecionaMenu(false);                
+                
+                break;
+            
+            case 4:
+                View.sair();
                 break;
                 
             default:
                 View.opcaoInvalida();
+                selecionaMenu(true);
                 carregaApp();
                 break;
-            }
-    }       
+            } 
+    }
     
-
+    public static String getCodAuto(){
+        cod = cod + 1;
+        return String.valueOf(cod);
+    }
+       
+    
 }

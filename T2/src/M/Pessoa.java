@@ -46,6 +46,10 @@ public class Pessoa {
         this.nome = nome;
     }
 
+    public void getCodPessoa(int codAuto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
     
 }
