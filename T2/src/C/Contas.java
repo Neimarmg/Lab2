@@ -27,8 +27,8 @@ public class Contas extends ContaCliente{
     
     
     public void deposito(){
-        setCliente(View.digitaString(cliente.getCodPessoa()));
-        setNroConta(View.digitaString("Nro conta:"));
+        setCliente(cliente.getCodPessoa());
+        setNroConta(View.digitaString("Nro conta"));
         setValorDeposito(View.digitaFloat("Valor depósito"));
         View.msgl();
         imprimeExtrato("deposito");
@@ -36,7 +36,7 @@ public class Contas extends ContaCliente{
     
     
     public void saque(){
-        setValorSaque(View.digitaFloat("Valor saque:"));
+        setValorSaque(View.digitaFloat("Valor saque"));
         calculaSaldo();
         if (getSaldo()>= getValorDeposito()){            
             imprimeExtrato("Saque");
@@ -52,22 +52,26 @@ public class Contas extends ContaCliente{
         float valorMovimento;
         calculaSaldo();
         
-        if(tipoExtrato.equals("deposito")){
-            valorMovimento = getValorDeposito();
-        
-        }else if(tipoExtrato.equals("Saque")){
-            valorMovimento = getValorSaque();
-       
-        }else{
-            valorMovimento = 0;
-        }         
+        switch (tipoExtrato) {
+            case "deposito":
+                valorMovimento = getValorDeposito();
+                break;
+            
+            case "Saque":
+                valorMovimento = getValorSaque();
+                break;
+            
+            default:
+                valorMovimento = 0;         
+                break;
+        }
         View.msgl();
         new CadastroPessoa().imprimir();
         View.msgcr(    
             "Nro conta: "+getNroConta()
             +"\nValor "+tipoExtrato + " :" +valorMovimento
             +"\nSaldo atual conta: "+ getSaldo()
-            +"\nid pessoa conta: "+ new Pessoa().getCodPessoa()
+            +"\nid cliente conta: "+ new Pessoa().getCodPessoa()
         );
     }
     

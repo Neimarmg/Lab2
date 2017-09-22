@@ -60,7 +60,6 @@ public class Controlador {
                     break;
                 } 
          } catch (Exception e) {
-            e.printStackTrace();
             selecionaMenu(true);
             carregaApp();
         }

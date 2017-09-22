@@ -8,7 +8,6 @@ package C;
 import M.Compra;
 import M.Menu;
 import M.Pessoa;
-import V.Utilitarios.Dia;
 import V.Utilitarios.MenuView;
 import V.View;
 
@@ -42,13 +41,38 @@ public class Vendas extends Compra {
     }
     
     public void imprime(){
+        View.msg("Pedido de venda");
+        View.msgcr(
+            "\n Dados cadstrais do clinte" 
+            +"\n Id pessoa: " +getCodCliente()
+            +"\n Nome     : " +cliente.getNome()
+            +"\n cod tipo : " +cliente.getCodTipo()
+            +"\n cod CPF  : " +cliente.getCpf()       
+        );
+        View.msg(
+            "\nDados da compra" 
+            +"\n Id: " +getCodPedido()
+            +"\n data: " +getDataCompra()
+        );
+        View.msgcr(
+            "\n Intens da compra" 
+            +"\n Id: " +getCodItens()
+            +"\n codProduto: " +getCodProduto()
+            +"\n Qt: " +Float.parseFloat(getQt())
+        );
+        
         
     }    
     
-    public void recarregaMenu() throws Exception{
-       new MenuView().menuVendas();
-       new Controlador().selecionaMenu(false);
-       executaVendas();            
+    public void recarregaMenu(boolean exibeMenuPrincipal) throws Exception{
+        new MenuView().menuVendas();
+        new Controlador().selecionaMenu(exibeMenuPrincipal);       
+        
+        if(exibeMenuPrincipal == false) {
+            executaVendas();
+        }else{
+            new Controlador().carregaApp();
+        }
     }
     
     public void executaVendas() throws Exception{       
@@ -56,16 +80,20 @@ public class Vendas extends Compra {
         switch (Menu.getCod()) {
             case 1:
                 criaNovaCompras("?");
-                recarregaMenu();
+                recarregaMenu(false);
                 break;
             
             case 2:
                 imprime();
-                recarregaMenu();
+                recarregaMenu(false);
                 break;
              
+            case 3:
+                recarregaMenu(true);
+                break;
+                
             case 4:
-                View.sair();
+                View.sair();                
                 break;
                 
             default:

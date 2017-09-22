@@ -20,7 +20,7 @@ public class CadastroProdutos extends Produtos{
     
    
     public void CriaProduto(){
-        setCodtuto(controlador.getCodAuto());
+        setCodtuto(Controlador.getCodAuto());
         setDescProruto(View.digitaString("Descrição produto"));
         setPreco(View.digitaString("Preço"));
         View.msgl();
@@ -39,10 +39,15 @@ public class CadastroProdutos extends Produtos{
     }
     
     
-    public void recarregaMenu() throws Exception{  
-        new MenuView().menuProdutos();
-        new Controlador().selecionaMenu(false);
-        executaProduto();            
+ public void recarregaMenu(boolean exibeMenuPrincipal) throws Exception{
+        new MenuView().menuVendas();
+        new Controlador().selecionaMenu(exibeMenuPrincipal);       
+        
+        if(exibeMenuPrincipal == false) {
+            executaProduto();
+        }else{
+            new Controlador().carregaApp();
+        }
     }
     
 
@@ -51,21 +56,24 @@ public class CadastroProdutos extends Produtos{
         switch (Menu.getCod()) {
             case 1:
                 CriaProduto();                
-                recarregaMenu();
+                recarregaMenu(false);
                 break;
-            
+                
             case 2:
                 Imprime();
-                recarregaMenu();
-                break;         
-            
+                recarregaMenu(false);
+                break; 
+                
             case 3:
+                recarregaMenu(true);
+                break;
+                
+            case 4:
                 View.sair();
                 break;
                 
             default:
                 View.opcaoInvalida();       
-                //recarregaMenu();
                 break;
             } 
     }

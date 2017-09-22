@@ -20,23 +20,24 @@ public class CadastroPessoa extends Pessoa{
     
     
     public void imprimir(){
-        if(Integer.parseInt(getCodPessoa()) > 0  ){
-            View.msgcr(
-                     "\n Id pessoa: " +getCodPessoa()
-                    +"\n Nome     : " +getNome()
-                    +"\n cod tipo : " +getCodTipo()
-                    +"\n cod CPF  : " +getCpf()
-            );
-        }else{
-            View.msgr("Não foram encontrados clientes cadastrados!");
-        }
+        View.msgcr(
+                 "\n Id pessoa: " +getCodPessoa()
+                +"\n Nome     : " +getNome()
+                +"\n cod tipo : " +getCodTipo()
+                +"\n cod CPF  : " +getCpf()
+        );
     }
     
     
-    public void recarregaMenu() throws Exception{
-       new MenuView().menuClientes();
-       new Controlador().selecionaMenu(false);
-       executaPessoa();            
+    public void recarregaMenu(boolean exibeMenuPrincipal) throws Exception{
+        new MenuView().menuVendas();
+        new Controlador().selecionaMenu(exibeMenuPrincipal);       
+        
+        if(exibeMenuPrincipal == false) {
+            executaPessoa();
+        }else{
+            new Controlador().carregaApp();
+        }
     }
     
 
@@ -45,20 +46,24 @@ public class CadastroPessoa extends Pessoa{
         switch (Menu.getCod()) {
             case 1:
                 CriaPessoa();
-                recarregaMenu();
+                recarregaMenu(false);
                 break;
             
             case 2:
                 new Contas().executaConta();
-                recarregaMenu();
+                recarregaMenu(false);
                 break;
  
             case 3:
                 imprimir();
-                recarregaMenu();
+                recarregaMenu(false);
                 break;
             
             case 4:
+                recarregaMenu(true);
+                break;
+                
+            case 5:
                 View.sair();
                 break;
                 
