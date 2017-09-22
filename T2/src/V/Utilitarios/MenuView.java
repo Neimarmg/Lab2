@@ -13,6 +13,10 @@ import V.View;
  * @author Neimar
  */
 public class MenuView {
+    
+    private void imprimeMenu(){
+        View.msgr(Menu.getDescMenu());
+    }
             
     public  void menuPrincipal(){
         Menu.setDescMenu(
@@ -23,7 +27,7 @@ public class MenuView {
                 +"\n 5 - Operações"
                 +"\n 6 - Sair\n"        
         );
-        View.msgr(Menu.getDescMenu());
+        imprimeMenu();
     }   
     
 
@@ -33,7 +37,7 @@ public class MenuView {
                 +"\n 2 - Imprimir"
                 +"\n 3 - Sair\n"                
         );
-        View.msgr(Menu.getDescMenu());
+        imprimeMenu();
     }   
     
     
@@ -46,7 +50,7 @@ public class MenuView {
                 +"\n 5 - Imprimir"
                 +"\n 6 - Sair\n"                 
         );
-        View.msgr(Menu.getDescMenu());
+        imprimeMenu();
     }  
        
        
@@ -58,19 +62,18 @@ public class MenuView {
                 +"\n 4 - Sair\n" 
                 
         );
-        View.msgr(Menu.getDescMenu());
+        imprimeMenu();
     }  
     
        
     public  void menuVendas(){
         Menu.setDescMenu(
                  "\n 1 - Novo Compra"
-                +"\n 2 - "
-                +"\n 3 - Imprimir"
-                +"\n 4 - Sair\n" 
+                +"\n 2 - Imprimir"
+                +"\n 3 - Sair\n" 
                 
         );
-        View.msgr(Menu.getDescMenu());
+        imprimeMenu();
     }  
        
     
@@ -102,11 +105,10 @@ public class MenuView {
                 break;
                 
             default:
-                V.View.msg(Menu.getCod());
-                //View.opcaoInvalida();
-                //carregaMenu();
+                View.opcaoInvalida();
+                carregaMenu();
                 break;
-            }
+        }
     }
     
 }

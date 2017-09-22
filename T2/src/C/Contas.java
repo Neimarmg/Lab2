@@ -8,6 +8,7 @@ package C;
 import M.ContaCliente;
 import M.Menu;
 import M.Pessoa;
+import V.Utilitarios.MenuView;
 import V.View;
 
 /**
@@ -76,6 +77,7 @@ public class Contas extends ContaCliente{
     
     
      public void recarregaMenu() throws Exception{
+        new MenuView().menuOpercoes();
         new Controlador().selecionaMenu(false);
         executaConta();            
     }

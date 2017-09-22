@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author neimarmoises
  */
 public class Produtos {
-    String codtuto,descProruto,preco;
+    String codtuto= "0" ,descProruto,preco;
 
     public Produtos() {
         

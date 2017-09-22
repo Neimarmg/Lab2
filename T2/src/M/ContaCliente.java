@@ -9,9 +9,9 @@ package M;
  *
  * @author neimarmoises
  */
-public class ContaCliente {
+public class ContaCliente extends Pessoa{
     float saldo, valorSaque, valorDeposito;
-    String nroConta, cliente;
+    String nroConta, cliente = "0";
     
     public ContaCliente() {
     }    

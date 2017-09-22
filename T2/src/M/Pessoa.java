@@ -1,7 +1,7 @@
 package M;
 
 public class Pessoa {
-    String codPessoa, codTipo, cpf ;
+    String codPessoa = "0", codTipo, cpf ;
     String nome;
 
     public  Pessoa(){

@@ -7,6 +7,7 @@ package C;
 
 import M.Menu;
 import M.Produtos;
+import V.Utilitarios.MenuView;
 import V.View;
 
 /**
@@ -26,18 +27,21 @@ public class CadastroProdutos extends Produtos{
     }
     
     public void Imprime(){
-        View.msgl();
-        View.msgcr(
-            "\n Id produto: " +getCodtuto()
-            +"\n Produto  : " +getDescProruto()
-            +"\n Preço    : " +getPreco()
-        );
+        if(Integer.parseInt(getCodtuto()) > 0  ){
+            View.msgcr(
+                "\n Id produto: " +getCodtuto()
+                +"\n Produto  : " +getDescProruto()
+                +"\n Preço    : " +getPreco()
+            );
+        }else{
+            View.msgr("Não foram encontrados produtos!");
+        }
     }
     
     
-    public void recarregaMenu() throws Exception{        
-        Menu.setCod(View.digitaNumero(""));
-        View.msgl();
+    public void recarregaMenu() throws Exception{  
+        new MenuView().menuProdutos();
+        new Controlador().selecionaMenu(false);
         executaProduto();            
     }
     
@@ -46,7 +50,7 @@ public class CadastroProdutos extends Produtos{
        
         switch (Menu.getCod()) {
             case 1:
-                CriaProduto();
+                CriaProduto();                
                 recarregaMenu();
                 break;
             

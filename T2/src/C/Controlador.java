@@ -28,34 +28,42 @@ public class Controlador {
  
      
     public void carregaApp() throws Exception{       
-                
-        switch (Menu.getCod()) {
-            case 1:
-               mv.carregaMenu();
-                selecionaMenu(false);
-                new CadastroProdutos().executaProduto();
-                break;
-            
-            case 2:
-                mv.carregaMenu();
-                selecionaMenu(false);
-                new CadastroPessoa().executaPessoa();
-                break;
- 
-            case 3:
-                
-                break;
-            
-            case 4:
-                View.sair();
-                break;
-                
-            default:
-                View.opcaoInvalida();
-                selecionaMenu(true);
-                carregaApp();
-                break;
-            } 
+        try {  
+           
+            switch (Menu.getCod()) {
+                case 1:
+                   mv.carregaMenu();
+                    selecionaMenu(false);
+                    new CadastroProdutos().executaProduto();
+                    break;
+
+                case 2:
+                    mv.carregaMenu();
+                    selecionaMenu(false);
+                    new CadastroPessoa().executaPessoa();
+                    break;
+
+                case 3:
+                    mv.carregaMenu();
+                    selecionaMenu(false);
+                    new Vendas().executaVendas();
+                    break;
+
+                case 4:
+                    View.sair();
+                    break;
+
+                default:
+                    View.opcaoInvalida();
+                    selecionaMenu(true);
+                    carregaApp();
+                    break;
+                } 
+         } catch (Exception e) {
+            e.printStackTrace();
+            selecionaMenu(true);
+            carregaApp();
+        }
     }
     
     public static String getCodAuto(){

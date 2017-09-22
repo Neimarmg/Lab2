@@ -2,12 +2,13 @@ package C;
 
 import M.Menu;
 import M.Pessoa;
+import V.Utilitarios.MenuView;
 import V.View;
 /**
  *
  * @author 181100053
  */
-public class CadastroPessoa extends  Pessoa{
+public class CadastroPessoa extends Pessoa{
    
     public void CriaPessoa(){
         setCodPessoa(Controlador.getCodAuto());
@@ -19,16 +20,21 @@ public class CadastroPessoa extends  Pessoa{
     
     
     public void imprimir(){
-        View.msgcr(
-                 "\n Id pessoa: " +getCodPessoa()
-                +"\n Nome     : " +getNome()
-                +"\n cod tipo : " +getCodTipo()
-                +"\n cod CPF  : " +getCpf()
-        );
+        if(Integer.parseInt(getCodPessoa()) > 0  ){
+            View.msgcr(
+                     "\n Id pessoa: " +getCodPessoa()
+                    +"\n Nome     : " +getNome()
+                    +"\n cod tipo : " +getCodTipo()
+                    +"\n cod CPF  : " +getCpf()
+            );
+        }else{
+            View.msgr("Não foram encontrados clientes cadastrados!");
+        }
     }
     
     
     public void recarregaMenu() throws Exception{
+       new MenuView().menuClientes();
        new Controlador().selecionaMenu(false);
        executaPessoa();            
     }
