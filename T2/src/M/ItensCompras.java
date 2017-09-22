@@ -10,7 +10,7 @@ package M;
  * @author neimarmoises
  */
 public class ItensCompras {
-    String codItens = "0",codProduto = "0";
+    String codItens = "0",codProduto = "0", qt;
 
     public ItensCompras() {
     }  
@@ -30,6 +30,14 @@ public class ItensCompras {
 
     public void setCodProduto(String codProduto) {
         this.codProduto = codProduto;
+    }
+
+    public String getQt() {
+        return qt;
+    }
+
+    public void setQt(String qt) {
+        this.qt = qt;
     }
     
     

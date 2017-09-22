@@ -18,23 +18,30 @@ import V.View;
  */
 public class Vendas extends Compra {
     Pessoa cliente = new Pessoa();
+
+    public void criaNovoItenCompra(){
+        setCodItens(Controlador.getCodAuto());
+        setCodProduto(View.digitaString("Codigo produto"));
+        setQt(View.digitaString("Quantidade"));        
+    }
     
-    public void criaNovaCompras(boolean continarComprando){
-        setCodPedido(Controlador.getCodAuto());
-        setCodCliente(cliente.getCodPessoa());
-        setDataCompra(View.digitaString("Data compra"));
+    public void criaNovaCompras(String continarComprando){
+        if (continarComprando.equals("?")){    
+            setCodPedido(Controlador.getCodAuto());
+            setCodCliente(cliente.getCodPessoa());
+            setDataCompra(View.digitaString("Data compra"));
+            View.msgcr("intens da compra");
+            criaNovoItenCompra();
+            criaNovaCompras(View.digitaString("Continuar Comprando"));
         
-        if (continarComprando == true){
-            criaNovoItenCompra(false);
+        }else if (continarComprando.equals("sim")){
+            criaNovoItenCompra();
+            criaNovaCompras(View.digitaString("Continuar Comprando"));
+            View.msgl();
         }
     }
     
-    public void criaNovoItenCompra(boolean continarComprando){
-      
-        
-    }
-    
-    public void criaImprimir(){
+    public void imprime(){
         
     }    
     
@@ -48,12 +55,12 @@ public class Vendas extends Compra {
        
         switch (Menu.getCod()) {
             case 1:
-                criaImprimir();
+                criaNovaCompras("?");
                 recarregaMenu();
                 break;
             
             case 2:
-                Dia.ImprimeHora();
+                imprime();
                 recarregaMenu();
                 break;
              
