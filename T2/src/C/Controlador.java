@@ -4,6 +4,8 @@ package C;
 import M.Menu;
 import V.Utilitarios.MenuView;
 import V.View;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 
 /**
@@ -14,19 +16,22 @@ public class Controlador {
     private MenuView mv = new MenuView();
     
 
-    public void selecionaMenu(boolean exibeMenuPrincipal){
-       if (exibeMenuPrincipal == true) {           
+    public void selecionaMenu(boolean exibeMenuPrincipal) throws Exception{
+        Scanner var = new Scanner(System.in);
+        if (exibeMenuPrincipal == true) {           
            mv.menuPrincipal();
-           Menu.setCod(View.digitaNumero(""));
+           View.msg("\nCOMANDO: ");
+           Menu.setCod(var.nextInt());
            View.msgl();
-       }else{           
-           Menu.setCod(View.digitaNumero(""));
+       }else{  
+           View.msg("\nCOMANDO: "); 
+           Menu.setCod(var.nextInt());
            View.msgl();
        }   
        
      }
  
-     
+    
     public void carregaApp() throws Exception{       
         try {  
            
@@ -48,8 +53,16 @@ public class Controlador {
                     selecionaMenu(false);
                     new Vendas().executaVendas();
                     break;
-
+                    
                 case 4:
+                    View.objetoNaoImplementado();
+                    break;
+ 
+                case 5:
+                    View.objetoNaoImplementado();
+                    break;
+                    
+                case 6:
                     View.sair();
                     break;
 
@@ -59,16 +72,18 @@ public class Controlador {
                     carregaApp();
                     break;
                 } 
-         } catch (Exception e) {
+         
+        }catch (InputMismatchException e) {
+            View.msgcr("\nErr: Você digitou textos no comando menu!");         
             selecionaMenu(true);
             carregaApp();
         }
-    }
+           
+    } 
+    
     
     public static String getCodAuto(){
         cod = cod + 1;
         return String.valueOf(cod);
-    }
-       
-    
+    }   
 }
