@@ -22,8 +22,7 @@ public class Controlador {
        }        
                 
     }
-  
-    
+      
     
     public void carregaApp(){    
         

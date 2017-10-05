@@ -11,7 +11,7 @@ public class Start {
    
     public static void main(String[] args) throws Exception {
 
-           View.msgcr("\n\nPrograma de vendas\n\n" );
+           View.msgcr("\n\n                           PROGRAMA DE VENDAS\n\n" );
            Dia.defineSaudacao();
            View.msgl();
            new Controlador().selecionaMenu(true);

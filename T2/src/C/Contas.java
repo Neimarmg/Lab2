@@ -34,7 +34,6 @@ public class Contas extends ContaCliente{
         imprimeExtrato("deposito");
     }
     
-    
     public void saque(){
         setValorSaque(View.digitaFloat("Valor saque"));
         calculaSaldo();
@@ -46,7 +45,6 @@ public class Contas extends ContaCliente{
             imprimeExtrato("Saque");
         }       
     }
-
     
     public void imprimeExtrato(String tipoExtrato){
         float valorMovimento;
@@ -79,14 +77,12 @@ public class Contas extends ContaCliente{
         setSaldo(getValorDeposito()-getValorSaque());
     }
     
-    
-     public void recarregaMenu() throws Exception{
+    public void recarregaMenu() throws Exception{
         new MenuView().menuOpercoes();
         new Controlador().selecionaMenu(false);
         executaConta();            
     }
-    
-
+  
     public void executaConta() throws Exception{       
         
         switch (Menu.getCod()) {

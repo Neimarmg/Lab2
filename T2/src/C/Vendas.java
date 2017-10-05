@@ -8,6 +8,7 @@ package C;
 import M.Compra;
 import M.Menu;
 import M.Pessoa;
+import M.Produtos;
 import V.Utilitarios.MenuView;
 import V.View;
 
@@ -16,7 +17,9 @@ import V.View;
  * @author neimarmoises
  */
 public class Vendas extends Compra {
+    float totalizaItens=0, totalizaValor = 0;
     Pessoa cliente = new Pessoa();
+    Produtos produto = new Produtos();
 
     public void criaNovoItenCompra(){
         setCodItens(Controlador.getCodAuto());
@@ -29,16 +32,27 @@ public class Vendas extends Compra {
             setCodPedido(Controlador.getCodAuto());
             setCodCliente(cliente.getCodPessoa());
             setDataCompra(View.digitaString("Data compra"));
-            View.msgcr("intens da compra");
+            View.msgc("intens da compra");
             criaNovoItenCompra();
+            View.msgl();
             criaNovaCompras(View.digitaString("Continuar Comprando"));
-        
+            //totalizaCommpra();
+            
         }else if (continarComprando.equals("sim")){
             criaNovoItenCompra();
             criaNovaCompras(View.digitaString("Continuar Comprando"));
             View.msgl();
         }
+        
     }
+    
+    private Object totalizaCommpra(){
+        totalizaItens += Float.valueOf(getQt()+0);
+        totalizaValor += Float.valueOf(produto.getPreco())+0;          
+               
+        return "Quantidade total:" +totalizaItens
+               +"\nValor total:"+totalizaValor;
+    }    
     
     public void imprime(){
         View.msg("Pedido de venda");
@@ -61,6 +75,7 @@ public class Vendas extends Compra {
             +"\n Qt: " +Float.parseFloat(getQt())
         );
         
+        View.msgr(totalizaCommpra());        
         
     }    
     

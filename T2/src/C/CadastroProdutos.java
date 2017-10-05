@@ -38,8 +38,7 @@ public class CadastroProdutos extends Produtos{
         }
     }
     
-    
- public void recarregaMenu(boolean exibeMenuPrincipal) throws Exception{
+    public void recarregaMenu(boolean exibeMenuPrincipal) throws Exception{
         new MenuView().menuVendas();
         new Controlador().selecionaMenu(exibeMenuPrincipal);       
         
@@ -50,7 +49,6 @@ public class CadastroProdutos extends Produtos{
         }
     }
     
-
     public void executaProduto() throws Exception{       
        
         switch (Menu.getCod()) {

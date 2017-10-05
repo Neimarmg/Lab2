@@ -12,6 +12,8 @@ package M;
 public class ContaCliente extends Pessoa{
     float saldo, valorSaque, valorDeposito;
     String nroConta, cliente = "0";
+   
+    
     
     public ContaCliente() {
     }    
@@ -64,5 +66,5 @@ public class ContaCliente extends Pessoa{
         this.cliente = cliente;
     }
 
-   
+     
 }

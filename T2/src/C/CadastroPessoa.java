@@ -27,8 +27,7 @@ public class CadastroPessoa extends Pessoa{
                 +"\n cod CPF  : " +getCpf()
         );
     }
-    
-    
+        
     public void recarregaMenu(boolean exibeMenuPrincipal) throws Exception{
         new MenuView().menuVendas();
         new Controlador().selecionaMenu(exibeMenuPrincipal);       
@@ -40,7 +39,6 @@ public class CadastroPessoa extends Pessoa{
         }
     }
     
-
     public void executaPessoa() throws Exception{       
        
         switch (Menu.getCod()) {

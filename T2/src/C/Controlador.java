@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Controlador {
     static int cod = 0;
     private MenuView mv = new MenuView();
-    
+ 
 
     public void selecionaMenu(boolean exibeMenuPrincipal) throws Exception{
         Scanner var = new Scanner(System.in);

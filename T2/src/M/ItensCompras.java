@@ -11,7 +11,8 @@ package M;
  */
 public class ItensCompras {
     String codItens = "0",codProduto = "0", qt;
-
+    String armazenaCompra;
+    
     public ItensCompras() {
     }  
    
@@ -38,6 +39,15 @@ public class ItensCompras {
 
     public void setQt(String qt) {
         this.qt = qt;
+    }
+
+    public String getArmazenaCompra() {
+        return armazenaCompra;
+    }
+
+    public void setArmazenaCompra(String armazenaCompra) {
+        
+        this.armazenaCompra = armazenaCompra;
     }
     
     

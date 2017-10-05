@@ -14,6 +14,7 @@ import java.util.Date;
 public class Compra extends ItensCompras {
     String codPedido,codCliente;
     String dataCompra;
+         
 
     public Compra(){
         
