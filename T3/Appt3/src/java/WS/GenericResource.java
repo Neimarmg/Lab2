@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package WS;
+package ws;
 
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * REST Web Service
  *
- * @author Administrador
+ * @author neimarmoises
  */
 @Path("generic")
 public class GenericResource {
@@ -32,12 +32,12 @@ public class GenericResource {
     }
 
     /**
-     * Retrieves representation of an instance of WS.GenericResource
+     * Retrieves representation of an instance of ws.GenericResource
      * @return an instance of java.lang.String
      */
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getJson() {
+    @Produces(MediaType.APPLICATION_XML)
+    public String getXml() {
         //TODO return proper representation object
         throw new UnsupportedOperationException();
     }
@@ -47,7 +47,7 @@ public class GenericResource {
      * @param content representation for the resource
      */
     @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(String content) {
+    @Consumes(MediaType.APPLICATION_XML)
+    public void putXml(String content) {
     }
 }
