@@ -1,41 +1,45 @@
 package M;
 
 public class Pessoa {
-    String codPessoa = "0", codTipo, cpf ;
-    String nome;
-
-    public  Pessoa(){
+    int codPessoa,codTipoPessoa,codProfissao;
+    String nome, cidade, cpf, email, Ativa;
+    
+    public Pessoa(){ 
     }
-
-    public Pessoa(String codPessoa, String codTipo, String cpf, String nome) {
+    
+    public Pessoa(int codPessoa, int codTipoPessoa, int codProfissao, String nome, String cidade, String cpf, String email, String Ativa) {
         this.codPessoa = codPessoa;
-        this.codTipo = codTipo;
-        this.cpf = cpf;
+        this.codTipoPessoa = codTipoPessoa;
+        this.codProfissao = codProfissao;
         this.nome = nome;
+        this.cidade = cidade;
+        this.cpf = cpf;
+        this.email = email;
+        this.Ativa = Ativa;
     }
 
-    public String getCodPessoa() {
+    public int getCodPessoa() {
         return codPessoa;
     }
 
-    public void setCodPessoa(String codPessoa) {
+    public void setCodPessoa(int codPessoa) {
         this.codPessoa = codPessoa;
     }
 
-    public String getCodTipo() {
-        return codTipo;
+    public int getCodTipoPessoa() {
+        return codTipoPessoa;
     }
 
-    public void setCodTipo(String codTipo) {
-        this.codTipo = codTipo;
+    public void setCodTipoPessoa(int codTipoPessoa) {
+        this.codTipoPessoa = codTipoPessoa;
     }
 
-    public String getCpf() {
-        return cpf;
+    public int getCodProfissao() {
+        return codProfissao;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setCodProfissao(int codProfissao) {
+        this.codProfissao = codProfissao;
     }
 
     public String getNome() {
@@ -46,10 +50,35 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public void getCodPessoa(int codAuto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getCidade() {
+        return cidade;
     }
 
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
 
-    
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAtiva() {
+        return Ativa;
+    }
+
+    public void setAtiva(String Ativa) {
+        this.Ativa = Ativa;
+    }    
 }

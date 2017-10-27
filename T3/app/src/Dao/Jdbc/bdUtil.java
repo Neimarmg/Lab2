@@ -11,11 +11,11 @@ package Dao.Jdbc;
  */
 public class bdUtil {
     private final static String HOST = "localhost";
-    private final static String PORT = "5432";
-    private final static String BD = "pi2_crud";
-    private final static String URL = "jdbc:postgresql://"+HOST+":"+PORT+"/"+BD;
-    private final static String USUARIO = "postgres";
-    private final static String SENHA = "postgres";
+    private final static String PORT = "3306";
+    private final static String BD = "bdT3";
+    private final static String URL = "jdbc:mysql://"+HOST+":"+PORT+"/"+BD;
+    private final static String USUARIO = "root";
+    private final static String SENHA = "";
 
     public static String getHOST() {
         return HOST;
