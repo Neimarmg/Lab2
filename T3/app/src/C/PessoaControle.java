@@ -5,6 +5,7 @@
  */
 package C;
 
+import Dao.PessoaDao;
 import M.Menu;
 import M.Pessoa;
 import V.Utilitarios.MenuView;
@@ -21,10 +22,11 @@ public class PessoaControle extends Pessoa{
         setNome(View.digitaString("Nome"));
         setCidade(View.digitaString("Cidade"));
         setCodTipoPessoa(View.digitaNumero("CodTipoPessoa"));
-        setCodProfissao(View.digitaNumero("CodProfissão"));
+        /*setCodProfissao(View.digitaNumero("CodProfissão"));
         setCpf(View.digitaString("Cpf"));
         setEmail(View.digitaString("E-mail"));
-        setAtiva(View.digitaString("Ativo"));
+        setAtiva(View.digitaString("Ativo"));*/
+        new PessoaDao().salvar(new Pessoa());
     }
     
         public void recarregaMenu(boolean exibeMenuPrincipal) throws Exception{
@@ -42,8 +44,10 @@ public class PessoaControle extends Pessoa{
        
         switch (Menu.getCod()) {
             case 1:
-                inserirNovo();
+                View.msg("ssssssssssssssss");
+                inserirNovo();                
                 recarregaMenu(false);
+                
                 break;
             
             case 2:

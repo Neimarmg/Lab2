@@ -1,6 +1,8 @@
 package Dao.Jdbc;
 
-import Dao.Jdbc.bdUtil;
+import static Dao.Jdbc.bdUtil.getSENHA;
+import static Dao.Jdbc.bdUtil.getURL;
+import static Dao.Jdbc.bdUtil.getUSUARIO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,12 +11,12 @@ import java.sql.SQLException;
  *
  * @author lhries
  */
-public class ConnectionFactory extends  bdUtil{
+public class ConnectionFactory {
     
     public static Connection getConnection(){
         Connection conexao = null;
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("org.gjt.mm.mysql.Driver");
             conexao = DriverManager.getConnection(getURL(), getUSUARIO(), getSENHA());
             
         } catch (ClassNotFoundException ex) {

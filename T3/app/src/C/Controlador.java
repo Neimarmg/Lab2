@@ -39,12 +39,13 @@ public class Controlador {
                 case 1:
                    mv.carregaMenu();
                     selecionaMenu(false);
-                    new PessoaControle().executaPessoa();
+      
                     break;
 
                 case 2:
                     mv.carregaMenu();
                     selecionaMenu(false);
+                    new PessoaControle().executaPessoa();
                     break;
 
                 case 3:
