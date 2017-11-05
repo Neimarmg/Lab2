@@ -4,8 +4,10 @@ import static Dao.Jdbc.bdUtil.getSENHA;
 import static Dao.Jdbc.bdUtil.getURL;
 import static Dao.Jdbc.bdUtil.getUSUARIO;
 import V.View;
+import java.rmi.server.ObjID;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
@@ -32,13 +34,24 @@ public class ConnectionFactory {
     }
         
     
-    public  static  void executaSql(boolean  status){
-        if (status == false){
-            View.msgcr("Registro salvo com sucesso");
-        }else{
-            View.msgcr("Não foi possivel salvar registro");
-        }           
+    public static boolean fechaConexao(Connection connection,PreparedStatement prepara, boolean fechaConexao) throws SQLException{
+        if(fechaConexao == true){
+            prepara.close();
+            return  true;           
+        }
+         return  false;
+        
     }
+    
+    
+    public  static  void executaSql(String acao,boolean  status,boolean fecharConexao)throws SQLException{
+    
+        if (status == false){
+            View.msgcr("Registro "+acao +"do com sucesso");
+        }else{
+            View.msgcr("Não foi possível  "+acao +"r registro");
+        }
+     }
 
     
     public static String getSql() {

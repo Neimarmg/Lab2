@@ -13,17 +13,19 @@ import java.io.Serializable;
 public class PessoaControle implements Serializable{
     Pessoa pessoa = new  Pessoa();
     
-    public void inserirNovo(){
-        pessoa.setCodPessoa(0);
+    public void parametrizaPessoa(boolean ativaCampo){
+        if (ativaCampo == true){
+            pessoa.setCodPessoa(View.digitaNumero("Id"));
+        }else{
+            pessoa.setCodPessoa(0);
+        }        
         pessoa.setNome(View.digitaString("Nome"));
         pessoa.setCidade(View.digitaString("Cidade"));
         pessoa.setCodTipoPessoa(View.digitaNumero("Tipo pessoa"));
         pessoa.setCodProfissao(View.digitaNumero("Profissão"));
         pessoa.setCpf(View.digitaString("Cpf"));
         pessoa.setEmail(View.digitaString("E-mail"));
-        pessoa.setAtiva(View.digitaString("Ativa"));
-        
-        new pessoaDAO().salvar(pessoa);
+        pessoa.setAtiva(View.digitaString("Ativa"));     
     }
     
         
@@ -42,18 +44,21 @@ public class PessoaControle implements Serializable{
        
         switch (Menu.getCod()) {
             case 1:
-                inserirNovo();                
+                parametrizaPessoa(false);
+                new pessoaDAO().novo(pessoa);                
                 recarregaMenu(false);
                 
                 break;
             
             case 2:
-
+                parametrizaPessoa(true);
+                //new pessoaDAO().atualiza(pessoa);
                 recarregaMenu(false);
                 break;
  
             case 3:
-
+                pessoa.setCodPessoa(View.digitaNumero("Id"));
+                new pessoaDAO().exclui(pessoa);
                 recarregaMenu(false);
                 break;
             

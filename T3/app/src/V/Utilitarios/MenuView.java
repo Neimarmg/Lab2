@@ -59,10 +59,11 @@ public class MenuView {
     public  void menuClientes(){
         Menu.setDescMenu(
                  "\n 1 - Novo Cliente"
-                +"\n 2 - Consultar conta"
-                +"\n 3 - Imprimir"
-                +"\n 4 - Retornar"  
-                +"\n 5 - Sair\n" 
+                +"\n 2 - Atualizar"
+                +"\n 3 - Excluir"
+                +"\n 4 - Imprimir"
+                +"\n 5 - Retornar"  
+                +"\n 6 - Sair\n" 
                
         );
         imprimeMenu();
