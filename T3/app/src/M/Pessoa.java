@@ -2,7 +2,7 @@ package M;
 
 public class Pessoa {
     int codPessoa,codTipoPessoa,codProfissao;
-    String nome, cidade, cpf, email, Ativa;
+    String nome="" , cidade="", cpf="", email="", Ativa="";
     
     public Pessoa(){ 
     }

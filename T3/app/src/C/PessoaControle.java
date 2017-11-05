@@ -1,35 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package C;
-
-import Dao.PessoaDao;
+import Dao.pessoaDAO;
 import M.Menu;
 import M.Pessoa;
 import V.Utilitarios.MenuView;
 import V.View;
+import java.io.Serializable;
 
 /**
  *
  * @author neimarmoises
  */
-public class PessoaControle extends Pessoa{
+public class PessoaControle implements Serializable{
+    Pessoa pessoa = new  Pessoa();
     
     public void inserirNovo(){
-        setCodPessoa(0);
-        setNome(View.digitaString("Nome"));
-        setCidade(View.digitaString("Cidade"));
-        setCodTipoPessoa(View.digitaNumero("CodTipoPessoa"));
-        /*setCodProfissao(View.digitaNumero("CodProfissão"));
-        setCpf(View.digitaString("Cpf"));
-        setEmail(View.digitaString("E-mail"));
-        setAtiva(View.digitaString("Ativo"));*/
-        new PessoaDao().salvar(new Pessoa());
+        pessoa.setCodPessoa(0);
+        pessoa.setNome(View.digitaString("Nome"));
+        pessoa.setCidade(View.digitaString("Cidade"));
+        pessoa.setCodTipoPessoa(View.digitaNumero("Tipo pessoa"));
+        pessoa.setCodProfissao(View.digitaNumero("Profissão"));
+        pessoa.setCpf(View.digitaString("Cpf"));
+        pessoa.setEmail(View.digitaString("E-mail"));
+        pessoa.setAtiva(View.digitaString("Ativa"));
+        
+        new pessoaDAO().salvar(pessoa);
     }
     
-        public void recarregaMenu(boolean exibeMenuPrincipal) throws Exception{
+        
+   public void recarregaMenu(boolean exibeMenuPrincipal) throws Exception{
         new MenuView().menuVendas();
         new Controlador().selecionaMenu(exibeMenuPrincipal);       
         
@@ -44,7 +42,6 @@ public class PessoaControle extends Pessoa{
        
         switch (Menu.getCod()) {
             case 1:
-                View.msg("ssssssssssssssss");
                 inserirNovo();                
                 recarregaMenu(false);
                 
