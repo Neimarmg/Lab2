@@ -45,7 +45,7 @@ public class PessoaControle implements Serializable{
         switch (Menu.getCod()) {
             case 1:
                 parametrizaPessoa(false);
-                new pessoaDAO().novo(pessoa);                
+                new pessoaDAO().inserir(pessoa);                
                 recarregaMenu(false);
                 
                 break;

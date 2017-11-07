@@ -16,33 +16,23 @@ public class pessoaDAO implements Serializable{
   
     private Connection con = ConnectionFactory.getConnection();
     
-
     public void carregaPessoa(Connection connection,PreparedStatement prepara, Pessoa pessoa, boolean fechaConexao) throws SQLException{
-        prepara.setString(2,pessoa.getNome()); 
-        View.msg(Globais.getContador(true, false, false));
-        prepara.setString(3,pessoa.getCidade());
-        //View.msg(Globais.getContador(true, false, false));
-        prepara.setInt(4,pessoa.getCodTipoPessoa()); 
-        //View.msg(Globais.getContador(true, false, false));
-        prepara.setInt(5,pessoa.getCodProfissao());
-        //View.msg(Globais.getContador(true, false, false));
-        prepara.setString(6,pessoa.getCpf()); 
-        //View.msg(Globais.getContador(true, false, false));
-        prepara.setString(7,pessoa.getEmail()); 
-        //View.msg(Globais.getContador(true, false, false));
-        prepara.setString(8,pessoa.getAtiva());
-        //View.msg(Globais.getContador(true, false, false));
-        //View.msg(Globais.getContador(false, false, true ));
+        prepara.setString(Globais.getContador(true, false),pessoa.getNome());        
+        prepara.setString(Globais.getContador(true, false),pessoa.getCidade());
+        prepara.setInt(Globais.getContador(true, false),pessoa.getCodTipoPessoa());
+        prepara.setInt(Globais.getContador(true, false),pessoa.getCodProfissao());        
+        prepara.setString(Globais.getContador(true, false),pessoa.getCpf()); 
+        prepara.setString(Globais.getContador(true, false),pessoa.getEmail()); 
+        prepara.setString(Globais.getContador(true, false),pessoa.getAtiva());
     }
     
         
-    public void novo (Pessoa pessoa){
+    public void inserir (Pessoa pessoa){
  
         ConnectionFactory.setSql("INSERT INTO pessoa(codPessoa, nome, cidade, codTipoPessoa, codProfissao, cpf, email, Ativa) VALUES (?,?,?,?,?,?,?,?)");
         try{            
             PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());
-            View.msg(Globais.getContador(true, true, true));
-            prepara.setInt(1,0);           
+            prepara.setInt(Globais.getContador(true, true),0);           
             carregaPessoa(con, prepara, pessoa, true); 
             ConnectionFactory.executaSql("Salva", prepara.execute(), ConnectionFactory.fechaConexao(con, prepara, true));
           
@@ -60,7 +50,7 @@ public class pessoaDAO implements Serializable{
             
             PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());
             
-            prepara.setInt(1, pessoa.getCodPessoa()); //Pula primeira posição da tabela 
+            prepara.setInt(Globais.getContador(true, true), pessoa.getCodPessoa()); //Pula primeira posição da tabela 
             carregaPessoa(con, prepara, pessoa, false);                   
             prepara.setInt(9,pessoa.getCodPessoa()); // 
             

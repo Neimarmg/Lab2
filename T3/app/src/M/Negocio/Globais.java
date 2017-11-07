@@ -12,7 +12,8 @@ package M.Negocio;
 public class Globais {    
     private static int contador=0;
     
-    public static int getContador ( boolean  contar, boolean limparAntes, boolean limparDepois) {
+    public static int getContador ( boolean  contar, boolean limparAntes) {
+        
         if (contar ==  true ) {
             if(limparAntes == true){
                Globais.contador = 0 ;
