@@ -52,7 +52,7 @@ public class PessoaControle implements Serializable{
             
             case 2:
                 parametrizaPessoa(true);
-                //new pessoaDAO().atualiza(pessoa);
+                new pessoaDAO().atualiza(pessoa);
                 recarregaMenu(false);
                 break;
  

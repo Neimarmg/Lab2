@@ -47,9 +47,9 @@ public class ConnectionFactory {
     public  static  void executaSql(String acao,boolean  status,boolean fecharConexao)throws SQLException{
     
         if (status == false){
-            View.msgcr("Registro "+acao +"do com sucesso");
+            View.msgcr("Registro "+acao +"do com sucesso!");
         }else{
-            View.msgcr("Não foi possível  "+acao +"r registro");
+            View.msgcr("Não foi possível  "+acao +"r registro!");
         }
      }
 
