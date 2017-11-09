@@ -19,7 +19,7 @@ public class pessoaDAO implements Serializable{
     List<Pessoa> listaDePessoas = new ArrayList<Pessoa>();
     private Connection con = ConnectionFactory.getConnection();
     
-    public void carregaPessoa(Connection connection,PreparedStatement prepara, Pessoa pessoa, boolean fechaConexao) throws SQLException{
+    public void carregaPessoa(Connection connection,PreparedStatement prepara, Pessoa pessoa) throws SQLException{
         prepara.setString(Globais.getContador(true, false),pessoa.getNome());        
         prepara.setString(Globais.getContador(true, false),pessoa.getCidade());
         prepara.setInt(Globais.getContador(true, false),pessoa.getCodTipoPessoa());
@@ -37,7 +37,7 @@ public class pessoaDAO implements Serializable{
         try{            
             PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());
             prepara.setInt(Globais.getContador(true, true),0);           
-            carregaPessoa(con, prepara, pessoa, true); 
+            carregaPessoa(con, prepara, pessoa); 
             ConnectionFactory.executaSql("Salva", prepara.execute(), ConnectionFactory.fechaConexao(con, prepara, true));
           
         } catch(SQLException e){ 
@@ -53,7 +53,7 @@ public class pessoaDAO implements Serializable{
         try{            
             PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());           
             prepara.setInt(Globais.getContador(true, true), pessoa.getCodPessoa()); //Pula primeira posição da tabela 
-            carregaPessoa(con, prepara, pessoa, false);                   
+            carregaPessoa(con, prepara, pessoa);                   
             prepara.setInt(9,pessoa.getCodPessoa());             
             ConnectionFactory.executaSql("Altera", prepara.execute(), ConnectionFactory.fechaConexao(con, prepara, true));
 
