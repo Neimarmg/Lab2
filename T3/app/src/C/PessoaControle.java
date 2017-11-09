@@ -62,7 +62,8 @@ public class PessoaControle implements Serializable{
                 recarregaMenu(false);
                 break;
             
-            case 4:
+            case 4:                
+                new pessoaDAO().imprime();                
                 recarregaMenu(true);
                 break;
                 

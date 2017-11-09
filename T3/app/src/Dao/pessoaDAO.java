@@ -15,8 +15,8 @@ import java.sql.ResultSet;
 
 
 public class pessoaDAO implements Serializable{
-
-  
+    
+    List<Pessoa> listaDePessoas = new ArrayList<Pessoa>();
     private Connection con = ConnectionFactory.getConnection();
     
     public void carregaPessoa(Connection connection,PreparedStatement prepara, Pessoa pessoa, boolean fechaConexao) throws SQLException{
@@ -49,14 +49,11 @@ public class pessoaDAO implements Serializable{
     public void atualiza (Pessoa pessoa){
 
         ConnectionFactory.setSql("UPDATE pessoa SET codPessoa=?, nome=?, cidade=?, codTipoPessoa=?, codProfissao=?, cpf=?, email=?, Ativa=? WHERE codPessoa=?");
-        try{
-            
-            PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());
-            
+        try{            
+            PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());           
             prepara.setInt(Globais.getContador(true, true), pessoa.getCodPessoa()); //Pula primeira posição da tabela 
             carregaPessoa(con, prepara, pessoa, false);                   
-            prepara.setInt(9,pessoa.getCodPessoa()); // 
-            
+            prepara.setInt(9,pessoa.getCodPessoa());             
             ConnectionFactory.executaSql("Altera", prepara.execute(), ConnectionFactory.fechaConexao(con, prepara, true));
 
         } catch(SQLException e){ 
@@ -67,7 +64,6 @@ public class pessoaDAO implements Serializable{
     
     
     public void exclui (Pessoa pessoa){
-            //montando o sql
         ConnectionFactory.setSql("DELETE FROM pessoa WHERE codPessoa=?");
         try{
             PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());
@@ -80,38 +76,44 @@ public class pessoaDAO implements Serializable{
     }
     
     
-    public List<Pessoa> listarTodos(){ //procurar todos nao tem parametro
-			
-        List<Pessoa> listaDePessoas = new ArrayList<Pessoa>();
-
+    public List<Pessoa> listarTodos(){ //procurar todos nao tem parametr00o
+    
         //montando o sql
         ConnectionFactory.setSql("SELECT * FROM Pessoa");
 
         try{
             //preparando PreparedStatment com o SQL
             //quem prepara eh o connection
-            PreparedStatement prepara = con.prepareStatement(sql);
+            PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());
             //executando ---CONSULTA--- no banco de dados o comando sql
             ResultSet resultado = prepara.executeQuery(); //retorna resultado da consulta da query -> tipo ResultSet
 
             while(resultado.next()){ //buscando valor das colunas, registro por registro
                 Pessoa pessoa  = new Pessoa();
+                    /*    resultado.getInt("codPessoa")
+                        ,resultado.getString("nome")
+                        ,resultado.getString("cidade")
+                        ,resultado.getInt("codTipoPessoa")
+                        ,resultado.getInt("codProfissao")
+                        ,resultado.getString("cpf")
+                        ,resultado.getString("email")
+                        ,resultado.getString("ativa"));*/
     
-                pessoa.setCodPessoa(codPessoa);         
-                pessoa.setNome("nome");
-                pessoa.setCidade(View.digitaString("cidade"));
-                pessoa.setCodTipoPessoa(View.digitaNumero("codTipoPessoa"));
-                pessoa.setCodProfissao(View.digitaNumero("codProfisao"));
-                pessoa.setCpf(View.digitaString("cpd"));
-                pessoa.setEmail(View.digitaString("E-mail"));
-                pessoa.setAtiva(View.digitaString("Ativa"));     
+                pessoa.setCodPessoa(resultado.getInt("codPessoa"));         
+                pessoa.setNome(resultado.getString("nome"));
+                pessoa.setCidade(resultado.getString("cidade"));
+                pessoa.setCodTipoPessoa(resultado.getInt("codTipoPessoa"));
+                pessoa.setCodProfissao(resultado.getInt("codProfissao"));
+                pessoa.setCpf(resultado.getString("cpf"));
+                pessoa.setEmail(resultado.getString("email"));
+                pessoa.setAtiva(resultado.getString("ativa"));   
                 
                 listaDePessoas.add(pessoa);
             }
-            prepara.close();
+            ConnectionFactory.fechaConexao(con, prepara, true );
 
-            System.out.println("Listando Todos os Registros");
-
+            View.msg("Listando Todos os Registros");
+            
             } catch(SQLException e){ 
                     //se comando sql nao estiver correto ira imprimir o erro gerado
                     e.printStackTrace();
@@ -119,6 +121,23 @@ public class pessoaDAO implements Serializable{
 
             return listaDePessoas;
     }
+    
+    
+    public void imprime(){
+        listarTodos();
+        
+        for (Pessoa pessoa:listaDePessoas)
+            View.msg(
+                   "\nId: "+pessoa.getCodPessoa()
+                  +", "+pessoa.getNome()
+                  +", "+pessoa.getCidade()
+                  +", "+pessoa.getCpf()
+                  +", "+pessoa.getEmail());
+        
+        View.msgl();
+              
+    }
+    
 }
 
 

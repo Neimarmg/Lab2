@@ -7,12 +7,12 @@ public class Pessoa {
     public Pessoa(){ 
     }
     
-    public Pessoa(int codPessoa, int codTipoPessoa, int codProfissao, String nome, String cidade, String cpf, String email, String Ativa) {
+    public Pessoa(int codPessoa, String nome, String cidade, int codTipoPessoa, int codProfissao, String cpf, String email, String Ativa) {
         this.codPessoa = codPessoa;
-        this.codTipoPessoa = codTipoPessoa;
-        this.codProfissao = codProfissao;
         this.nome = nome;
         this.cidade = cidade;
+        this.codTipoPessoa = codTipoPessoa;
+        this.codProfissao = codProfissao;      
         this.cpf = cpf;
         this.email = email;
         this.Ativa = Ativa;

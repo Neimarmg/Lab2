@@ -80,10 +80,4 @@ public class Controlador {
         }
            
     } 
-    
-    
-    public static String getCodAuto(){
-        cod = cod + 1;
-        return String.valueOf(cod);
-    }   
 }
