@@ -5,8 +5,6 @@ import M.Menu;
 import V.Utilitarios.MenuView;
 import V.View;
 import java.util.InputMismatchException;
-import java.util.Scanner;
-
 
 /**
  * @author neimarmoises
@@ -21,7 +19,8 @@ public class Controlador {
            mv.menuPrincipal();
            Menu.setCod(View.digitaNumero("\nCOMANDO"));
            View.msgl();
-       }else{            
+       }else{ 
+           View.msg("sssssssssssss");
            Menu.setCod(View.digitaNumero("\nCOMANDO"));
            View.msgl();
        }   
@@ -35,7 +34,7 @@ public class Controlador {
             switch (Menu.getCod()) {
                 case 1:
                    mv.carregaMenu();
-                    selecionaMenu(false);
+                   selecionaMenu(false);
       
                     break;
 

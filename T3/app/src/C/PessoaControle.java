@@ -29,50 +29,43 @@ public class PessoaControle implements Serializable{
     }
     
         
-   public void recarregaMenu(boolean exibeMenuPrincipal) throws Exception{               
+    public void recarregaMenu(boolean exibeMenuPrincipal) throws Exception{               
+        new MenuView().menuClientes();
+        new Controlador().selecionaMenu(exibeMenuPrincipal);
         
-        if(exibeMenuPrincipal == true) {            
-            executaPessoa();            
-        }else{
-            Menu.setCod(0);
-            new Controlador().selecionaMenu(exibeMenuPrincipal);
-            new Controlador().carregaApp();
+        if (exibeMenuPrincipal == false){
+            executaPessoa();
         }
     }
     
+   
     public void executaPessoa() throws Exception{       
        
         switch (Menu.getCod()) {
             case 1:
                 parametrizaPessoa(false);
-                new pessoaDAO().inserir(pessoa);   
-                new MenuView().menuClientes();
+                new pessoaDAO().inserir(pessoa);
                 recarregaMenu(false);
-                
                 break;
             
             case 2:
                 parametrizaPessoa(true);
                 new pessoaDAO().atualiza(pessoa);
-                new MenuView().menuClientes();
                 recarregaMenu(false);
                 break;
  
             case 3:
                 pessoa.setCodPessoa(View.digitaNumero("Id"));
                 new pessoaDAO().exclui(pessoa);
-                new MenuView().menuClientes();
                 recarregaMenu(false);
                 break;
             
             case 4:                
                 new pessoaDAO().imprime();  
-                new MenuView().menuClientes();
-                recarregaMenu(false );
+                recarregaMenu(false); 
                 break;
                 
             case 5:
-                new MenuView().menuClientes();                
                 recarregaMenu(true);
                 break;
             
@@ -82,7 +75,7 @@ public class PessoaControle implements Serializable{
                 
             default:
                 View.opcaoInvalida();       
-                //recarregaMenu();
+                recarregaMenu(false);
                 break;
             } 
     }
