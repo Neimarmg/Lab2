@@ -48,12 +48,12 @@ public class produtosDAO implements Serializable{
 
     public void atualiza (Produtos produtos){
 
-        ConnectionFactory.setSql("UPDATE pessoa SET codPessoa=?, nome=?, cidade=?, codTipoPessoa=?, codProfissao=?, cpf=?, email=?, Ativa=? WHERE codPessoa=?");
+        ConnectionFactory.setSql("UPDATE produtos SET codProduto=?, descProduto=?, codMarca=?, valorNotacao=?, codNotacao=?, preco=? WHERE codProduto=?");
         try{            
             PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());           
             prepara.setInt(Globais.getContador(true, true), produtos.getCodProduto()); //Pula primeira posição da tabela 
             carregaPessoa(con, prepara, produtos);                   
-            prepara.setInt(9,produtos.getCodProduto());             
+            prepara.setInt(Globais.getContador(true, false),produtos.getCodProduto());             
             ConnectionFactory.executaSql("Altera", prepara.execute(), ConnectionFactory.fechaConexao(con, prepara, true));
 
         } catch(SQLException e){ 

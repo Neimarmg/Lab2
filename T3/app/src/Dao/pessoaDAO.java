@@ -20,6 +20,7 @@ public class pessoaDAO implements Serializable{
     Utilitarios utilitarios = new Utilitarios();
     List<Pessoa> listaDePessoas = new ArrayList<Pessoa>();
     private Connection con = ConnectionFactory.getConnection();
+    String profissao, tipo;
     
     public void carregaPessoa(Connection connection,PreparedStatement prepara, Pessoa pessoa) throws SQLException{
         prepara.setString(Globais.getContador(true, false),pessoa.getNome());        
@@ -115,10 +116,13 @@ public class pessoaDAO implements Serializable{
                     pessoa.setCodPessoa(resultado.getInt("codPessoa"));
                     pessoa.setNome(resultado.getString("nome"));
                     pessoa.setCidade(resultado.getString("cidade"));
+                    
                     pessoa.setCodTipoPessoa(resultado.getInt("codTipoPessoa"));                        
-                    utilitarios.setUtilitario(resultado.getString("tipo"));
+                    pessoa.setTipoPessoa(resultado.getString("tipo"));
+                    
                     pessoa.setCodProfissao(resultado.getInt("codProfissao"));
-                    utilitarios.setObs(resultado.getString("profissao"));
+                    pessoa.setProfissoa(resultado.getString("profissao"));
+                    
                     pessoa.setCpf(resultado.getString("cpf"));
                     pessoa.setEmail(resultado.getString("email"));
                     pessoa.setAtiva(resultado.getString("ativa"));              
@@ -149,9 +153,9 @@ public class pessoaDAO implements Serializable{
                   +", "+pessoa.getCpf()
                   +", "+pessoa.getEmail()                           
                   +", "+pessoa.getCodTipoPessoa()
-                  +", "+utilitarios.getUtilitario()
+                  +", "+pessoa.getTipoPessoa()
                   +", "+pessoa.getCodProfissao()
-                  +", "+utilitarios.getObs());
+                  +", "+pessoa.getProfissoa());
         
         View.msgl();
               

@@ -13,17 +13,19 @@ package M;
  */
 public class Produtos {
     int codProduto, codMarca, codNotacao;
-    String descProruto;
+    String descProruto, tipoPessoa, nomeMarca;
     float preco,valorNotacao;
 
     public Produtos() {
     }
 
-    public Produtos(int codProduto, int codMarca, int codNotacao, String descProruto, float preco, float valorNotacao) {
+    public Produtos(int codProduto, int codMarca, int codNotacao, String descProruto, String tipoPessoa, String nomeMarca, float preco, float valorNotacao) {
         this.codProduto = codProduto;
         this.codMarca = codMarca;
         this.codNotacao = codNotacao;
         this.descProruto = descProruto;
+        this.tipoPessoa = tipoPessoa;
+        this.nomeMarca = nomeMarca;
         this.preco = preco;
         this.valorNotacao = valorNotacao;
     }
@@ -60,6 +62,22 @@ public class Produtos {
         this.descProruto = descProruto;
     }
 
+    public String getTipoPessoa() {
+        return tipoPessoa;
+    }
+
+    public void setTipoPessoa(String tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
+    }
+
+    public String getNomeMarca() {
+        return nomeMarca;
+    }
+
+    public void setNomeMarca(String nomeMarca) {
+        this.nomeMarca = nomeMarca;
+    }
+
     public float getPreco() {
         return preco;
     }
@@ -74,5 +92,8 @@ public class Produtos {
 
     public void setValorNotacao(float valorNotacao) {
         this.valorNotacao = valorNotacao;
-    }   
+    }
+    
+    
+  
 }

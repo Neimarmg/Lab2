@@ -2,20 +2,22 @@ package M;
 
 public class Pessoa {
     int codPessoa,codTipoPessoa,codProfissao;
-    String nome="" , cidade="", cpf="", email="", Ativa="";
+    String nome, cidade, cpf, email, Ativa, tipoPessoa, profissoa;
     
     public Pessoa(){ 
     }
-    
-    public Pessoa(int codPessoa, String nome, String cidade, int codTipoPessoa, int codProfissao, String cpf, String email, String Ativa) {
+
+    public Pessoa(int codPessoa, int codTipoPessoa, int codProfissao, String nome, String cidade, String cpf, String email, String Ativa, String tipoPessoa, String profissoa) {
         this.codPessoa = codPessoa;
+        this.codTipoPessoa = codTipoPessoa;
+        this.codProfissao = codProfissao;
         this.nome = nome;
         this.cidade = cidade;
-        this.codTipoPessoa = codTipoPessoa;
-        this.codProfissao = codProfissao;      
         this.cpf = cpf;
         this.email = email;
         this.Ativa = Ativa;
+        this.tipoPessoa = tipoPessoa;
+        this.profissoa = profissoa;
     }
 
     public int getCodPessoa() {
@@ -80,5 +82,24 @@ public class Pessoa {
 
     public void setAtiva(String Ativa) {
         this.Ativa = Ativa;
-    }    
+    }
+
+    public String getTipoPessoa() {
+        return tipoPessoa;
+    }
+
+    public void setTipoPessoa(String tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
+    }
+
+    public String getProfissoa() {
+        return profissoa;
+    }
+
+    public void setProfissoa(String profissoa) {
+        this.profissoa = profissoa;
+    }
+    
+    
+   
 }

@@ -34,9 +34,11 @@ public class MenuView {
     public  void menuProdutos(){
         Menu.setDescMenu(
                  "\n 1 - Novo produto"
-                +"\n 2 - Imprimir"
-                +"\n 3 - Retornar"
-                +"\n 4 - Sair\n"                
+                +"\n 2 - Atualizar"
+                +"\n 3 - Excluir"
+                +"\n 4 - Imprimir"
+                +"\n 5 - Retornar"
+                +"\n 6 - Sair\n"                
         );
         imprimeMenu();
     }   

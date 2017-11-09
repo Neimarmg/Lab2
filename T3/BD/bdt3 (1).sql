@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 09-Nov-2017 às 15:02
--- Versão do servidor: 10.1.19-MariaDB
--- PHP Version: 5.5.38
+-- Generation Time: 10-Nov-2017 às 00:51
+-- Versão do servidor: 10.1.25-MariaDB
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -24,69 +26,6 @@ DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`pep`@`10.%` PROCEDURE `cHabilitacaoPessoa` (IN `idPessoa` INT UNSIGNED ZEROFILL)  NO SQL
-    DETERMINISTIC
-SELECT                 
-			
-			HabilitacaoPessoa.codHabilitacaoPessoa
-
-            ,Pessoa.nome
-		 			
-			,Pessoa.codPessoa
-
-            ,Pessoa.cidade
-
-            ,Pessoa.codTipoPessoa
-  
-            ,tipo.utilitario as tipoPessoa
-
-			,Pessoa.codProfissao
-
-            ,profissao.utilitario as profissão
-
-            ,Pessoa.cpf
-
-            ,Pessoa.Ativa
-
-            ,Usuarios.codUsuarios
-
-            ,Usuarios.status
-			
-			,tipoHabilitacaoPessoa.utilitario AS habilitacaoPessoa
-
-
-
-        FROM Pessoa
-
-            LEFT JOIN Utilitarios AS tipo ON
-
-                Pessoa.codTipoPessoa = tipo.codUtilitario
-
-
-            LEFT JOIN Utilitarios AS profissao ON
-
-                Pessoa.codProfissao = profissao.codUtilitario
-			
-
-            LEFT JOIN Usuarios ON
-
-                Pessoa.codPessoa = Usuarios.codPessoa
-
-
-			LEFT JOIN HabilitacaoPessoa ON
-				
-				Pessoa.codPessoa = HabilitacaoPessoa.codPessoa
-
-
-				LEFT JOIN Utilitarios AS tipoHabilitacaoPessoa ON
-
-					HabilitacaoPessoa.codTipoHabilitacao = tipoHabilitacaoPessoa.codUtilitario
-
-
-WHERE Pessoa.codPessoa = filtro(Pessoa.codPessoa, idPessoa)
-
-ORDER by Pessoa.nome ASC$$
-
 CREATE DEFINER=`pep`@`10.%` PROCEDURE `cPessoa` (IN `idPessoa` VARCHAR(11))  NO SQL
     DETERMINISTIC
 SELECT       
@@ -131,7 +70,7 @@ SELECT
 
 WHERE Pessoa.codPessoa = filtro(Pessoa.codPessoa, idPessoa)$$
 
-CREATE DEFINER=`pep`@`10.%` PROCEDURE `cUtilitarios` (IN `codTipoUtilitarios` INT(13) UNSIGNED, IN `codSubGrupoUtilitarios` INT UNSIGNED)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cUtilitarios` (IN `codTipoUtilitarios` INT(11) UNSIGNED, IN `codSubGrupoUtilitarios` INT(11) UNSIGNED)  NO SQL
     DETERMINISTIC
 SELECT 
 
@@ -198,8 +137,9 @@ CREATE TABLE `pessoa` (
 --
 
 INSERT INTO `pessoa` (`codPessoa`, `nome`, `cidade`, `codTipoPessoa`, `codProfissao`, `cpf`, `email`, `Ativa`, `cref`) VALUES
-(31, 'neimar', 'putinga', 1, 6, '1232166564', 'nrdt@fdd.com', 's', ''),
-(32, 'carlos', 'maragogi', 2, 5, '13321255', 'nfdfd@gfgdf.com', 's', '');
+(12, 'angela', 'encantado', 2, 5, '1216511321', 'dasdsa@fddd', 's', ''),
+(13, 'neimar', 'relvado', 1, 7, '156511565', 'adsd@ddd', 's', ''),
+(14, 'jorjao', 'xaixim', 3, 6, '465132', 'fdsfsd@ff', 's', '');
 
 -- --------------------------------------------------------
 
@@ -215,13 +155,6 @@ CREATE TABLE `produtos` (
   `codNotacao` int(11) NOT NULL,
   `preco` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `produtos`
---
-
-INSERT INTO `produtos` (`codProduto`, `descProduto`, `codMarca`, `valorNotacao`, `codNotacao`, `preco`) VALUES
-(1, 'celular', 8, 0, 0, 500);
 
 -- --------------------------------------------------------
 
@@ -240,11 +173,10 @@ CREATE TABLE `tipoutilitarios` (
 
 INSERT INTO `tipoutilitarios` (`codTipoUtilitario`, `descTipoUtilitario`) VALUES
 (3, 'Tipo pessoa'),
-(4, 'Situação fisica'),
 (6, 'Profissões'),
 (13, 'Notação'),
-(14, 'Menus do sistema'),
-(15, 'Marca');
+(14, 'Marca'),
+(15, 'Situação fisica');
 
 -- --------------------------------------------------------
 
@@ -288,13 +220,15 @@ CREATE TABLE `utilitarios` (
 
 INSERT INTO `utilitarios` (`codUtilitario`, `utilitario`, `codTipoUtilirario`, `Obs`, `codSubGrupo`, `favorita`) VALUES
 (1, 'Cliente', 3, '', 0, 0),
-(2, 'Fornecedor', 3, '', 0, 0),
+(2, 'Forncedor', 3, '', 0, 0),
 (3, 'Cliente fornecedor', 3, '', 0, 0),
-(4, 'Medico', 6, '', 0, 0),
+(4, 'Engenheiro', 6, '', 0, 0),
 (5, 'Professor', 6, '', 0, 0),
-(6, 'Mecanico', 6, '', 0, 0),
-(7, 'Sasung', 15, '', 0, 0),
-(8, 'Nokia', 15, '', 0, 0);
+(6, 'Engenheiro', 6, '', 0, 0),
+(7, 'Atendente', 6, '', 0, 0),
+(8, 'Sansung', 14, '', 0, 0),
+(9, 'Nokia', 14, '', 0, 0),
+(10, 'HP', 14, '', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -338,12 +272,12 @@ ALTER TABLE `utilitarios`
 -- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `codPessoa` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `codPessoa` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `codProduto` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `codProduto` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tipoutilitarios`
 --
@@ -358,7 +292,8 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `utilitarios`
 --
 ALTER TABLE `utilitarios`
-  MODIFY `codUtilitario` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `codUtilitario` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
