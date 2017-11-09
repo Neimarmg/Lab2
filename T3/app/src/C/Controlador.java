@@ -20,7 +20,6 @@ public class Controlador {
            Menu.setCod(View.digitaNumero("\nCOMANDO"));
            View.msgl();
        }else{ 
-           View.msg("sssssssssssss");
            Menu.setCod(View.digitaNumero("\nCOMANDO"));
            View.msgl();
        }   
@@ -33,9 +32,9 @@ public class Controlador {
            
             switch (Menu.getCod()) {
                 case 1:
-                   mv.carregaMenu();
-                   selecionaMenu(false);
-      
+                    mv.carregaMenu();
+                    selecionaMenu(false);
+                    new ProdutoControle().executaProduto();
                     break;
 
                 case 2:
@@ -45,9 +44,10 @@ public class Controlador {
                     break;
 
                 case 3:
+                    
                     mv.carregaMenu();
                     selecionaMenu(false);
-                   
+                    
                     break;
                     
                 case 4:

@@ -12,25 +12,44 @@ package M;
  * @author neimarmoises
  */
 public class Produtos {
-    String codtuto= "0" ,descProruto,preco;
+    int codProduto, codMarca, codNotacao;
+    String descProruto;
+    float preco,valorNotacao;
 
     public Produtos() {
-        
-    } 
-    
-    
-    public Produtos(String codtuto, String descProruto, String preco) {
-        this.codtuto = codtuto;
+    }
+
+    public Produtos(int codProduto, int codMarca, int codNotacao, String descProruto, float preco, float valorNotacao) {
+        this.codProduto = codProduto;
+        this.codMarca = codMarca;
+        this.codNotacao = codNotacao;
         this.descProruto = descProruto;
         this.preco = preco;
+        this.valorNotacao = valorNotacao;
     }
 
-    public String getCodtuto() {
-        return codtuto;
+    public int getCodProduto() {
+        return codProduto;
     }
 
-    public void setCodtuto(String codtuto) {
-        this.codtuto = codtuto;
+    public void setCodProduto(int codProduto) {
+        this.codProduto = codProduto;
+    }
+
+    public int getCodMarca() {
+        return codMarca;
+    }
+
+    public void setCodMarca(int codMarca) {
+        this.codMarca = codMarca;
+    }
+
+    public int getCodNotacao() {
+        return codNotacao;
+    }
+
+    public void setCodNotacao(int codNotacao) {
+        this.codNotacao = codNotacao;
     }
 
     public String getDescProruto() {
@@ -41,13 +60,19 @@ public class Produtos {
         this.descProruto = descProruto;
     }
 
-    public String getPreco() {
+    public float getPreco() {
         return preco;
     }
 
-    public void setPreco(String preco) {
+    public void setPreco(float preco) {
         this.preco = preco;
     }
-    
-    
+
+    public float getValorNotacao() {
+        return valorNotacao;
+    }
+
+    public void setValorNotacao(float valorNotacao) {
+        this.valorNotacao = valorNotacao;
+    }   
 }

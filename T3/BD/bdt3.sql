@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 09-Nov-2017 às 04:08
--- Versão do servidor: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Generation Time: 09-Nov-2017 às 15:02
+-- Versão do servidor: 10.1.19-MariaDB
+-- PHP Version: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -200,18 +198,30 @@ CREATE TABLE `pessoa` (
 --
 
 INSERT INTO `pessoa` (`codPessoa`, `nome`, `cidade`, `codTipoPessoa`, `codProfissao`, `cpf`, `email`, `Ativa`, `cref`) VALUES
-(14, 'neimar', 'putinga', 2, 1, '1233012452', 'neima@hotmail', 's', ''),
-(15, 'maria', 'clara', 1, 12, '1236653312', 'nfd@fgf.com', 's', ''),
-(16, 'carlos', 'catupi', 5, 13, '133654', 'nfca@gamil.com', 's', ''),
-(19, 'carla', 'encantado', 5, 1, '21335154', 'cas@ddf', 's', ''),
-(21, '6', '6', 6, 6, '6', '6', '6', ''),
-(22, 'h', 'h', 2, 2, '2', '2', '2', ''),
-(23, '4', '4', 4, 4, '4', '4', '4', ''),
-(24, '3', '3', 3, 3, '3', '3', '3', ''),
-(25, '8', '8', 8, 8, '8', '8', '8', ''),
-(26, 'neimar', 'putinga', 1, 2, '123', 'neimar@gdd', 's', ''),
-(27, 'neimar', 'moises', 1, 1, '1', '1', '1', ''),
-(28, 'calos nascimento ', 'porto alegre', 56, 25, '', '12', 's', '');
+(31, 'neimar', 'putinga', 1, 6, '1232166564', 'nrdt@fdd.com', 's', ''),
+(32, 'carlos', 'maragogi', 2, 5, '13321255', 'nfdfd@gfgdf.com', 's', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `produtos`
+--
+
+CREATE TABLE `produtos` (
+  `codProduto` smallint(11) NOT NULL,
+  `descProduto` varchar(50) NOT NULL,
+  `codMarca` int(11) NOT NULL,
+  `valorNotacao` float NOT NULL,
+  `codNotacao` int(11) NOT NULL,
+  `preco` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `produtos`
+--
+
+INSERT INTO `produtos` (`codProduto`, `descProduto`, `codMarca`, `valorNotacao`, `codNotacao`, `preco`) VALUES
+(1, 'celular', 8, 0, 0, 500);
 
 -- --------------------------------------------------------
 
@@ -231,8 +241,10 @@ CREATE TABLE `tipoutilitarios` (
 INSERT INTO `tipoutilitarios` (`codTipoUtilitario`, `descTipoUtilitario`) VALUES
 (3, 'Tipo pessoa'),
 (4, 'Situação fisica'),
-(6, 'Profissoções'),
-(13, 'Notação');
+(6, 'Profissões'),
+(13, 'Notação'),
+(14, 'Menus do sistema'),
+(15, 'Marca');
 
 -- --------------------------------------------------------
 
@@ -271,6 +283,20 @@ CREATE TABLE `utilitarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Extraindo dados da tabela `utilitarios`
+--
+
+INSERT INTO `utilitarios` (`codUtilitario`, `utilitario`, `codTipoUtilirario`, `Obs`, `codSubGrupo`, `favorita`) VALUES
+(1, 'Cliente', 3, '', 0, 0),
+(2, 'Fornecedor', 3, '', 0, 0),
+(3, 'Cliente fornecedor', 3, '', 0, 0),
+(4, 'Medico', 6, '', 0, 0),
+(5, 'Professor', 6, '', 0, 0),
+(6, 'Mecanico', 6, '', 0, 0),
+(7, 'Sasung', 15, '', 0, 0),
+(8, 'Nokia', 15, '', 0, 0);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -279,6 +305,12 @@ CREATE TABLE `utilitarios` (
 --
 ALTER TABLE `pessoa`
   ADD PRIMARY KEY (`codPessoa`);
+
+--
+-- Indexes for table `produtos`
+--
+ALTER TABLE `produtos`
+  ADD PRIMARY KEY (`codProduto`);
 
 --
 -- Indexes for table `tipoutilitarios`
@@ -306,27 +338,27 @@ ALTER TABLE `utilitarios`
 -- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `codPessoa` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
+  MODIFY `codPessoa` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+--
+-- AUTO_INCREMENT for table `produtos`
+--
+ALTER TABLE `produtos`
+  MODIFY `codProduto` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tipoutilitarios`
 --
 ALTER TABLE `tipoutilitarios`
-  MODIFY `codTipoUtilitario` smallint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
+  MODIFY `codTipoUtilitario` smallint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `utilitarios`
 --
 ALTER TABLE `utilitarios`
-  MODIFY `codUtilitario` smallint(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
-
+  MODIFY `codUtilitario` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
