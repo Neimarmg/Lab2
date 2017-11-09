@@ -29,13 +29,13 @@ public class PessoaControle implements Serializable{
     }
     
         
-   public void recarregaMenu(boolean exibeMenuPrincipal) throws Exception{
-        new MenuView().menuVendas();
-        new Controlador().selecionaMenu(exibeMenuPrincipal);       
+   public void recarregaMenu(boolean exibeMenuPrincipal) throws Exception{               
         
-        if(exibeMenuPrincipal == false) {
-            executaPessoa();
+        if(exibeMenuPrincipal == true) {            
+            executaPessoa();            
         }else{
+            Menu.setCod(0);
+            new Controlador().selecionaMenu(exibeMenuPrincipal);
             new Controlador().carregaApp();
         }
     }
@@ -45,7 +45,8 @@ public class PessoaControle implements Serializable{
         switch (Menu.getCod()) {
             case 1:
                 parametrizaPessoa(false);
-                new pessoaDAO().inserir(pessoa);                
+                new pessoaDAO().inserir(pessoa);   
+                new MenuView().menuClientes();
                 recarregaMenu(false);
                 
                 break;
@@ -53,21 +54,29 @@ public class PessoaControle implements Serializable{
             case 2:
                 parametrizaPessoa(true);
                 new pessoaDAO().atualiza(pessoa);
+                new MenuView().menuClientes();
                 recarregaMenu(false);
                 break;
  
             case 3:
                 pessoa.setCodPessoa(View.digitaNumero("Id"));
                 new pessoaDAO().exclui(pessoa);
+                new MenuView().menuClientes();
                 recarregaMenu(false);
                 break;
             
             case 4:                
-                new pessoaDAO().imprime();                
-                recarregaMenu(true);
+                new pessoaDAO().imprime();  
+                new MenuView().menuClientes();
+                recarregaMenu(false );
                 break;
                 
             case 5:
+                new MenuView().menuClientes();                
+                recarregaMenu(true);
+                break;
+            
+            case 6:
                 View.sair();
                 break;
                 

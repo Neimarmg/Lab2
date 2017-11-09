@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 27-Out-2017 às 14:52
+-- Generation Time: 09-Nov-2017 às 04:08
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -191,15 +191,27 @@ CREATE TABLE `pessoa` (
   `codProfissao` int(11) NOT NULL COMMENT 'Tipo Utilitário id:6',
   `cpf` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `Ativa` varchar(1) NOT NULL COMMENT 'S= Sim, N=Não'
+  `Ativa` varchar(1) NOT NULL COMMENT 'S= Sim, N=Não',
+  `cref` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=REDUNDANT;
 
 --
 -- Extraindo dados da tabela `pessoa`
 --
 
-INSERT INTO `pessoa` (`codPessoa`, `nome`, `cidade`, `codTipoPessoa`, `codProfissao`, `cpf`, `email`, `Ativa`) VALUES
-(2, 'Neiamar gobbi', 'Porto alegre', 23, 26, '223332123312', '', '1');
+INSERT INTO `pessoa` (`codPessoa`, `nome`, `cidade`, `codTipoPessoa`, `codProfissao`, `cpf`, `email`, `Ativa`, `cref`) VALUES
+(14, 'neimar', 'putinga', 2, 1, '1233012452', 'neima@hotmail', 's', ''),
+(15, 'maria', 'clara', 1, 12, '1236653312', 'nfd@fgf.com', 's', ''),
+(16, 'carlos', 'catupi', 5, 13, '133654', 'nfca@gamil.com', 's', ''),
+(19, 'carla', 'encantado', 5, 1, '21335154', 'cas@ddf', 's', ''),
+(21, '6', '6', 6, 6, '6', '6', '6', ''),
+(22, 'h', 'h', 2, 2, '2', '2', '2', ''),
+(23, '4', '4', 4, 4, '4', '4', '4', ''),
+(24, '3', '3', 3, 3, '3', '3', '3', ''),
+(25, '8', '8', 8, 8, '8', '8', '8', ''),
+(26, 'neimar', 'putinga', 1, 2, '123', 'neimar@gdd', 's', ''),
+(27, 'neimar', 'moises', 1, 1, '1', '1', '1', ''),
+(28, 'calos nascimento ', 'porto alegre', 56, 25, '', '12', 's', '');
 
 -- --------------------------------------------------------
 
@@ -294,13 +306,13 @@ ALTER TABLE `utilitarios`
 -- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `codPessoa` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `codPessoa` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `tipoutilitarios`
 --
 ALTER TABLE `tipoutilitarios`
-  MODIFY `codTipoUtilitario` smallint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `codTipoUtilitario` smallint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
@@ -312,7 +324,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `utilitarios`
 --
 ALTER TABLE `utilitarios`
-  MODIFY `codUtilitario` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `codUtilitario` smallint(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -101,7 +101,7 @@ public class View {
 	 */
 	public static String digitaString(String label) {
 		nomePaleta(label);
-		return var.next().toLowerCase();
+		return var.nextLine().toLowerCase();
 	}
 	
 	

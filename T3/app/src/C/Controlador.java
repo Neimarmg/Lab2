@@ -17,15 +17,12 @@ public class Controlador {
  
 
     public void selecionaMenu(boolean exibeMenuPrincipal) throws Exception{
-        Scanner var = new Scanner(System.in);
-        if (exibeMenuPrincipal == true) {           
+       if (exibeMenuPrincipal == true) {           
            mv.menuPrincipal();
-           View.msg("\nCOMANDO: ");
-           Menu.setCod(var.nextInt());
+           Menu.setCod(View.digitaNumero("\nCOMANDO"));
            View.msgl();
-       }else{  
-           View.msg("\nCOMANDO: "); 
-           Menu.setCod(var.nextInt());
+       }else{            
+           Menu.setCod(View.digitaNumero("\nCOMANDO"));
            View.msgl();
        }   
        
