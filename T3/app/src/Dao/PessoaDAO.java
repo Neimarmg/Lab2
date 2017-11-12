@@ -2,7 +2,7 @@ package Dao;
 
 import Dao.Jdbc.ConnectionFactory;
 import M.Negocio.Globais;
-import M.Produtos;
+import M.Pessoa;
 import M.Utilitarios;
 import V.View;
 import java.io.Serializable;
@@ -15,28 +15,32 @@ import java.sql.ResultSet;
 
 
 
-public class produtosDAO implements Serializable{
+public class PessoaDAO implements Serializable{
     
     Utilitarios utilitarios = new Utilitarios();
-    List<Produtos> listaDeProdutos = new ArrayList<Produtos>();
+    List<Pessoa> listaDePessoas = new ArrayList<Pessoa>();
     private Connection con = ConnectionFactory.getConnection();
+    String profissao, tipo;
     
-    public void carregaPessoa(Connection connection,PreparedStatement prepara, Produtos produtos) throws SQLException{
-        prepara.setString(Globais.getContador(true, false),produtos.getDescProruto());        
-        prepara.setInt(Globais.getContador(true, false),produtos.getCodMarca());
-        prepara.setFloat(Globais.getContador(true, false),produtos.getValorNotacao());
-        prepara.setInt(Globais.getContador(true, false),produtos.getCodNotacao());        
-        prepara.setFloat(Globais.getContador(true, false),produtos.getPreco());      
+    public void carregaPessoa(Connection connection,PreparedStatement prepara, Pessoa pessoa) throws SQLException{
+        prepara.setString(Globais.getContador(true, false),pessoa.getNome());        
+        prepara.setString(Globais.getContador(true, false),pessoa.getCidade());
+        prepara.setInt(Globais.getContador(true, false),pessoa.getCodTipoPessoa());
+        prepara.setInt(Globais.getContador(true, false),pessoa.getCodProfissao());        
+        prepara.setString(Globais.getContador(true, false),pessoa.getCpf()); 
+        prepara.setString(Globais.getContador(true, false),pessoa.getEmail()); 
+        prepara.setString(Globais.getContador(true, false),pessoa.getAtiva());
+        prepara.setString(Globais.getContador(true, false),"");        
     }
     
         
-    public void inserir (Produtos produtos){
+    public void inserir (Pessoa pessoa){
  
-        ConnectionFactory.setSql("INSERT INTO produtos(codProduto, descProduto, codMarca, valorNotacao, codNotacao, preco) VALUES (?,?,?,?,?,?)");
+        ConnectionFactory.setSql("INSERT INTO pessoa(codPessoa, nome, cidade, codTipoPessoa, codProfissao, cpf, email, Ativa, cref) VALUES (?,?,?,?,?,?,?,?,?)");
         try{            
             PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());
             prepara.setInt(Globais.getContador(true, true),0);           
-            carregaPessoa(con, prepara, produtos); 
+            carregaPessoa(con, prepara, pessoa); 
             ConnectionFactory.executaSql("Salva", prepara.execute(), ConnectionFactory.fechaConexao(con, prepara, true));
           
         } catch(SQLException e){ 
@@ -46,14 +50,14 @@ public class produtosDAO implements Serializable{
     }
     
 
-    public void atualiza (Produtos produtos){
+    public void atualiza (Pessoa pessoa){
 
-        ConnectionFactory.setSql("UPDATE produtos SET codProduto=?, descProduto=?, codMarca=?, valorNotacao=?, codNotacao=?, preco=? WHERE codProduto=?");
+        ConnectionFactory.setSql("UPDATE pessoa SET codPessoa=?, nome=?, cidade=?, codTipoPessoa=?, codProfissao=?, cpf=?, email=?, Ativa=? WHERE codPessoa=?");
         try{            
             PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());           
-            prepara.setInt(Globais.getContador(true, true), produtos.getCodProduto()); //Pula primeira posição da tabela 
-            carregaPessoa(con, prepara, produtos);                   
-            prepara.setInt(Globais.getContador(true, false),produtos.getCodProduto());             
+            prepara.setInt(Globais.getContador(true, true), pessoa.getCodPessoa()); //Pula primeira posição da tabela 
+            carregaPessoa(con, prepara, pessoa);                   
+            prepara.setInt(9,pessoa.getCodPessoa());             
             ConnectionFactory.executaSql("Altera", prepara.execute(), ConnectionFactory.fechaConexao(con, prepara, true));
 
         } catch(SQLException e){ 
@@ -63,11 +67,11 @@ public class produtosDAO implements Serializable{
     }
     
     
-    public void exclui (Produtos produtos){
+    public void exclui (Pessoa pessoa){
         ConnectionFactory.setSql("DELETE FROM pessoa WHERE codPessoa=?");
         try{
             PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());
-            prepara.setInt(1,produtos.getCodProduto()); //deletando pelo id que eh inteiro
+            prepara.setInt(1,pessoa.getCodPessoa()); //deletando pelo id que eh inteiro
             ConnectionFactory.executaSql("apaga", prepara.execute(), ConnectionFactory.fechaConexao(con, prepara, true ));
 
         } catch(SQLException e){ 
@@ -76,7 +80,7 @@ public class produtosDAO implements Serializable{
     }
     
     
-    public List<Produtos> listarTodos(){ //procurar todos nao tem parametr00o
+    public List<Pessoa> listarTodos(){ //procurar todos nao tem parametr00o
 
         //montando o sql
         ConnectionFactory.setSql(
@@ -107,20 +111,23 @@ public class produtosDAO implements Serializable{
             ResultSet resultado = prepara.executeQuery(); //retorna resultado da consulta da query -> tipo ResultSet
 
             while(resultado.next()){ //buscando valor das colunas, registro por registro
-                Produtos produtos  = new Produtos();
+                Pessoa pessoa  = new Pessoa();
                 
-                    /*pessoa.setCodPessoa(resultado.getInt("codPessoa"));
+                    pessoa.setCodPessoa(resultado.getInt("codPessoa"));
                     pessoa.setNome(resultado.getString("nome"));
                     pessoa.setCidade(resultado.getString("cidade"));
+                    
                     pessoa.setCodTipoPessoa(resultado.getInt("codTipoPessoa"));                        
-                    utilitarios.setUtilitario(resultado.getString("tipo"));
+                    pessoa.setTipoPessoa(resultado.getString("tipo"));
+                    
                     pessoa.setCodProfissao(resultado.getInt("codProfissao"));
-                    utilitarios.setObs(resultado.getString("profissao"));
+                    pessoa.setProfissoa(resultado.getString("profissao"));
+                    
                     pessoa.setCpf(resultado.getString("cpf"));
                     pessoa.setEmail(resultado.getString("email"));
-                    pessoa.setAtiva(resultado.getString("ativa"));*/              
+                    pessoa.setAtiva(resultado.getString("ativa"));              
  
-                listaDeProdutos.add(produtos);
+                listaDePessoas.add(pessoa);
             }
             ConnectionFactory.fechaConexao(con, prepara, true );
 
@@ -131,19 +138,24 @@ public class produtosDAO implements Serializable{
                     e.printStackTrace();
             }
 
-            return listaDeProdutos;
+            return listaDePessoas;
     }
     
     
     public void imprime(){
         listarTodos();
         
-        for (Produtos produtos:listaDeProdutos)
-            View.msg("\n"+produtos.getCodProduto()
-                  +","+produtos.getDescProruto()
-                  +", "+produtos.getCodMarca()                          
-                
-                    );
+        for (Pessoa pessoa:listaDePessoas)
+            View.msg(
+                   "\n"+pessoa.getCodPessoa()
+                  +","+pessoa.getNome()
+                  +", "+pessoa.getCidade()
+                  +", "+pessoa.getCpf()
+                  +", "+pessoa.getEmail()                           
+                  +", "+pessoa.getCodTipoPessoa()
+                  +", "+pessoa.getTipoPessoa()
+                  +", "+pessoa.getCodProfissao()
+                  +", "+pessoa.getProfissoa());
         
         View.msgl();
               

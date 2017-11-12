@@ -1,10 +1,11 @@
 package C;
-import Dao.pessoaDAO;
+import Dao.PessoaDAO;
 import M.Menu;
 import M.Pessoa;
 import V.Utilitarios.MenuView;
 import V.View;
 import java.io.Serializable;
+import java.util.Scanner;
 
 /**
  *
@@ -12,15 +13,18 @@ import java.io.Serializable;
  */
 public class PessoaControle implements Serializable{
     Pessoa pessoa = new  Pessoa();
-    
+     static Scanner var = new Scanner(System.in);
+     
     public void parametrizaPessoa(boolean ativaCampo){
         if (ativaCampo == true){
             pessoa.setCodPessoa(View.digitaNumero("Id"));
         }else{
             pessoa.setCodPessoa(0);
-        }        
-        pessoa.setNome(View.digitaString("Nome"));
-        pessoa.setCidade(View.digitaString("Cidade"));
+        }
+        System.out.println("Nome");
+        pessoa.setNome(var.nextLine());
+        System.out.println("\nNome cidade");        
+        pessoa.setCidade(var.nextLine());
         pessoa.setCodTipoPessoa(View.digitaNumero("Tipo pessoa"));
         pessoa.setCodProfissao(View.digitaNumero("Profissão"));
         pessoa.setCpf(View.digitaString("Cpf"));
@@ -44,24 +48,24 @@ public class PessoaControle implements Serializable{
         switch (Menu.getCod()) {
             case 1:
                 parametrizaPessoa(false);
-                new pessoaDAO().inserir(pessoa);
+                new PessoaDAO().inserir(pessoa);
                 recarregaMenu(false);
                 break;
             
             case 2:
                 parametrizaPessoa(true);
-                new pessoaDAO().atualiza(pessoa);
+                new PessoaDAO().atualiza(pessoa);
                 recarregaMenu(false);
                 break;
  
             case 3:
                 pessoa.setCodPessoa(View.digitaNumero("Id"));
-                new pessoaDAO().exclui(pessoa);
+                new PessoaDAO().exclui(pessoa);
                 recarregaMenu(false);
                 break;
             
             case 4:                
-                new pessoaDAO().imprime();  
+                new PessoaDAO().imprime();  
                 recarregaMenu(false); 
                 break;
                 

@@ -47,6 +47,7 @@ public class Controlador {
                     
                     mv.carregaMenu();
                     selecionaMenu(false);
+                    new VendaPedidoControle().executaVendaProduto();
                     
                     break;
                     

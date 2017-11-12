@@ -1,67 +1,64 @@
 package C;
 import Dao.ProdutosDAO;
+import Dao.VendasPedidoDAO;
 import M.Menu;
-import M.Produtos;
+import M.VendaPedido;
 import V.Utilitarios.MenuView;
 import V.View;
 import java.io.Serializable;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.sql.Date;
+
 
 /**
  *
  * @author neimarmoises
  */
-public class ProdutoControle implements Serializable{
-    Produtos produtos = new Produtos();
-    static Scanner var = new Scanner(System.in);
+public class VendaPedidoControle implements Serializable{
+    VendaPedido vendaPedido = new VendaPedido();
     
     public void parametrizaProduto(boolean ativaCampo)throws Exception {
         
         if (ativaCampo == true){
-            produtos.setCodProduto(View.digitaNumero("Id"));
+            vendaPedido.setCodVendaPedido(View.digitaNumero("Id"));
         }else{
-            produtos.setCodProduto(0);
+            vendaPedido.setCodVendaPedido(0);
         }
-        System.err.println("Descrição produto");
-        produtos.setDescProruto(var.nextLine());
-        produtos.setCodMarca(View.digitaNumero("Cod Marca"));
-        produtos.setValorNotacao(View.digitaNumero("Valor notação"));
-        produtos.setCodNotacao(View.digitaNumero("Notação"));
-        produtos.setPreco(View.digitaFloat("Preço"));
+        vendaPedido.setCodCliente(View.digitaNumero("Cod Cliente"));
+        //vendaPedido.setDataVenda(Date.valueOf(View.digitaString("Data pedido")));
+
 
     }
     
         
     public void recarregaMenu(boolean exibeMenuPrincipal) throws Exception{               
-        new MenuView().menuProdutos();
+        new MenuView().menuVendas();
         new Controlador().selecionaMenu(exibeMenuPrincipal);
         
         if (exibeMenuPrincipal == false){
-            executaProduto();
+            executaVendaProduto();
         }
     }
     
    
-    public void executaProduto() throws Exception{       
+    public void executaVendaProduto() throws Exception{       
        
         switch (Menu.getCod()) {
             case 1:
                
                 parametrizaProduto(false);
-                new ProdutosDAO().inserir(produtos);
+                new VendasPedidoDAO().inserir(vendaPedido);
                 recarregaMenu(false);
                 break;
             
             case 2:
                 parametrizaProduto(true);
-                new ProdutosDAO().atualiza(produtos);
+                new VendasPedidoDAO().atualiza(vendaPedido);
                 recarregaMenu(false);
                 break;
  
             case 3:
-                produtos.setCodProduto(View.digitaNumero("Id"));
-                new ProdutosDAO().exclui(produtos);
+                vendaPedido.setCodVendaPedido(View.digitaNumero("Id"));
+                new VendasPedidoDAO().exclui(vendaPedido);
                 recarregaMenu(false);
                 break;
             
