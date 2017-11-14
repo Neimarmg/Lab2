@@ -1,6 +1,7 @@
 package Dao;
 
 import Dao.Jdbc.ConnectionFactory;
+import Dao.Jdbc.Util;
 import M.Negocio.Globais;
 import M.VendaPedido;
 import V.View;
@@ -33,6 +34,9 @@ public class VendasPedidoDAO implements Serializable{
             carregaVendaPedido(con, prepara, vendaPedido); 
             ConnectionFactory.executaSql("Salva", prepara.execute(), ConnectionFactory.fechaConexao(con, prepara, true));
             
+            ConnectionFactory.executaSql("SELECT max(codVendaPedido) as id FROM vendapedido", true, true);
+            Util.setPk(con, prepara);
+            View.msg(Util.getPk());
             
         } catch(SQLException e){ 
                 //se comando sql nao estiver correto ira imprimir o erro gerado
@@ -50,14 +54,8 @@ public class VendasPedidoDAO implements Serializable{
             carregaVendaPedido(con, prepara, vendaPedido);                   
             prepara.setInt(Globais.getContador(true, false),vendaPedido.getCodVendaPedido());             
             ConnectionFactory.executaSql("Altera", prepara.execute(), ConnectionFactory.fechaConexao(con, prepara, true));
-            
-            
-            PreparedStatement rtid = con.prepareStatement(ConnectionFactory.getSql()); 
-            ConnectionFactory.executaSql("SELECT max(codVendaPedido) as id FROM vendapedido", true, true);
-            PreparedStatement p = con.prepareStatement(ConnectionFactory.getSql()); 
-            rtid.execute();
-            View.msg(p);
-            
+      
+        
             
         } catch(SQLException e){ 
             //se comando sql nao estiver correto ira imprimir o erro gerado

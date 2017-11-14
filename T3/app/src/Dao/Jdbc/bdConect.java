@@ -9,7 +9,7 @@ package Dao.Jdbc;
  *
  * @author neimarmoises
  */
-public class bdUtil {
+public class bdConect {
     private final static String HOST = "localhost";
     private final static String PORT = "3306";
     private final static String BD = "bdT3";

@@ -1,8 +1,8 @@
 package Dao.Jdbc;
 
-import static Dao.Jdbc.bdUtil.getSENHA;
-import static Dao.Jdbc.bdUtil.getURL;
-import static Dao.Jdbc.bdUtil.getUSUARIO;
+import static Dao.Jdbc.bdConect.getSENHA;
+import static Dao.Jdbc.bdConect.getURL;
+import static Dao.Jdbc.bdConect.getUSUARIO;
 import V.View;
 import java.rmi.server.ObjID;
 import java.sql.Connection;
@@ -61,8 +61,5 @@ public class ConnectionFactory {
     public static void setSql(String sql) {
         ConnectionFactory.sql = sql;
     }  
-    
-   public static int pk(int id){
-       return id;
-   }
+
 }
