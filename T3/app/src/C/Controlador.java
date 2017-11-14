@@ -2,6 +2,7 @@ package C;
 /* Pesquisar */
 
 import M.Menu;
+import M.Produtos;
 import V.Utilitarios.MenuView;
 import V.View;
 import java.util.InputMismatchException;
@@ -48,7 +49,7 @@ public class Controlador {
                     mv.carregaMenu();
                     selecionaMenu(false);
                     new VendaPedidoControle().executaVendaProduto();
-                    
+                                        
                     break;
                     
                 case 4:

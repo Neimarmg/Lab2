@@ -5,7 +5,7 @@
  */
 package M;
 
-import java.sql.Date;
+import sun.util.calendar.BaseCalendar.Date;
 
 /**
  *
@@ -14,13 +14,13 @@ import java.sql.Date;
 public class VendaPedido {
     int codVendaPedido,codCliente;
 
-    String nomeCliente;
-    Date dataVenda;
+    String nomeCliente,dataVenda;
+    
 
     public VendaPedido() {
     }
 
-    public VendaPedido(int codVendaPedido, int codCliente, Date dataVenda, String nomeCliente) {
+    public VendaPedido(int codVendaPedido, int codCliente, String dataVenda, String nomeCliente) {
         this.codVendaPedido = codVendaPedido;
         this.codCliente = codCliente;
         this.dataVenda = dataVenda;
@@ -51,14 +51,15 @@ public class VendaPedido {
         this.codCliente = codCliente;
     }
 
-    public Date getDataVenda() {
+    public String getDataVenda() {
         return dataVenda;
     }
 
-    public void setDataVenda(Date dataVenda) {
+    public void setDataVenda(String dataVenda) {
         this.dataVenda = dataVenda;
     }
-    
+
+  
     
     
     

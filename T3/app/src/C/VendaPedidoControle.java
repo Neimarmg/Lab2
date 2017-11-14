@@ -2,11 +2,14 @@ package C;
 import Dao.ProdutosDAO;
 import Dao.VendasPedidoDAO;
 import M.Menu;
+import M.Negocio.Globais;
 import M.VendaPedido;
 import V.Utilitarios.MenuView;
 import V.View;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Scanner;
+
 
 
 /**
@@ -15,6 +18,7 @@ import java.sql.Date;
  */
 public class VendaPedidoControle implements Serializable{
     VendaPedido vendaPedido = new VendaPedido();
+    static Scanner var = new Scanner(System.in);
     
     public void parametrizaProduto(boolean ativaCampo)throws Exception {
         
@@ -24,8 +28,8 @@ public class VendaPedidoControle implements Serializable{
             vendaPedido.setCodVendaPedido(0);
         }
         vendaPedido.setCodCliente(View.digitaNumero("Cod Cliente"));
-        //vendaPedido.setDataVenda(Date.valueOf(View.digitaString("Data pedido")));
-
+        vendaPedido.setDataVenda(View.digitaString("Data venda"));
+       
 
     }
     
@@ -50,7 +54,7 @@ public class VendaPedidoControle implements Serializable{
                 recarregaMenu(false);
                 break;
             
-            case 2:
+            case 2:                
                 parametrizaProduto(true);
                 new VendasPedidoDAO().atualiza(vendaPedido);
                 recarregaMenu(false);
@@ -65,6 +69,7 @@ public class VendaPedidoControle implements Serializable{
             case 4:                
                 new ProdutosDAO().imprime();  
                 recarregaMenu(false); 
+                
                 break;
                 
             case 5:

@@ -33,5 +33,23 @@ public class Globais {
     }
     
     
+    public static String dataSql(String data){
+        String dia,mes,ano;
+        dia = data.substring(0, 2);
+        mes = data.substring(3, 5);
+        ano = data.substring(6);
+        
+        return ano+"-"+mes+"-"+dia;
+    }
     
+    
+    public static String dataJava(String data){
+        String dia,mes,ano;
+        dia = data.substring(0, 2);
+        mes = data.substring(3, 5);
+        ano = data.substring(6);
+        
+        return dia+"/"+mes+"/"+ano;
+    }
+ 
 }

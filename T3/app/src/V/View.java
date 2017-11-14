@@ -2,6 +2,7 @@ package V;
 
 
 
+import java.sql.Date;
 import java.util.Scanner;
 
 public class View {	
@@ -105,6 +106,11 @@ public class View {
 	}
 	
 	
+        public static String digitaData(String label) {
+		nomePaleta(label);
+		return var.nextLine();
+	}
+        
 	public static String digitaObjeto(Object label) {
 		nomePaleta(label);
 		return var.next().toLowerCase();

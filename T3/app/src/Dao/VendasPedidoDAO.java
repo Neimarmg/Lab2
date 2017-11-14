@@ -2,13 +2,13 @@ package Dao;
 
 import Dao.Jdbc.ConnectionFactory;
 import M.Negocio.Globais;
-import M.Produtos;
 import M.VendaPedido;
+import V.View;
 import java.io.Serializable;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 
 
@@ -17,9 +17,9 @@ public class VendasPedidoDAO implements Serializable{
 
     private Connection con = ConnectionFactory.getConnection();
     
-    public void carregaVendaPedido(Connection connection,PreparedStatement prepara, VendaPedido vendaPedido) throws SQLException{
+    public static void carregaVendaPedido(Connection connection,PreparedStatement prepara, VendaPedido vendaPedido) throws SQLException{
         prepara.setInt(Globais.getContador(true, false),vendaPedido.getCodCliente());        
-        prepara.setDate(Globais.getContador(true, false),vendaPedido.getDataVenda());
+        prepara.setString(Globais.getContador(true, false),Globais.dataSql(vendaPedido.getDataVenda()));
    
     }
     
@@ -32,7 +32,8 @@ public class VendasPedidoDAO implements Serializable{
             prepara.setInt(Globais.getContador(true, true),0);           
             carregaVendaPedido(con, prepara, vendaPedido); 
             ConnectionFactory.executaSql("Salva", prepara.execute(), ConnectionFactory.fechaConexao(con, prepara, true));
-          
+            
+            
         } catch(SQLException e){ 
                 //se comando sql nao estiver correto ira imprimir o erro gerado
                 e.printStackTrace();
@@ -49,7 +50,15 @@ public class VendasPedidoDAO implements Serializable{
             carregaVendaPedido(con, prepara, vendaPedido);                   
             prepara.setInt(Globais.getContador(true, false),vendaPedido.getCodVendaPedido());             
             ConnectionFactory.executaSql("Altera", prepara.execute(), ConnectionFactory.fechaConexao(con, prepara, true));
-
+            
+            
+            PreparedStatement rtid = con.prepareStatement(ConnectionFactory.getSql()); 
+            ConnectionFactory.executaSql("SELECT max(codVendaPedido) as id FROM vendapedido", true, true);
+            PreparedStatement p = con.prepareStatement(ConnectionFactory.getSql()); 
+            rtid.execute();
+            View.msg(p);
+            
+            
         } catch(SQLException e){ 
             //se comando sql nao estiver correto ira imprimir o erro gerado
             e.printStackTrace();

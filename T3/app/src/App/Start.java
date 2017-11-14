@@ -4,6 +4,7 @@ package App;
 
 
 import C.Controlador;
+import M.Negocio.Globais;
 import V.Utilitarios.Dia;
 import V.View;
 
@@ -15,6 +16,6 @@ public class Start {
            Dia.defineSaudacao();
            View.msgl();
            new Controlador().selecionaMenu(true);
-           new Controlador().carregaApp();
-    }
+           new Controlador().carregaApp();           
+               }
 }

@@ -61,4 +61,8 @@ public class ConnectionFactory {
     public static void setSql(String sql) {
         ConnectionFactory.sql = sql;
     }  
+    
+   public static int pk(int id){
+       return id;
+   }
 }
