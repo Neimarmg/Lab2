@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Logger;
+
 
 
 
@@ -33,13 +33,12 @@ public class VendasPedidoDAO implements Serializable{
             prepara.setInt(Globais.getContador(true, true),0);           
             carregaVendaPedido(con, prepara, vendaPedido); 
             ConnectionFactory.executaSql("Salva", prepara.execute(), ConnectionFactory.fechaConexao(con, prepara, true));
-            
-            ConnectionFactory.executaSql("SELECT max(codVendaPedido) as id FROM vendapedido", true, true);
-            Util.setPk(con, prepara);
-            View.msg(Util.getPk());
-            
+           
+            //Recupara o id do produto atual
+            Util.setPk("SELECT max(codVendaPedido) as id FROM vendapedido", true);
+
         } catch(SQLException e){ 
-                //se comando sql nao estiver correto ira imprimir o erro gerado
+                //se ucomando sql nao estiver correto ira imprimir o erro gerado
                 e.printStackTrace();
         }
     }
@@ -54,9 +53,10 @@ public class VendasPedidoDAO implements Serializable{
             carregaVendaPedido(con, prepara, vendaPedido);                   
             prepara.setInt(Globais.getContador(true, false),vendaPedido.getCodVendaPedido());             
             ConnectionFactory.executaSql("Altera", prepara.execute(), ConnectionFactory.fechaConexao(con, prepara, true));
-      
-        
             
+            //Recupara o id do produto atual
+            Util.setPk(String.valueOf(vendaPedido.getCodVendaPedido()), false);
+
         } catch(SQLException e){ 
             //se comando sql nao estiver correto ira imprimir o erro gerado
             e.printStackTrace();

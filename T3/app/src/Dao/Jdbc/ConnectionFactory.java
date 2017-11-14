@@ -4,7 +4,6 @@ import static Dao.Jdbc.bdConect.getSENHA;
 import static Dao.Jdbc.bdConect.getURL;
 import static Dao.Jdbc.bdConect.getUSUARIO;
 import V.View;
-import java.rmi.server.ObjID;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

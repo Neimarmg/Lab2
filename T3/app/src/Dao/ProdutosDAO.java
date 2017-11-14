@@ -81,6 +81,7 @@ public class ProdutosDAO implements Serializable{
         ConnectionFactory.setSql("CALL cProdutos(0);");
 
         try{
+            
             PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());
             ResultSet resultado = prepara.executeQuery(); //retorna resultado da consulta da query -> tipo ResultSet
 

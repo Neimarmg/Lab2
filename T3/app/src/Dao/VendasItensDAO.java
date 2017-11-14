@@ -3,7 +3,6 @@ package Dao;
 import Dao.Jdbc.ConnectionFactory;
 import M.Negocio.Globais;
 import M.Produtos;
-import M.Utilitarios;
 import V.View;
 import java.io.Serializable;
 import java.sql.Connection;
