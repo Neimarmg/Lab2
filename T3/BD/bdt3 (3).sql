@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 12-Nov-2017 às 20:39
+-- Generation Time: 16-Nov-2017 às 02:37
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -42,7 +42,7 @@ SELECT
 
 			,Pessoa.codProfissao
 
-            ,profissao.utilitario as profissão
+            ,profissao.utilitario as profissao
 
             ,Pessoa.cpf
 
@@ -156,10 +156,9 @@ CREATE TABLE `pessoa` (
 --
 
 INSERT INTO `pessoa` (`codPessoa`, `nome`, `cidade`, `codTipoPessoa`, `codProfissao`, `cpf`, `email`, `Ativa`, `cref`) VALUES
-(12, 'angela', 'encantado', 2, 5, '1216511321', 'dasdsa@fddd', 's', ''),
-(13, 'neimar', 'relvado', 1, 7, '156511565', 'adsd@ddd', 's', ''),
-(14, 'jorjao', 'xaixim', 3, 6, '465132', 'fdsfsd@ff', 's', ''),
-(15, 'jose da silva mouro', 'Porto algre', 1, 5, '13224165433', 'js@fd.com', 's', '');
+(17, 'Neimar Moises', 'Porto alegra', 1, 3, '1336515488-45', '125@ddfd.com', 's', ''),
+(18, 'Jorge carlos limera', 'Limeira ', 1, 4, '45112.5.656-8', 'sfd@ds.com.br', 's', ''),
+(19, 'Janete de vargas', 'Santo Anto', 1, 7, '46516548-55', 'asdasd@ds.com.br', 's', '');
 
 -- --------------------------------------------------------
 
@@ -181,13 +180,10 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`codProduto`, `descProduto`, `codMarca`, `valorNotacao`, `codNotacao`, `preco`) VALUES
-(3, 'celular', 9, 1, 12, 1000),
-(4, 'tv', 9, 1, 12, 500),
-(5, 'cabo', 8, 1, 12, 2.2),
-(6, 'notebook', 10, 1, 12, 120.2),
-(7, 'sds', 0, 0, 0, 0),
-(8, 'fd', 0, 0, 0, 0),
-(9, 'not book ', 9, 1, 12, 1050.5);
+(11, 'Celular nokia', 5, 1, 12, 500.12),
+(12, 'Geladeira frosfri', 13, 1, 12, 200.15),
+(13, 'Celular k10 ', 10, 1, 12, 1550.05),
+(14, 'Notebook i7 ', 9, 1, 12, 3250.14);
 
 -- --------------------------------------------------------
 
@@ -262,7 +258,8 @@ INSERT INTO `utilitarios` (`codUtilitario`, `utilitario`, `codTipoUtilirario`, `
 (8, 'Sansung', 14, '', 0, 0),
 (9, 'Nokia', 14, '', 0, 0),
 (10, 'HP', 14, '', 0, 0),
-(12, 'Unidade', 13, '', 0, 0);
+(12, 'Unidade', 13, '', 0, 0),
+(13, 'Consul', 14, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -275,8 +272,25 @@ CREATE TABLE `vendaintens` (
   `codVendaPedido` int(11) NOT NULL,
   `codProduto` int(11) NOT NULL,
   `qtVenda` int(11) NOT NULL,
-  `valorTotal` double NOT NULL
+  `desconto` double NOT NULL,
+  `acrescimo` double NOT NULL,
+  `totalValorBruto` double NOT NULL,
+  `valorTotal` double NOT NULL,
+  `totalValorLiquido` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `vendaintens`
+--
+
+INSERT INTO `vendaintens` (`codVendaIntens`, `codVendaPedido`, `codProduto`, `qtVenda`, `desconto`, `acrescimo`, `totalValorBruto`, `valorTotal`, `totalValorLiquido`) VALUES
+(27, 20, 11, 2, 20.110000610351562, 0, 1000.239990234375, 980.1299896240234, 980.1299896240234),
+(28, 20, 12, 5, 25, 0, 1000.75, 975.75, 975.75),
+(29, 20, 13, 2, 152, 0, 3100.10009765625, 2948.10009765625, 2948.10009765625),
+(30, 20, 14, 1, 215, 0, 3250.139892578125, 3035.139892578125, 3035.139892578125),
+(31, 21, 13, 1, 0, 0, 1550.050048828125, 1550.050048828125, 1550.050048828125),
+(32, 21, 11, 1, 0, 0, 500.1199951171875, 500.1199951171875, 500.1199951171875),
+(33, 22, 14, 1, 1, 1, 3250.139892578125, 3249.139892578125, 3250.139892578125);
 
 -- --------------------------------------------------------
 
@@ -289,6 +303,15 @@ CREATE TABLE `vendapedido` (
   `codCliente` int(11) NOT NULL,
   `dataVenda` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `vendapedido`
+--
+
+INSERT INTO `vendapedido` (`codVendaPedido`, `codCliente`, `dataVenda`) VALUES
+(20, 17, '2017-02-17'),
+(21, 18, '2014-02-15'),
+(22, 18, '2014-02-15');
 
 --
 -- Indexes for dumped tables
@@ -328,7 +351,8 @@ ALTER TABLE `utilitarios`
 -- Indexes for table `vendaintens`
 --
 ALTER TABLE `vendaintens`
-  ADD PRIMARY KEY (`codVendaIntens`);
+  ADD PRIMARY KEY (`codVendaIntens`),
+  ADD KEY `codVendaPedido` (`codVendaPedido`);
 
 --
 -- Indexes for table `vendapedido`
@@ -344,13 +368,13 @@ ALTER TABLE `vendapedido`
 -- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `codPessoa` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `codPessoa` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `codProduto` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `codProduto` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tipoutilitarios`
@@ -368,19 +392,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `utilitarios`
 --
 ALTER TABLE `utilitarios`
-  MODIFY `codUtilitario` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `codUtilitario` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `vendaintens`
 --
 ALTER TABLE `vendaintens`
-  MODIFY `codVendaIntens` smallint(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codVendaIntens` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `vendapedido`
 --
 ALTER TABLE `vendapedido`
-  MODIFY `codVendaPedido` smallint(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codVendaPedido` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

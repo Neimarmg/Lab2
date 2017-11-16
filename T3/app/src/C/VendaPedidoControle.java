@@ -1,14 +1,17 @@
 package C;
-import Dao.ProdutosDAO;
+import Dao.Jdbc.ConnectionFactory;
 import Dao.VendasPedidoDAO;
 import M.Menu;
-import M.Negocio.Globais;
+import M.Pessoa;
 import M.VendaPedido;
 import V.Utilitarios.MenuView;
 import V.View;
 import java.io.Serializable;
-import java.sql.Date;
-import java.util.Scanner;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 
 
 
@@ -17,8 +20,44 @@ import java.util.Scanner;
  * @author neimarmoises
  */
 public class VendaPedidoControle implements Serializable{
+    private Connection con = ConnectionFactory.getConnection();
     VendaPedido vendaPedido = new VendaPedido();
-    static Scanner var = new Scanner(System.in);
+    MenuView menuView = new MenuView();
+    Pessoa pessoa = new Pessoa();
+
+     
+     
+    public  void buscaCliente(String idPessoa) throws SQLException{
+        ConnectionFactory.setSql("CALL cPessoa("+idPessoa+");");
+
+        try{            
+            PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());
+            ResultSet resultado = prepara.executeQuery(); //retorna resultado da consulta da query -> tipo ResultSet
+            while(resultado.next()){ //buscando valor das colunas, registro por registro
+                    pessoa.setNome(resultado.getString("nome"));
+                    pessoa.setCidade(resultado.getString("cidade"));                   
+                    pessoa.setTipoPessoa(resultado.getString("tipoPessoa"));
+                    pessoa.setProfissoa(resultado.getString("Profissao"));
+                    pessoa.setCpf(resultado.getString("cpf"));
+                   }
+            ConnectionFactory.fechaConexao(con, prepara, true );
+        
+        } catch(SQLException e){ 
+                    //se comando sql nao estiver correto ira imprimir o erro gerado
+                    e.printStackTrace();
+            }
+        
+          View.msgcr(
+               "\nNome: "+pessoa.getNome()
+               +"\nCpf: "+pessoa.getCpf()
+               +"\nTipo: "+pessoa.getTipoPessoa()
+               +"\nProfissão: "+pessoa.getProfissoa()
+               +"\nCidade: "+pessoa.getCidade()
+        );
+
+    }
+    
+    
     
     public void parametrizaProduto(boolean ativaCampo)throws Exception {
         
@@ -28,6 +67,7 @@ public class VendaPedidoControle implements Serializable{
             vendaPedido.setCodVendaPedido(0);
         }
         vendaPedido.setCodCliente(View.digitaNumero("Cod Cliente"));
+        buscaCliente(vendaPedido.getNomeCliente());
         vendaPedido.setDataVenda(View.digitaString("Data venda"));
        
 
@@ -35,7 +75,9 @@ public class VendaPedidoControle implements Serializable{
     
         
     public void recarregaMenu(boolean exibeMenuPrincipal) throws Exception{               
-        new MenuView().menuVendas();
+        View.msgr("Criar um pedido de venda");
+        menuView.setTipo(true);
+        menuView.menuVendas(menuView.getTipo());
         new Controlador().selecionaMenu(exibeMenuPrincipal);
         
         if (exibeMenuPrincipal == false){
@@ -47,10 +89,10 @@ public class VendaPedidoControle implements Serializable{
     public void executaVendaProduto() throws Exception{       
        
         switch (Menu.getCod()) {
-            case 1:
-               
+            case 1:               
                 parametrizaProduto(false);
                 new VendasPedidoDAO().inserir(vendaPedido);
+                new VendaItensControle().executaVendaIntens();
                 recarregaMenu(false);
                 break;
             
@@ -67,7 +109,7 @@ public class VendaPedidoControle implements Serializable{
                 break;
             
             case 4:                
-                new ProdutosDAO().imprime();  
+                //new VendasPedidoDAO().imprime();  
                 recarregaMenu(false); 
                 
                 break;

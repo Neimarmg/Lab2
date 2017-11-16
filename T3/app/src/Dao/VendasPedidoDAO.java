@@ -3,6 +3,7 @@ package Dao;
 import Dao.Jdbc.ConnectionFactory;
 import Dao.Jdbc.Util;
 import M.Negocio.Globais;
+import M.VendaIntens;
 import M.VendaPedido;
 import V.View;
 import java.io.Serializable;
@@ -11,12 +12,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 
-
-
-
-public class VendasPedidoDAO implements Serializable{
+public class VendasPedidoDAO extends VendasItensDAO{
 
     private Connection con = ConnectionFactory.getConnection();
+    VendaIntens vendaIntens = new VendaIntens();
+    VendasItensDAO vendasItensDAO = new VendasItensDAO();
     
     public static void carregaVendaPedido(Connection connection,PreparedStatement prepara, VendaPedido vendaPedido) throws SQLException{
         prepara.setInt(Globais.getContador(true, false),vendaPedido.getCodCliente());        
@@ -45,7 +45,7 @@ public class VendasPedidoDAO implements Serializable{
     
 
     public void atualiza (VendaPedido vendaPedido){
-
+        
         ConnectionFactory.setSql("UPDATE vendapedido SET codVendaPedido=?, codCliente=?, dataVenda=? WHERE codVendaPedido=?");
         try{            
             PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());           
@@ -65,6 +65,8 @@ public class VendasPedidoDAO implements Serializable{
     
     
     public void exclui (VendaPedido vendaPedido){
+        vendaIntens.setCodVendaPedido(vendaPedido.getCodVendaPedido());
+        exclui(vendaIntens);
         ConnectionFactory.setSql("DELETE FROM vendapedido WHERE codVendaPedido=?");
         try{
             PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());
@@ -74,7 +76,15 @@ public class VendasPedidoDAO implements Serializable{
         } catch(SQLException e){ 
             e.printStackTrace();
         }
-    }  
+    }
+
+    @Override
+    public void exclui(VendaIntens vendaIntens) {
+        super.exclui(vendaIntens); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    
   
 }
 

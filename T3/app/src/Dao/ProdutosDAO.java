@@ -19,6 +19,10 @@ public class ProdutosDAO implements Serializable{
     
     Utilitarios utilitarios = new Utilitarios();
     List<Produtos> listaDeProdutos = new ArrayList<Produtos>();
+
+    public List<Produtos> getListaDeProdutos() {
+        return listaDeProdutos;
+    }
     private Connection con = ConnectionFactory.getConnection();
     
     public void carregaPessoa(Connection connection,PreparedStatement prepara, Produtos produtos) throws SQLException{
@@ -76,9 +80,8 @@ public class ProdutosDAO implements Serializable{
     }
     
     
-    public List<Produtos> listarTodos(){ //procurar todos nao tem parametr00o
-       
-        ConnectionFactory.setSql("CALL cProdutos(0);");
+    public List<Produtos> listarTodos(String idProduto){ //procurar todos nao tem parametr00o
+        ConnectionFactory.setSql("CALL cProdutos("+idProduto+");");
 
         try{
             
@@ -101,7 +104,7 @@ public class ProdutosDAO implements Serializable{
             }
             ConnectionFactory.fechaConexao(con, prepara, true );
 
-            View.msgr("Listando Todos os Registros");
+            //View.msgr("Listando Todos os Registros");
             
             } catch(SQLException e){ 
                     //se comando sql nao estiver correto ira imprimir o erro gerado
@@ -112,8 +115,8 @@ public class ProdutosDAO implements Serializable{
     }
     
     
-    public void imprime(){
-        listarTodos();             
+    public void imprime(String idProduto){
+        listarTodos(idProduto);             
         View.msg("id "+"Descrição ");
         for (Produtos produtos:listaDeProdutos)
             View.msg("\n"+produtos.getCodProduto()

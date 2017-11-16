@@ -4,18 +4,14 @@
  * and open the template in the editor.
  */
 package M;
-
-import sun.util.calendar.BaseCalendar.Date;
-
 /**
  *
  * @author neimarmoises
  */
 public class VendaPedido {
     int codVendaPedido,codCliente;
-
     String nomeCliente,dataVenda;
-    
+   
 
     public VendaPedido() {
     }
@@ -57,10 +53,6 @@ public class VendaPedido {
 
     public void setDataVenda(String dataVenda) {
         this.dataVenda = dataVenda;
-    }
-
-  
-    
-    
+    }  
     
 }

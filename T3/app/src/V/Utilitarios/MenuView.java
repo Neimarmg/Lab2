@@ -13,6 +13,17 @@ import V.View;
  * @author Neimar
  */
 public class MenuView {
+    boolean tipo = false;
+    
+
+    public boolean getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(boolean tipo) {
+       this.tipo = tipo;
+    }
+
     
     private void imprimeMenu(){
         View.msgr(Menu.getDescMenu());
@@ -72,14 +83,16 @@ public class MenuView {
     }  
     
        
-    public  void menuVendas(){
+    public void menuVendas(boolean finalizaVenda){
+     
         Menu.setDescMenu(
                  "\n 1 - Novo Compra"
                 +"\n 2 - Atualizar"
                 +"\n 3 - Excluir"
-                +"\n 4 - Imprimir"
-                +"\n 5 - Retornar"               
-                +"\n 6 - Sair\n" 
+                +"\n 4 - Finalizar compra"
+                +"\n 5 - Impimir"         
+                +"\n 6 - Retornar"               
+                +"\n 7 - Sair\n" 
                 
         );
         imprimeMenu();
@@ -98,7 +111,7 @@ public class MenuView {
                 break;
  
             case 3:
-                menuVendas();
+                menuVendas(true);
                 break;
 
             case 4:

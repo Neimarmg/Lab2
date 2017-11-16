@@ -5,7 +5,6 @@ import M.Produtos;
 import V.Utilitarios.MenuView;
 import V.View;
 import java.io.Serializable;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -65,8 +64,8 @@ public class ProdutoControle implements Serializable{
                 recarregaMenu(false);
                 break;
             
-            case 4:                
-                new ProdutosDAO().imprime();  
+            case 4:                               
+                new ProdutosDAO().imprime(View.digitaString("Id"));  
                 recarregaMenu(false); 
                 break;
                 
