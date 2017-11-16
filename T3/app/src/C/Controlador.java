@@ -59,8 +59,12 @@ public class Controlador {
                 case 5:
                     View.objetoNaoImplementado();
                     break;
-                    
+                
                 case 6:
+                    View.objetoNaoImplementado();
+                    break;     
+                
+                case 7:
                     View.sair();
                     break;
 

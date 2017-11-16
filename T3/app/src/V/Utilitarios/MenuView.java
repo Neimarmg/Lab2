@@ -36,7 +36,8 @@ public class MenuView {
                 +"\n 3 - Compras"
                 +"\n 4 - Relatórios"
                 +"\n 5 - Operações"
-                +"\n 6 - Sair\n"        
+                +"\n 6 - Contas"
+                +"\n 7 - Sair\n"        
         );
         imprimeMenu();
     }   

@@ -6,7 +6,6 @@ import M.Negocio.Globais;
 import M.VendaIntens;
 import M.VendaPedido;
 import V.View;
-import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -81,11 +80,7 @@ public class VendasPedidoDAO extends VendasItensDAO{
     @Override
     public void exclui(VendaIntens vendaIntens) {
         super.exclui(vendaIntens); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-    
-  
+    } 
 }
 
 

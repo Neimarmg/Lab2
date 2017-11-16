@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 
 
 
-public class ProdutosDAO implements Serializable{
+public class ContaDAO implements Serializable{
     
     Utilitarios utilitarios = new Utilitarios();
     List<Produtos> listaDeProdutos = new ArrayList<Produtos>();
