@@ -10,20 +10,21 @@ package Dao.Jdbc;
  * @author neimarmoises
  */
 public class bdConect {
-    private final static String HOST = "localhost";
+    /*private final static String HOST = "localhost";
     private final static String PORT = "3306";
     private final static String BD = "bdT3";
     private final static String URL = "jdbc:mysql://"+HOST+":"+PORT+"/"+BD;
-    private final static String USUARIO = "root";
-    private final static String SENHA = "";
+    private final static String USUARIO = "bdt3";
+    private final static String SENHA = "neimar";*/
     
     
-    /*private final static String HOST = "mysql.pep.kinghost.net";
+    private final static String HOST = "mysql.hostinger.com.br";
     private final static String PORT = "3306";
-    private final static String BD = "pep";
+    private final static String BD = "id3662634_bd_t3"; 
     private final static String URL = "jdbc:mysql://"+HOST+":"+PORT+"/"+BD;
-    private final static String USUARIO = "pep";
-    private final static String SENHA = "84d235g4r8h";*/
+    private final static String USUARIO = "id3662634_dbt3";
+    private final static String SENHA = "neimar";
+
 
 
     public static String getHOST() {
