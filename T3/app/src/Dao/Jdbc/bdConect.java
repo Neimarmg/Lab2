@@ -18,7 +18,7 @@ public class bdConect {
     private final static String SENHA = "neimar";*/
     
     
-    private final static String HOST = "mysql.hostinger.com.br";
+    private final static String HOST = "mysql.hostinger.es";
     private final static String PORT = "3306";
     private final static String BD = "id3662634_bd_t3"; 
     private final static String URL = "jdbc:mysql://"+HOST+":"+PORT+"/"+BD;
