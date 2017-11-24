@@ -10,12 +10,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 
 /**
  *
  * @author neimarmoises
  */
-public class Util {
+public class BdUtil {
    protected static int pk;
    private static Connection con = ConnectionFactory.getConnection();
            
@@ -25,12 +30,12 @@ public class Util {
                 PreparedStatement prepara = con.prepareStatement(sqlId);            
                 ResultSet resultado = prepara.executeQuery(); //retorna resultado da consulta da query -> tipo ResultSet
                 while(resultado.next()){ //buscando valor das colunas, registro por registro
-                    Util.pk = resultado.getInt("id");
+                    BdUtil.pk = resultado.getInt("id");
                 } 
                 ConnectionFactory.fechaConexao(con, prepara, true );
             
             }else{
-                Util.pk = Integer.parseInt(sqlId);
+                BdUtil.pk = Integer.parseInt(sqlId);
             }
                     
         } catch(SQLException e){ 
@@ -43,4 +48,6 @@ public class Util {
     public static int getPk() {
         return pk;
     }
+    
+     
 }

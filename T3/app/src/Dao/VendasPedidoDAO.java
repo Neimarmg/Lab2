@@ -1,7 +1,7 @@
 package Dao;
 
 import Dao.Jdbc.ConnectionFactory;
-import Dao.Jdbc.Util;
+import Dao.Jdbc.BdUtil;
 import M.Negocio.Globais;
 import M.VendaIntens;
 import M.VendaPedido;
@@ -34,7 +34,7 @@ public class VendasPedidoDAO extends VendasItensDAO{
             ConnectionFactory.executaSql("Salva", prepara.execute(), ConnectionFactory.fechaConexao(con, prepara, true));
            
             //Recupara o id do produto atual
-            Util.setPk("SELECT max(codVendaPedido) as id FROM vendapedido", true);
+            BdUtil.setPk("SELECT max(codVendaPedido) as id FROM vendapedido", true);
 
         } catch(SQLException e){ 
                 //se ucomando sql nao estiver correto ira imprimir o erro gerado
@@ -54,7 +54,7 @@ public class VendasPedidoDAO extends VendasItensDAO{
             ConnectionFactory.executaSql("Altera", prepara.execute(), ConnectionFactory.fechaConexao(con, prepara, true));
             
             //Recupara o id do produto atual
-            Util.setPk(String.valueOf(vendaPedido.getCodVendaPedido()), false);
+            BdUtil.setPk(String.valueOf(vendaPedido.getCodVendaPedido()), false);
 
         } catch(SQLException e){ 
             //se comando sql nao estiver correto ira imprimir o erro gerado

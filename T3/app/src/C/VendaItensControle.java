@@ -1,6 +1,6 @@
 package C;
 import Dao.Jdbc.ConnectionFactory;
-import Dao.Jdbc.Util;
+import Dao.Jdbc.BdUtil;
 import Dao.ProdutosDAO;
 import Dao.VendasItensDAO;
 import M.Menu;
@@ -88,7 +88,7 @@ public class VendaItensControle implements Serializable{
         }else{
             vendaIntens.setCodVendaPedido(0);
         }
-        vendaIntens.setCodVendaPedido(Util.getPk());
+        vendaIntens.setCodVendaPedido(BdUtil.getPk());
         vendaIntens.setCodProduto(View.digitaNumero("Cod Produto"));        
         buscaProduto(String.valueOf(vendaIntens.getCodProduto()));
         View.msg("Descrição:"+produtos.getDescProruto()); 
@@ -145,7 +145,7 @@ public class VendaItensControle implements Serializable{
                 break;
             
             case 4: 
-                totalizaPedido(String.valueOf(Util.getPk()));
+                totalizaPedido(String.valueOf(BdUtil.getPk()));
                 new VendaPedidoControle().executaVendaProduto();
                 break;
             
