@@ -17,8 +17,8 @@
       <ChoiceBox layoutX="376.0" layoutY="91.0" prefHeight="25.0" prefWidth="185.0" />
       <ChoiceBox layoutX="161.0" layoutY="136.0" prefHeight="25.0" prefWidth="402.0" />
       <ChoiceBox layoutX="161.0" layoutY="182.0" prefHeight="25.0" prefWidth="402.0" />
-      <ChoiceBox layoutX="438.0" layoutY="411.0" prefHeight="25.0" prefWidth="123.0" />
-      <ChoiceBox layoutX="438.0" layoutY="325.0" prefHeight="25.0" prefWidth="123.0" />
-      <ChoiceBox layoutX="440.0" layoutY="499.0" prefHeight="25.0" prefWidth="123.0" />
+      <ChoiceBox layoutX="439.0" layoutY="410.0" prefHeight="25.0" prefWidth="123.0" />
+      <ChoiceBox layoutX="438.0" layoutY="324.0" prefHeight="25.0" prefWidth="123.0" />
+      <ChoiceBox layoutX="440.0" layoutY="498.0" prefHeight="25.0" prefWidth="123.0" />
     </children>
 </AnchorPane>

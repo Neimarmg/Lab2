@@ -18,11 +18,11 @@
          <tabs>
             <Tab id="dadosPrincipais" text="Dados Principais">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="739.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="454.0" prefWidth="739.0">
                      <children>
-                        <Label layoutX="107.0" layoutY="21.0" text="Id:" />
-                        <CheckBox layoutX="251.0" layoutY="153.0" mnemonicParsing="false" text="CheckBox" />
-                        <ChoiceBox layoutX="241.0" layoutY="101.0" prefWidth="150.0" />
+                        <Label layoutX="30.0" layoutY="15.0" text="Id:" />
+                        <CheckBox layoutX="390.0" layoutY="179.0" mnemonicParsing="false" text="CheckBox" />
+                        <ChoiceBox layoutX="115.0" layoutY="85.0" nodeOrientation="RIGHT_TO_LEFT" prefWidth="150.0" />
                         <TextField fx:id="idCliente" accessibleRole="COMBO_BOX" cache="true" layoutX="90.0" layoutY="39.0" prefHeight="26.0" prefWidth="64.0" promptText="idCliente" text="Id cliente">
                            <effect>
                               <ImageInput />
@@ -34,6 +34,9 @@
                               <Insets />
                            </opaqueInsets>
                         </TextField>
+                        <TextField layoutX="29.0" layoutY="37.0" prefHeight="25.0" prefWidth="79.0" />
+                        <Label layoutX="116.0" layoutY="15.0" text="Nome " />
+                        <TextField layoutX="115.0" layoutY="37.0" prefHeight="25.0" prefWidth="610.0" />
                      </children>
                   </AnchorPane>
                </content>
