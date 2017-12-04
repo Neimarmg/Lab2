@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="T31.jar" size="14282" download="eager" />
+    <jar href="T31.jar" size="14227" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="T31" >
     <param name="requiredFXVersion" value="8.0+"/>

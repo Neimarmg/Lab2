@@ -6,6 +6,8 @@
 package Controller;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,8 +25,6 @@ import javafx.scene.input.MouseEvent;
  */
 public class TelaHomeController implements Initializable {
 
-    @FXML
-    private Label label;
     @FXML
     private Button button;
     @FXML
@@ -62,10 +62,9 @@ public class TelaHomeController implements Initializable {
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
+        label1.setText("sssssssss");
     }
 
-    @FXML
-    private void handleButtonAction(MouseEvent event) {
-    }
+
     
 }
