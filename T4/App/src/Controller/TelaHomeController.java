@@ -17,6 +17,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import model.Produtos;
 
 /**
  * FXML Controller class
@@ -58,11 +59,14 @@ public class TelaHomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+ 
     }    
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        label1.setText("sssssssss");
+        Produtos produtos = new Produtos();
+        produtos.setNomeMarca("Proda");
+        label1.setText(produtos.getNomeMarca());
     }
 
 
