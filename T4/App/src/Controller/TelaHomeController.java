@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import com.sun.javaws.Globals;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Date;
@@ -18,6 +19,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import model.Produtos;
+import model.negocio.Globais;
 
 /**
  * FXML Controller class
@@ -25,11 +27,9 @@ import model.Produtos;
  * @author neimarmoises
  */
 public class TelaHomeController implements Initializable {
-
+    
     @FXML
     private Button button;
-    @FXML
-    private Label label1;
     @FXML
     private DatePicker DataFim;
     @FXML
@@ -53,22 +53,30 @@ public class TelaHomeController implements Initializable {
     @FXML
     private ChoiceBox<?> menuBtnRelatorios;
 
+    
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public  void initialize(URL url, ResourceBundle rb) {
+        LocalDate di = dataInicio.getValue();
+        dataInicio.setValue(di.now());
+        
+        LocalDate df = DataFim.getValue();
+        DataFim.setValue(df.now());
+       
  
     }    
+    
+    
 
+    
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        Produtos produtos = new Produtos();
-        produtos.setNomeMarca("Proda");
-        label1.setText(produtos.getNomeMarca());
+        
     }
 
+   
 
     
 }
