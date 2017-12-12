@@ -5,21 +5,22 @@
  */
 package Controller;
 
-import com.sun.javaws.Globals;
+
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import model.Produtos;
-import model.negocio.Globais;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -56,6 +57,7 @@ public class TelaHomeController implements Initializable {
     
     /**
      * Initializes the controller class.
+     * @param url
      */
     @Override
     public  void initialize(URL url, ResourceBundle rb) {
@@ -63,8 +65,7 @@ public class TelaHomeController implements Initializable {
         dataInicio.setValue(di.now());
         
         LocalDate df = DataFim.getValue();
-        DataFim.setValue(df.now());
-       
+        DataFim.setValue(df.now());        
  
     }    
     
@@ -72,8 +73,16 @@ public class TelaHomeController implements Initializable {
 
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
+    private void handleButtonAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("/view/form_ContasMonvimentos.fxml/"));
+        Stage stage = new Stage();
+
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
         
+        stage.initOwner(stage.getScene().getWindow());
+        stage.showAndWait();
+
     }
 
    
