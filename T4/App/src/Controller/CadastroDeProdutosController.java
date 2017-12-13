@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
 
+import Dao.ProdutosDAO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Produtos;
+import view.View;
 
 /**
  * FXML Controller class
@@ -39,14 +36,17 @@ public class CadastroDeProdutosController implements Initializable {
     @FXML
     private TextField idProduto;
     @FXML
-    private TextField preco;
+    private TextField precoVenda;
     @FXML
     private TextField valorNotação;
  
     @FXML
-    private ComboBox<?> idMarca;
+    private ComboBox<String> idMarca;
     @FXML
-    private ComboBox<?> idNotacao;
+    private ComboBox<String> idNotacao;
+    
+    
+    
     @FXML
     private TableColumn<?, ?> descricao;
     @FXML
@@ -77,11 +77,23 @@ public class CadastroDeProdutosController implements Initializable {
         // TODO
     }
 
-    public void btnExecutaMenuCadastro(ActionEvent event) throws IOException{
-        Stage stage = (Stage) form_TelaHome.getScene().getWindow();
-        stage.setTitle("MENU MOVIMENTAÇÕES");
-        Parent painelTelaPrincipal = FXMLLoader.load(this.getClass().getResource("/view/form_CadastroDeProdutos.fxml"));
-        stage.setScene(new Scene(painelTelaPrincipal));
+    public void parametrizaProduto()throws Exception {
+       
+        produtos.setCodProduto(0);
+        produtos.setDescProruto(descProduto.getText());
+        produtos.setCodMarca(idMarca.getVisibleRowCount());
+        produtos.setValorNotacao(Float.valueOf(valorNotação.getText()));
+        produtos.setCodNotacao(idNotacao.getVisibleRowCount());
+        produtos.setPreco(Float.valueOf(precoVenda.getText()));
+
+    }
+    
+    @FXML
+    public void btnInsereNovo() throws IOException, Exception{
+        parametrizaProduto();
+        new ProdutosDAO().inserir(produtos);
+        
+        
     }
             
     

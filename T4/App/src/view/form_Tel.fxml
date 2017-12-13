@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="tel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TelController">
+    <children>
+      <Label fx:id="label1" layoutX="80.0" layoutY="521.0" minHeight="16" minWidth="69" prefHeight="17.0" prefWidth="77.0" />
+
+      <Button id="atualizar" fx:id="btnAtualizar" layoutX="497.0" layoutY="14.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="108.0" text="Atualizar" />
+      <Button id="Fechar" fx:id="btnFechar" layoutX="613.0" layoutY="14.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="108.0" text="Fechar" />
+      <Button fx:id="btnImprimir" layoutX="381.0" layoutY="14.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="108.0" text="Imprimir" />
+      <TabPane blendMode="OVERLAY" layoutX="31.0" layoutY="71.0" prefHeight="486.0" prefWidth="690.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="Registro de movimento">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <CheckBox layoutX="424.0" layoutY="193.0" mnemonicParsing="false" text="Baixado" />
+                        <Label layoutX="22.0" layoutY="172.0" prefHeight="17.0" prefWidth="68.0" text="Valor inicial" />
+                        <TextField id="nroConta" fx:id="ValorInicial" layoutX="22.0" layoutY="189.0" prefHeight="25.0" prefWidth="310.0" text="valorInical" />
+                        <Label layoutX="25.0" layoutY="39.0" text="Id" />
+                        <TextField id="idConta" layoutX="23.0" layoutY="56.0" prefHeight="25.0" prefWidth="72.0" />
+                        <Label layoutX="26.0" layoutY="229.0" prefHeight="17.0" prefWidth="77.0" text="Valor baixado" />
+                        <TextField id="oprcao" fx:id="valorBaixado" layoutX="23.0" layoutY="246.0" prefHeight="25.0" prefWidth="310.0" text="valorBaixado" />
+                        <Label layoutX="25.0" layoutY="103.0" prefHeight="17.0" prefWidth="174.0" text="Conta" />
+                        <ComboBox id="idBanco" fx:id="idConta" layoutX="22.0" layoutY="120.0" prefHeight="25.0" prefWidth="309.0" promptText="idConta" />
+                        <Label layoutX="108.0" layoutY="38.0" prefHeight="17.0" prefWidth="174.0" text="Tipo Moviemtno" />
+                        <ComboBox id="idBanco" fx:id="idTipoMovimento" layoutX="105.0" layoutY="55.0" prefHeight="25.0" prefWidth="225.0" promptText="idTipoMovimento" />
+                        <CheckBox layoutX="424.0" layoutY="250.0" mnemonicParsing="false" text="Conferido" />
+                        <DatePicker fx:id="dataBaixa" layoutX="423.0" layoutY="121.0" prefHeight="25.0" prefWidth="224.0" promptText="dataBaixa" />
+                        <DatePicker fx:id="dataVencimento" layoutX="423.0" layoutY="55.0" prefHeight="25.0" prefWidth="225.0" promptText="dataVencimento" />
+                        <Label layoutX="422.0" layoutY="38.0" prefHeight="17.0" prefWidth="192.0" text="Vencimento" />
+                        <Label layoutX="424.0" layoutY="104.0" prefHeight="17.0" prefWidth="193.0" text="Data Baixa" />
+                        <Button id="novo" fx:id="btnNovo" layoutX="354.0" layoutY="377.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="107.0" text="Novo" />
+                        <Button id="excluir" fx:id="btnExcluir" layoutX="468.0" layoutY="376.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="107.0" text="Excluir" />
+                        <Button id="Salvar" fx:id="btnSalvar" layoutX="582.0" layoutY="375.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="107.0" text="Salvar" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+    </children>
+</AnchorPane>

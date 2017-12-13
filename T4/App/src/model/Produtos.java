@@ -94,6 +94,14 @@ public class Produtos {
         this.notacao = notacao;
     }
 
+    public void setCodMarca(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setDescProruto(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
    
     
   

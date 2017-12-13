@@ -5,11 +5,12 @@
  */
 package Controller;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +23,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.Produtos;
 
 /**
  * FXML Controller class
@@ -30,11 +30,9 @@ import model.Produtos;
  * @author neimarmoises
  */
 public class TelaHomeController implements Initializable {
-    private AnchorPane form_TelaHome;
-    Produtos produtos = new Produtos();
-    
     @FXML
-    private Button button;
+    AnchorPane form_Contas;
+ 
     @FXML
     private DatePicker DataFim;
     @FXML
@@ -58,37 +56,39 @@ public class TelaHomeController implements Initializable {
     @FXML
     private ChoiceBox<?> menuBtnRelatorios;
 
-    
     /**
      * Initializes the controller class.
      * @param url
+     * @param rb
      */
     @Override
-    public  void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) {
         LocalDate di = dataInicio.getValue();
         dataInicio.setValue(di.now());
         
         LocalDate df = DataFim.getValue();
-        DataFim.setValue(df.now());        
- 
+        DataFim.setValue(df.now());  
+
     }    
-    
-    
 
-    
     @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/view/form_ContasMonvimentos.fxml/"));
-        Stage stage = new Stage();
+    private void abreCadastros(ActionEvent event) {
         
-        stage.setScene(new Scene(root));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(form_TelaHome.getScene().getWindow());
-        stage.showAndWait();
-
+        try {
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(this.getClass().getResource("/view/form_Contas.fxml"));
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(form_Contas.getScene().getWindow());
+            stage.showAndWait();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(TelaHomeController.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(Exception e){
+            e.getMessage();
+            view.View.msgc("dddddddd");
+                   
+        }
     }
 
-   
-
-    
-}
+} 
