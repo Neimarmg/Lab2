@@ -23,12 +23,12 @@
                     <AnchorPane id="cadastroProduto" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <CheckBox id="status" fx:id="ativo" layoutX="225.0" layoutY="175.0" mnemonicParsing="false" text="Ativo" />
-                              <Label layoutX="117.0" layoutY="32.0" text="Descrição" />
-                              <TextField id="descricao" fx:id="descProduto" layoutX="115.0" layoutY="49.0" prefHeight="25.0" prefWidth="541.0" />
+                              <Label layoutX="117.0" layoutY="31.0" text="Descrição" />
+                              <TextField id="descricao" fx:id="descProduto" layoutX="115.0" layoutY="48.0" prefHeight="25.0" prefWidth="541.0" />
                               <Label layoutX="25.0" layoutY="30.0" text="Id" />
-                              <TextField id="idProduto" fx:id="idProduto" layoutX="23.0" layoutY="47.0" prefHeight="25.0" prefWidth="85.0" text="0" />
+                              <TextField id="idProduto" fx:id="idProduto" layoutX="23.0" layoutY="48.0" prefHeight="25.0" prefWidth="85.0" text="0" />
                               <Label layoutX="27.0" layoutY="154.0" text="Preço" />
-                              <TextField id="precoVenda" fx:id="preco" layoutX="26.0" layoutY="171.0" prefHeight="25.0" prefWidth="164.0" />
+                              <TextField id="precoVenda" fx:id="preco" layoutX="22.0" layoutY="171.0" prefHeight="25.0" prefWidth="168.0" />
                               <Label layoutX="25.0" layoutY="90.0" prefHeight="17.0" prefWidth="174.0" text="Marca" />
                               <Label layoutX="400.0" layoutY="88.0" prefHeight="17.0" prefWidth="172.0" text="Notação" />
                               <Label layoutX="314.0" layoutY="90.0" text="Valor notação" />
@@ -36,7 +36,7 @@
                               <Button id="novo" fx:id="btnNovo" layoutX="340.0" layoutY="337.0" mnemonicParsing="false" onAction="#btnInsereNovo" prefHeight="46.0" prefWidth="107.0" text="Novo" />
                               <Button id="excluir" fx:id="btnExcluir" layoutX="454.0" layoutY="336.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="107.0" text="Excluir" />
                               <Button id="Salvar" fx:id="btnSalvar" layoutX="568.0" layoutY="335.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="107.0" text="Salvar" />
-                              <ComboBox fx:id="idMarca" layoutX="21.0" layoutY="107.0" prefHeight="25.0" prefWidth="286.0" promptText="0" />
+                              <ComboBox fx:id="idMarca" blendMode="MULTIPLY" layoutX="23.0" layoutY="107.0" prefHeight="25.0" prefWidth="284.0" promptText="0" />
                               <ComboBox fx:id="idNotacao" layoutX="399.0" layoutY="107.0" prefHeight="25.0" prefWidth="259.0" promptText="0" />
                            </children>
                         </AnchorPane>

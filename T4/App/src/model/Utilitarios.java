@@ -73,6 +73,10 @@ public class Utilitarios {
         this.Obs = Obs;
     }
     
+    @Override
+    public  String toString(){
+        return String.valueOf(codUtilitario);
+    }
     
 }
 
