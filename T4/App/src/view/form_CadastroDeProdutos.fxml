@@ -48,12 +48,12 @@
                            <children>
                               <TableView layoutX="14.0" layoutY="14.0" prefHeight="429.0" prefWidth="658.0">
                                 <columns>
-                                  <TableColumn id="idProduto" fx:id="idProduto" prefWidth="75.0" text="id" />
+                                  <TableColumn id="idProdutos" fx:id="idProd" prefWidth="75.0" text="idProd" />
                                   <TableColumn id="descricao" fx:id="descricao" prefWidth="75.0" text="Desçrição" />
                                     <TableColumn id="marca" fx:id="nomeMarca" prefWidth="75.0" text="Marca" />
                                     <TableColumn id="notacao" fx:id="notacao" prefWidth="75.0" text="Notação" />
-                                    <TableColumn id="preco" fx:id="notacao" prefWidth="75.0" text="Preço" />
-                                    <TableColumn id="status" fx:id="ativo" prefWidth="75.0" text="Status" />
+                                    <TableColumn id="precos" fx:id="notacao" prefWidth="75.0" text="Preço" />
+                                    <TableColumn id="statuss" fx:id="ativo" prefWidth="75.0" text="Status" />
                                 </columns>
                               </TableView>
                            </children>

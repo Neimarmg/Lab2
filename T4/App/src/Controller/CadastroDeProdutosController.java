@@ -5,15 +5,22 @@
  */
 package Controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.Produtos;
 
 /**
@@ -22,6 +29,7 @@ import model.Produtos;
  * @author Administrador
  */
 public class CadastroDeProdutosController implements Initializable {
+    private AnchorPane form_TelaHome;
     Produtos produtos = new Produtos();
     
     @FXML
@@ -59,11 +67,7 @@ public class CadastroDeProdutosController implements Initializable {
     @FXML
     private Button btnSalvar;
     
-    
-    
-    
-    
-    
+      
     
     
     
@@ -73,7 +77,12 @@ public class CadastroDeProdutosController implements Initializable {
         // TODO
     }
 
-    
-    
+    public void btnExecutaMenuCadastro(ActionEvent event) throws IOException{
+        Stage stage = (Stage) form_TelaHome.getScene().getWindow();
+        stage.setTitle("MENU MOVIMENTAÇÕES");
+        Parent painelTelaPrincipal = FXMLLoader.load(this.getClass().getResource("/view/form_CadastroDeProdutos.fxml"));
+        stage.setScene(new Scene(painelTelaPrincipal));
+    }
+            
     
 }

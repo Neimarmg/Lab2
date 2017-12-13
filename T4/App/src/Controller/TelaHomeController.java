@@ -19,8 +19,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Produtos;
 
 /**
  * FXML Controller class
@@ -28,6 +30,8 @@ import javafx.stage.Stage;
  * @author neimarmoises
  */
 public class TelaHomeController implements Initializable {
+    private AnchorPane form_TelaHome;
+    Produtos produtos = new Produtos();
     
     @FXML
     private Button button;
@@ -76,11 +80,10 @@ public class TelaHomeController implements Initializable {
     private void handleButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(this.getClass().getResource("/view/form_ContasMonvimentos.fxml/"));
         Stage stage = new Stage();
-
+        
         stage.setScene(new Scene(root));
         stage.initModality(Modality.APPLICATION_MODAL);
-        
-        stage.initOwner(stage.getScene().getWindow());
+        stage.initOwner(form_TelaHome.getScene().getWindow());
         stage.showAndWait();
 
     }
