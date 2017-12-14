@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 14-Dez-2017 às 11:44
--- Versão do servidor: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Generation Time: 14-Dez-2017 às 20:44
+-- Versão do servidor: 10.1.25-MariaDB
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -114,6 +114,35 @@ SELECT
 			 AND Utilitarios.codSubGrupo = filtro(Utilitarios.codSubGrupo,codSubGrupoUtilitarios)
 
 ORDER BY Utilitarios.utilitario, TipoUtilitarios.descTipoUtilitario ASC$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cVendas` (IN `idPedidoVendas` INT(11) UNSIGNED ZEROFILL, IN `idPessoas` INT(11) UNSIGNED ZEROFILL)  NO SQL
+SELECT
+	vendapedido.codVendaPedido	
+	,vendapedido.codCliente
+    ,pessoa.nome
+    ,pessoa.cpf
+    ,vendapedido.dataVenda
+    ,vendaintens.codProduto
+	,produtos.descProduto
+    ,vendaintens.qtVenda
+    ,vendaintens.desconto
+    ,vendaintens.acrescimo
+    ,vendaintens.totalValorBruto
+    ,vendaintens.valorTotal
+    ,vendaintens.totalValorLiquido
+
+FROM vendapedido
+	LEFT JOIN vendaintens ON	
+    	vendapedido.codVendaPedido = vendaintens.codVendaPedido
+      
+    	LEFT JOIN produtos ON
+        	vendaintens.codProduto = produtos.codProduto
+      
+    LEFT JOIN pessoa ON
+    	vendapedido.codCliente = pessoa.codPessoa
+        
+ WHERE vendapedido.codVendaPedido = filtro(vendapedido.codVendaPedido, idPedidoVendas)
+ 		AND vendapedido.codCliente = filtro(vendapedido.codCliente, idPessoas)$$
 
 --
 -- Functions
@@ -429,55 +458,46 @@ ALTER TABLE `vendapedido`
 --
 ALTER TABLE `conta`
   MODIFY `codConta` smallint(6) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `movimentacaoconta`
 --
 ALTER TABLE `movimentacaoconta`
   MODIFY `codMoviConta` smallint(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
   MODIFY `codPessoa` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
 --
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
   MODIFY `codProduto` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
-
 --
 -- AUTO_INCREMENT for table `tipoutilitarios`
 --
 ALTER TABLE `tipoutilitarios`
   MODIFY `codTipoUtilitario` smallint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `utilitarios`
 --
 ALTER TABLE `utilitarios`
   MODIFY `codUtilitario` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
 --
 -- AUTO_INCREMENT for table `vendaintens`
 --
 ALTER TABLE `vendaintens`
   MODIFY `codVendaIntens` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
-
 --
 -- AUTO_INCREMENT for table `vendapedido`
 --
 ALTER TABLE `vendapedido`
-  MODIFY `codVendaPedido` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-COMMIT;
+  MODIFY `codVendaPedido` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
