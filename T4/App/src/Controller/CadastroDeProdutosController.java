@@ -56,7 +56,7 @@ public class CadastroDeProdutosController implements Initializable {
     @FXML
     private TextField precoVenda;
     @FXML
-    private TextField valorNotacao; 
+    private TextField vNotacao; 
     @FXML
     private ComboBox<Utilitarios> idMarca;
     @FXML
@@ -142,7 +142,7 @@ public class CadastroDeProdutosController implements Initializable {
         produtos.setCodProduto(0);
         produtos.setDescProruto(descProduto.getText());
         produtos.setCodMarca(Integer.parseInt(String.valueOf(idMarca.getValue())));
-        produtos.setValorNotacao(Float.parseFloat(valorNotacao.getText()));
+        produtos.setValorNotacao(Float.parseFloat(vNotacao.getText()));
         produtos.setCodNotacao(Integer.parseInt(String.valueOf(idNotacao.getValue())));
         produtos.setPreco(Float.parseFloat(precoVenda.getText()));
        

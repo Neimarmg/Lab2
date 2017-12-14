@@ -5,7 +5,6 @@
  */
 package App;
 
-import Controller.CadastroDeProdutosController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -32,8 +31,7 @@ public class startT4 extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, Exception {
-        launch(args);
-        new CadastroDeProdutosController().btnInsereNovo();
+        launch(args);        
         
     }
     

@@ -11,6 +11,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CadastroDeProdutosController">
   <children>
@@ -28,11 +29,11 @@
                               <Label layoutX="25.0" layoutY="30.0" text="Id" />
                               <TextField id="idProduto" fx:id="idProduto" layoutX="23.0" layoutY="48.0" prefHeight="25.0" prefWidth="85.0" text="0" />
                               <Label layoutX="27.0" layoutY="154.0" text="Preço" />
-                              <TextField id="precoVenda" fx:id="preco" layoutX="22.0" layoutY="171.0" prefHeight="25.0" prefWidth="168.0" />
+                              <TextField id="precoVenda" fx:id="precoVenda" layoutX="22.0" layoutY="171.0" prefHeight="25.0" prefWidth="168.0" />
                               <Label layoutX="25.0" layoutY="90.0" prefHeight="17.0" prefWidth="174.0" text="Marca" />
                               <Label layoutX="400.0" layoutY="88.0" prefHeight="17.0" prefWidth="172.0" text="Notação" />
                               <Label layoutX="314.0" layoutY="90.0" text="Valor notação" />
-                              <TextField id="valorNotacao" fx:id="valorNotação" alignment="TOP_RIGHT" layoutX="313.0" layoutY="107.0" prefHeight="25.0" prefWidth="80.0" />
+                              <TextField id="valorNotacao" fx:id="vNotacao" alignment="TOP_RIGHT" layoutX="313.0" layoutY="107.0" prefHeight="25.0" prefWidth="80.0" />
                               <Button id="novo" fx:id="btnNovo" layoutX="340.0" layoutY="337.0" mnemonicParsing="false" onAction="#btnInsereNovo" prefHeight="46.0" prefWidth="107.0" text="Novo" />
                               <Button id="excluir" fx:id="btnExcluir" layoutX="454.0" layoutY="336.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="107.0" text="Excluir" />
                               <Button id="Salvar" fx:id="btnSalvar" layoutX="568.0" layoutY="335.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="107.0" text="Salvar" />
@@ -70,6 +71,11 @@
             <Button id="atualizar" fx:id="btnAtualizar" layoutX="337.0" layoutY="18.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="108.0" text="Atualizar" />
             <Button id="Fechar" fx:id="btnFechar" layoutX="569.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnFechar" prefHeight="44.0" prefWidth="108.0" text="Fechar" />
             <Button fx:id="btnImprimir" layoutX="453.0" layoutY="18.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="108.0" text="Imprimir" />
+            <Label layoutX="21.0" layoutY="27.0" text="Cadastro de produtos" textFill="#41d773">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
       </children>
     </AnchorPane>
   </children>

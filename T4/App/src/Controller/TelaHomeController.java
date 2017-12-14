@@ -31,7 +31,9 @@ import javafx.stage.Stage;
  */
 public class TelaHomeController implements Initializable {
     @FXML
-    AnchorPane form_Contas;
+    private AnchorPane form_cadastrfoProdutos;
+    private AnchorPane telaHome;
+
  
     @FXML
     private DatePicker DataFim;
@@ -76,17 +78,17 @@ public class TelaHomeController implements Initializable {
         
         try {
             Stage stage = new Stage();
-            Parent root = FXMLLoader.load(this.getClass().getResource("/view/form_Contas.fxml"));
+            Parent root = FXMLLoader.load(this.getClass().getResource("/view/form_CadastroDeProdutos.fxml"));
             stage.setScene(new Scene(root));
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initOwner(form_Contas.getScene().getWindow());
+            stage.initOwner(telaHome.getScene().getWindow());
             stage.showAndWait();
             
         } catch (IOException ex) {
             Logger.getLogger(TelaHomeController.class.getName()).log(Level.SEVERE, null, ex);
         }catch(Exception e){
             e.getMessage();
-            view.View.msgc("dddddddd");
+            view.View.msgc("Não e possivel abrir");
                    
         }
     }

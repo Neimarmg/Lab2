@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 03-Dez-2017 às 09:15
+-- Generation Time: 14-Dez-2017 às 11:44
 -- Versão do servidor: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -186,7 +186,9 @@ CREATE TABLE `pessoa` (
 INSERT INTO `pessoa` (`codPessoa`, `nome`, `cidade`, `codTipoPessoa`, `codProfissao`, `cpf`, `email`, `Ativa`, `cref`) VALUES
 (17, 'Neimar Moises', 'Porto alegra', 1, 3, '1336515488-45', '125@ddfd.com', 's', ''),
 (18, 'Jorge carlos limera', 'Limeira ', 1, 4, '45112.5.656-8', 'sfd@ds.com.br', 's', ''),
-(19, 'Janete de vargas', 'Santo Anto', 1, 7, '46516548-55', 'asdasd@ds.com.br', 's', '');
+(19, 'Janete de vargas', 'Santo Anto', 1, 7, '46516548-55', 'asdasd@ds.com.br', 's', ''),
+(20, 'neimar', 'poa', 5, 1, '15613', '122@dsds', 's', ''),
+(21, 'dsdsdsd', 'null', 1, 1, 'CPF', 'dsds', 'S', '');
 
 -- --------------------------------------------------------
 
@@ -198,9 +200,9 @@ CREATE TABLE `produtos` (
   `codProduto` smallint(11) NOT NULL,
   `descProduto` varchar(50) NOT NULL,
   `codMarca` int(11) NOT NULL,
-  `valorNotacao` float NOT NULL,
+  `valorNotacao` float(10,2) NOT NULL,
   `codNotacao` int(11) NOT NULL,
-  `preco` float NOT NULL
+  `preco` float(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -208,10 +210,11 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`codProduto`, `descProduto`, `codMarca`, `valorNotacao`, `codNotacao`, `preco`) VALUES
-(11, 'Celular nokia', 5, 1, 12, 500.12),
-(12, 'Geladeira frosfri', 13, 1, 12, 200.15),
-(13, 'Celular k10 ', 10, 1, 12, 1550.05),
-(14, 'Notebook i7 ', 9, 1, 12, 3250.14);
+(11, 'Celular nokia', 5, 1.00, 12, 500.12),
+(12, 'Geladeira frosfri', 13, 1.00, 12, 200.15),
+(13, 'Celular k10 ', 10, 1.00, 12, 1550.05),
+(14, 'Notebook i7 ', 9, 1.00, 12, 3250.14),
+(70, 'dsdsdsd', 9, 12.56, 18, 12.65);
 
 -- --------------------------------------------------------
 
@@ -292,7 +295,9 @@ INSERT INTO `utilitarios` (`codUtilitario`, `utilitario`, `codTipoUtilirario`, `
 (14, 'Saque', 16, '', 0, 0),
 (15, 'Depósito', 16, '', 0, 0),
 (16, 'Transferencia', 16, '', 0, 0),
-(17, 'Rendimento', 16, '', 0, 0);
+(17, 'Rendimento', 16, '', 0, 0),
+(18, 'metros', 13, '', 0, 0),
+(19, 'kg ', 13, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -435,13 +440,13 @@ ALTER TABLE `movimentacaoconta`
 -- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `codPessoa` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `codPessoa` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `codProduto` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `codProduto` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `tipoutilitarios`
@@ -459,7 +464,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `utilitarios`
 --
 ALTER TABLE `utilitarios`
-  MODIFY `codUtilitario` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `codUtilitario` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `vendaintens`

@@ -1,53 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.ImageInput?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox id="AnchorPane" fx:id="form_cadastroPesoas" prefHeight="524.0" prefWidth="739.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CadastroDeClientesController">
-   <children>
-      <TabPane prefHeight="350.0" prefWidth="593.0" tabClosingPolicy="UNAVAILABLE">
-         <tabs>
-            <Tab id="dadosPrincipais" text="Dados Principais">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="454.0" prefWidth="739.0">
-                     <children>
-                        <Label layoutX="30.0" layoutY="15.0" text="Id:" />
-                        <CheckBox layoutX="390.0" layoutY="179.0" mnemonicParsing="false" text="CheckBox" />
-                        <ChoiceBox layoutX="115.0" layoutY="85.0" nodeOrientation="RIGHT_TO_LEFT" prefWidth="150.0" />
-                        <TextField fx:id="idCliente" accessibleRole="COMBO_BOX" cache="true" layoutX="90.0" layoutY="39.0" prefHeight="26.0" prefWidth="64.0" promptText="idCliente" text="Id cliente">
-                           <effect>
-                              <ImageInput />
-                           </effect>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </TextField>
-                        <TextField layoutX="29.0" layoutY="37.0" prefHeight="25.0" prefWidth="79.0" />
-                        <Label layoutX="116.0" layoutY="15.0" text="Nome " />
-                        <TextField layoutX="115.0" layoutY="37.0" prefHeight="25.0" prefWidth="610.0" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab id="ListaConsultaClientes" text="Lista de consulta">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-            <Tab id="impressaoClientes" text="Impressão">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-         </tabs>
-      </TabPane>
-   </children>
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CadastroDeClientesController">
+  <children>
+    <AnchorPane id="AnchorPane" fx:id="form_cadastroClientes" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+            <TabPane layoutY="81.0" prefHeight="440.0" prefWidth="679.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Dadsos principais ">
+                  <content>
+                    <AnchorPane id="cadastroProduto" fx:id="cidade" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <CheckBox id="status" fx:id="ativo" layoutX="607.0" layoutY="245.0" mnemonicParsing="false" text="Ativo" />
+                              <TextField id="descricao" fx:id="nome" layoutX="115.0" layoutY="48.0" prefHeight="25.0" prefWidth="541.0" />
+                              <Label layoutX="25.0" layoutY="30.0" text="Id" />
+                              <TextField id="idProduto" fx:id="idPessoa" layoutX="23.0" layoutY="48.0" prefHeight="25.0" prefWidth="85.0" text="0" />
+                              <Label fx:id="cpf" layoutX="27.0" layoutY="154.0" text="CPF" />
+                              <TextField id="precoVenda" fx:id="cpf" layoutX="22.0" layoutY="171.0" prefHeight="25.0" prefWidth="168.0" />
+                              <Label fx:id="tipo" layoutX="25.0" layoutY="90.0" prefHeight="17.0" prefWidth="174.0" text="Tipo" />
+                              <Label fx:id="profissao" layoutX="353.0" layoutY="88.0" prefHeight="17.0" prefWidth="219.0" text="Profissão" />
+                              <Label layoutX="202.0" layoutY="154.0" text="E-mail" />
+                              <TextField id="valorNotacao" fx:id="email" alignment="TOP_RIGHT" layoutX="199.0" layoutY="171.0" prefHeight="25.0" prefWidth="460.0" />
+                              <Button id="novo" fx:id="btnNovo" layoutX="340.0" layoutY="337.0" mnemonicParsing="false" onAction="#btnInsereNovo" prefHeight="46.0" prefWidth="107.0" text="Novo" />
+                              <Button id="excluir" fx:id="btnExcluir" layoutX="454.0" layoutY="336.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="107.0" text="Excluir" />
+                              <Button id="Salvar" fx:id="btnSalvar" layoutX="568.0" layoutY="335.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="107.0" text="Salvar" />
+                              <ComboBox fx:id="idTipo" blendMode="MULTIPLY" layoutX="23.0" layoutY="107.0" prefHeight="25.0" prefWidth="320.0" promptText="0" />
+                              <ComboBox fx:id="idProfissao" layoutX="353.0" layoutY="107.0" prefHeight="25.0" prefWidth="305.0" promptText="0" />
+                              <Label fx:id="profissao1" layoutX="23.0" layoutY="222.0" prefHeight="17.0" prefWidth="219.0" text="Cidade" />
+                              <TextField id="precoVenda" fx:id="cidade" layoutX="22.0" layoutY="241.0" prefHeight="25.0" prefWidth="572.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab id="listaDeProdutos" text="Lista de consulta">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView layoutX="14.0" layoutY="14.0" prefHeight="429.0" prefWidth="658.0">
+                                <columns>
+                                  <TableColumn id="idProdutos" fx:id="idCliente" prefWidth="75.0" text="idCliente" />
+                                  <TableColumn id="descricao" fx:id="NomeCliente" prefWidth="75.0" text="Nome" />
+                                    <TableColumn id="marca" fx:id="tipoCliente" prefWidth="75.0" text="Tipo" />
+                                    <TableColumn id="notacao" fx:id="ProfissaoCliente" prefWidth="75.0" text="Profissão" />
+                                    <TableColumn id="precos" fx:id="cpfCleinte" prefWidth="75.0" text="CPF" />
+                                    <TableColumn id="status" fx:id="status" prefWidth="75.0" text="Ativo" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab id="impressao" text="Impressão">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="165.0" prefWidth="640.0" />
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+            <Button id="atualizar" fx:id="btnAtualizar" layoutX="337.0" layoutY="18.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="108.0" text="Atualizar" />
+            <Button id="Fechar" fx:id="btnFechar" layoutX="569.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnFechar" prefHeight="44.0" prefWidth="108.0" text="Fechar" />
+            <Button fx:id="btnImprimir" layoutX="453.0" layoutY="18.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="108.0" text="Imprimir" />
+            <Label layoutX="23.0" layoutY="25.0" text="Cadastro de Clientes" textFill="#41d773">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+      </children>
+    </AnchorPane>
+  </children>
 </VBox>
