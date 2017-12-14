@@ -14,7 +14,7 @@ package model;
 public class Produtos {
     int codProduto, codMarca, codNotacao;
     String descProruto,nomeMarca ,notacao;
-    float preco,valorNotacao;
+    float preco, valorNotacao;
 
     public Produtos() {
     }

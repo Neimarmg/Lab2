@@ -3,6 +3,7 @@ package Controller;
 import Dao.Jdbc.ConnectionFactory;
 import Dao.ProdutosDAO;
 import Dao.UtilitariosDAO;
+import com.sun.javaws.Globals;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -23,6 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.Produtos;
 import model.Utilitarios;
+import model.negocio.Globais;
 import view.View;
 
 /**
@@ -35,10 +37,15 @@ public class CadastroDeProdutosController implements Initializable {
     Produtos produtos = new Produtos();
     Utilitarios utilitarios = new Utilitarios();
     UtilitariosDAO utilitariosDAO =  new UtilitariosDAO();
+      
     @FXML 
-    private List<Utilitarios> listaUtilitarios = new ArrayList<Utilitarios>();
+    private List<Utilitarios> listaMarcas = new ArrayList<Utilitarios>();
     @FXML 
-    private ObservableList<Utilitarios> ObservableListUtilitarios;
+    private ObservableList<Utilitarios> ObservableListMarcas;
+    @FXML 
+    private List<Utilitarios> listaNotacao = new ArrayList<Utilitarios>();
+    @FXML 
+    private ObservableList<Utilitarios> ObservableListNotacao;
     
     @FXML
     private CheckBox ativo;
@@ -49,22 +56,17 @@ public class CadastroDeProdutosController implements Initializable {
     @FXML
     private TextField precoVenda;
     @FXML
-    private TextField valorNotação;
- 
+    private TextField valorNotacao; 
     @FXML
     private ComboBox<Utilitarios> idMarca;
     @FXML
-    private ComboBox<Utilitarios> idNotacao;
-    
-    
-    
+    private ComboBox<Utilitarios> idNotacao;    
     @FXML
     private TableColumn<?, ?> descricao;
     @FXML
     private TableColumn<?, ?> nomeMarca;
     @FXML
-    private TableColumn<?, ?> notacao;
-    
+    private TableColumn<?, ?> notacao;    
     @FXML
     private Button btnAtualizar;
     @FXML
@@ -87,39 +89,51 @@ public class CadastroDeProdutosController implements Initializable {
             ResultSet resultado = prepara.executeQuery(); //retorna resultado da consulta da query -> tipo ResultSet
             
             while(resultado.next()){ //buscando valor das colunas, registro por registro
+                
                 Utilitarios utilitarios  = new Utilitarios();                
                     utilitarios.setCodUtilitario(resultado.getInt("CodUtilitario"));
                     utilitarios.setUtilitario(resultado.getString("utilitario"));
                     //utilitarios.setCodTipoUtilirario(resultado.getInt("codTipoUtilirario"));                  
-                listaUtilitarios.add(utilitarios); 
-                ObservableListUtilitarios = FXCollections.observableArrayList(listaUtilitarios);
+                
+                if(Globais.getContador()== 1){    
+                    listaMarcas.add(utilitarios); 
+                    ObservableListMarcas = FXCollections.observableArrayList(listaMarcas);
+               
+                }else if(Globais.getContador()== 2){
+                    listaNotacao.add(utilitarios);
+                    ObservableListNotacao = FXCollections.observableArrayList(listaNotacao);
+                }
             }
             ConnectionFactory.fechaConexao(utilitariosDAO.getCon(), prepara, true );
-            } catch(SQLException e){ 
-                    e.printStackTrace();
-            }           
-            return listaUtilitarios;
+        } catch(SQLException e){ 
+            e.printStackTrace();
+        }
+        
+        if(Globais.getContador()== 1){               
+            return listaMarcas;
+
+        }else if(Globais.getContador()== 2){
+            return listaNotacao;
+
+        }else{
+            return  null;
+        } 
     } 
     
-    public void imprime(String idUtilitario, String idTipoUtilitarios){
-        listarTodos(idUtilitario,idTipoUtilitarios);             
-        view.View.msg("id "+"Descrição ");
-        for (Utilitarios utilitarios:listaUtilitarios)
-            
-            view.View.msg(
-                   "\n"+ utilitarios.getCodUtilitario()
-                  +", "+ utilitarios.getUtilitario()
-            );
-            ;
-        view.View.msgl();
-              
+    public void carregaComboBoxs(){
+        Globais.getContador(true, true);
+        listarTodos("14","0");        
+        idMarca.setItems(ObservableListMarcas);           
+        Globais.getContador(true, false);
+        listarTodos("13", "0");
+        idNotacao.setItems(ObservableListNotacao);        
+        Globais.getContador(false , true);
     }
+        
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       //bservableListUtilitarios = FXCollections.observableArrayList();
-        listarTodos("14","0");
-        
-        idMarca.setItems(ObservableListUtilitarios);
+        carregaComboBoxs();
     }                 
      
     @FXML
@@ -128,10 +142,10 @@ public class CadastroDeProdutosController implements Initializable {
         produtos.setCodProduto(0);
         produtos.setDescProruto(descProduto.getText());
         produtos.setCodMarca(Integer.parseInt(String.valueOf(idMarca.getValue())));
-        produtos.setValorNotacao(0);
-       // produtos.setCodNotacao(Integer.parseInt(idNotacao.getValue()));
-        produtos.setPreco(0);
-        view.View.msg(idMarca.getValue());
+        produtos.setValorNotacao(Float.parseFloat(valorNotacao.getText()));
+        produtos.setCodNotacao(Integer.parseInt(String.valueOf(idNotacao.getValue())));
+        produtos.setPreco(Float.parseFloat(precoVenda.getText()));
+       
         
 
     }
@@ -142,6 +156,10 @@ public class CadastroDeProdutosController implements Initializable {
         new ProdutosDAO().inserir(produtos);
         
     }
-            
+           
+    @FXML
+    public  void btnFechar(){
+         System.exit(1);
+    }
     
 }

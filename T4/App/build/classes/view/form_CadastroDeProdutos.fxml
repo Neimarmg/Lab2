@@ -68,7 +68,7 @@
               </tabs>
             </TabPane>
             <Button id="atualizar" fx:id="btnAtualizar" layoutX="337.0" layoutY="18.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="108.0" text="Atualizar" />
-            <Button id="Fechar" fx:id="btnFechar" layoutX="569.0" layoutY="18.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="108.0" text="Fechar" />
+            <Button id="Fechar" fx:id="btnFechar" layoutX="569.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnFechar" prefHeight="44.0" prefWidth="108.0" text="Fechar" />
             <Button fx:id="btnImprimir" layoutX="453.0" layoutY="18.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="108.0" text="Imprimir" />
       </children>
     </AnchorPane>
