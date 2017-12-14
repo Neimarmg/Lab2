@@ -10,23 +10,23 @@ package model;
  * @author 181100053
  */
 public class Conta {
-    int codConta,operacao, nroBanco;
-    String nroConta, agencia;
+    int codConta,operacao;
+    String nroConta, agencia, banco;
     Float saldoAtual;
 
     public Conta() {
     }
 
-    
-    public Conta(int codConta, int operacao, int nroBanco, String nroConta, String agencia, Float saldoAtual) {
+    public Conta(int codConta, int operacao, String nroConta, String agencia, String banco, Float saldoAtual) {
         this.codConta = codConta;
         this.operacao = operacao;
-        this.nroBanco = nroBanco;
         this.nroConta = nroConta;
         this.agencia = agencia;
+        this.banco = banco;
         this.saldoAtual = saldoAtual;
     }
 
+    
     public int getCodConta() {
         return codConta;
     }
@@ -41,14 +41,6 @@ public class Conta {
 
     public void setOperacao(int operacao) {
         this.operacao = operacao;
-    }
-
-    public int getNroBanco() {
-        return nroBanco;
-    }
-
-    public void setNroBanco(int nroBanco) {
-        this.nroBanco = nroBanco;
     }
 
     public String getNroConta() {
@@ -67,6 +59,14 @@ public class Conta {
         this.agencia = agencia;
     }
 
+    public String getBanco() {
+        return banco;
+    }
+
+    public void setBanco(String banco) {
+        this.banco = banco;
+    }
+
     public Float getSaldoAtual() {
         return saldoAtual;
     }
@@ -74,6 +74,8 @@ public class Conta {
     public void setSaldoAtual(Float saldoAtual) {
         this.saldoAtual = saldoAtual;
     }
+
+    
     
     
 }
