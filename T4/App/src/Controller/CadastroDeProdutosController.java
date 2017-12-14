@@ -33,7 +33,6 @@ import view.View;
  * @author Administrador
  */
 public class CadastroDeProdutosController implements Initializable {
-    private AnchorPane form_TelaHome;
     Produtos produtos = new Produtos();
     Utilitarios utilitarios = new Utilitarios();
     UtilitariosDAO utilitariosDAO =  new UtilitariosDAO();
@@ -154,6 +153,7 @@ public class CadastroDeProdutosController implements Initializable {
     public void btnInsereNovo() throws IOException, Exception{
         parametrizaProduto();
         new ProdutosDAO().inserir(produtos);
+        
         
     }
            

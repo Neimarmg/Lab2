@@ -20,7 +20,7 @@ public class startT4 extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/form_CadastroDeProdutos.fxml"));        
+        Parent root = FXMLLoader.load(getClass().getResource("/view/form_TelaHome.fxml"));        
         Scene scene = new Scene(root);        
         stage.setScene(scene);
         stage.setTitle("Home - Sistema Monetização ");

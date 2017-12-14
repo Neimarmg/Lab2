@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,7 +49,7 @@ public class TelaHomeController implements Initializable {
     @FXML
     private Button btnCadastro;
     @FXML
-    private ChoiceBox<?> menuBtnCadastro;
+    private ChoiceBox<String> menuBtnCadastro;
     @FXML
     private Button btnOpercoes;
     @FXML
@@ -69,21 +70,31 @@ public class TelaHomeController implements Initializable {
         dataInicio.setValue(di.now());
         
         LocalDate df = DataFim.getValue();
-        DataFim.setValue(df.now());  
-
+        DataFim.setValue(df.now());        
+        menuBtnCadastro.setItems(FXCollections.observableArrayList("1","2"));
     }    
 
     @FXML
     private void abreCadastros(ActionEvent event) {
         
         try {
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(this.getClass().getResource("/view/form_CadastroDeProdutos.fxml"));
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initOwner(telaHome.getScene().getWindow());
-            stage.showAndWait();
-            
+           
+            if (menuBtnCadastro.getValue() == "1"){ 
+                Stage stage = new Stage();
+                Parent root = FXMLLoader.load(this.getClass().getResource("/view/form_CadastroDeProdutos.fxml"));
+                stage.setScene(new Scene(root));
+                stage.initModality(Modality.APPLICATION_MODAL);           
+                stage.showAndWait();
+                
+                
+            }else if (menuBtnCadastro.getValue() == "2"){
+                Stage stage = new Stage();
+                Parent root = FXMLLoader.load(this.getClass().getResource("/view/form_CadastroDeClientes.fxml"));
+                stage.setScene(new Scene(root));
+                stage.initModality(Modality.APPLICATION_MODAL);           
+                stage.showAndWait();
+            }
+            menuBtnCadastro.setFocusTraversable(true);
         } catch (IOException ex) {
             Logger.getLogger(TelaHomeController.class.getName()).log(Level.SEVERE, null, ex);
         }catch(Exception e){

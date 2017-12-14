@@ -23,23 +23,25 @@
                   <content>
                     <AnchorPane id="cadastroProduto" fx:id="cidade" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <CheckBox id="status" fx:id="ativo" layoutX="607.0" layoutY="245.0" mnemonicParsing="false" text="Ativo" />
-                              <TextField id="descricao" fx:id="nome" layoutX="115.0" layoutY="48.0" prefHeight="25.0" prefWidth="541.0" />
+                              <CheckBox id="ativo" fx:id="ativo" layoutX="607.0" layoutY="245.0" mnemonicParsing="false" text="Ativo" />
+                              <TextField id="nome" fx:id="nome" layoutX="115.0" layoutY="48.0" prefHeight="25.0" prefWidth="541.0" />
                               <Label layoutX="25.0" layoutY="30.0" text="Id" />
-                              <TextField id="idProduto" fx:id="idPessoa" layoutX="23.0" layoutY="48.0" prefHeight="25.0" prefWidth="85.0" text="0" />
+                              <TextField id="idPessoa" fx:id="idPessoa" layoutX="23.0" layoutY="48.0" prefHeight="25.0" prefWidth="85.0" text="0" />
                               <Label fx:id="cpf" layoutX="27.0" layoutY="154.0" text="CPF" />
-                              <TextField id="precoVenda" fx:id="cpf" layoutX="22.0" layoutY="171.0" prefHeight="25.0" prefWidth="168.0" />
+                              <TextField id="cpfCliente" fx:id="cpfCliente" layoutX="22.0" layoutY="171.0" prefHeight="25.0" prefWidth="168.0" />
                               <Label fx:id="tipo" layoutX="25.0" layoutY="90.0" prefHeight="17.0" prefWidth="174.0" text="Tipo" />
                               <Label fx:id="profissao" layoutX="353.0" layoutY="88.0" prefHeight="17.0" prefWidth="219.0" text="Profissão" />
                               <Label layoutX="202.0" layoutY="154.0" text="E-mail" />
-                              <TextField id="valorNotacao" fx:id="email" alignment="TOP_RIGHT" layoutX="199.0" layoutY="171.0" prefHeight="25.0" prefWidth="460.0" />
+                              <TextField id="email" fx:id="email" alignment="TOP_RIGHT" layoutX="199.0" layoutY="171.0" prefHeight="25.0" prefWidth="460.0" />
+                              
                               <Button id="novo" fx:id="btnNovo" layoutX="340.0" layoutY="337.0" mnemonicParsing="false" onAction="#btnInsereNovo" prefHeight="46.0" prefWidth="107.0" text="Novo" />
                               <Button id="excluir" fx:id="btnExcluir" layoutX="454.0" layoutY="336.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="107.0" text="Excluir" />
                               <Button id="Salvar" fx:id="btnSalvar" layoutX="568.0" layoutY="335.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="107.0" text="Salvar" />
+                              
                               <ComboBox fx:id="idTipo" blendMode="MULTIPLY" layoutX="23.0" layoutY="107.0" prefHeight="25.0" prefWidth="320.0" promptText="0" />
                               <ComboBox fx:id="idProfissao" layoutX="353.0" layoutY="107.0" prefHeight="25.0" prefWidth="305.0" promptText="0" />
-                              <Label fx:id="profissao1" layoutX="23.0" layoutY="222.0" prefHeight="17.0" prefWidth="219.0" text="Cidade" />
-                              <TextField id="precoVenda" fx:id="cidade" layoutX="22.0" layoutY="241.0" prefHeight="25.0" prefWidth="572.0" />
+                              <Label fx:id="profissaoCliente" layoutX="23.0" layoutY="222.0" prefHeight="17.0" prefWidth="219.0" text="Cidade" />
+                              <TextField id="nomeCidade" fx:id="nomeCidade" layoutX="22.0" layoutY="241.0" prefHeight="25.0" prefWidth="572.0" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -50,11 +52,11 @@
                            <children>
                               <TableView layoutX="14.0" layoutY="14.0" prefHeight="429.0" prefWidth="658.0">
                                 <columns>
-                                  <TableColumn id="idProdutos" fx:id="idCliente" prefWidth="75.0" text="idCliente" />
-                                  <TableColumn id="descricao" fx:id="NomeCliente" prefWidth="75.0" text="Nome" />
-                                    <TableColumn id="marca" fx:id="tipoCliente" prefWidth="75.0" text="Tipo" />
-                                    <TableColumn id="notacao" fx:id="ProfissaoCliente" prefWidth="75.0" text="Profissão" />
-                                    <TableColumn id="precos" fx:id="cpfCleinte" prefWidth="75.0" text="CPF" />
+                                  <TableColumn id="idCliente" fx:id="idCliente" prefWidth="75.0" text="idCliente" />
+                                    <TableColumn id="NomeCliente" fx:id="NomeCliente" prefWidth="75.0" text="Nome" />
+                                    <TableColumn id="tipoCliente" fx:id="tipoCliente" prefWidth="75.0" text="Tipo" />
+                                    <TableColumn id="ProfissaoCliente" fx:id="ProfissaoCliente" prefWidth="75.0" text="Profissão" />
+                                    <TableColumn id="cpfCleinte" fx:id="cpfCleinte" prefWidth="75.0" text="CPF" />
                                     <TableColumn id="status" fx:id="status" prefWidth="75.0" text="Ativo" />
                                 </columns>
                               </TableView>
