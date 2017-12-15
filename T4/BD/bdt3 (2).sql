@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 14-Dez-2017 às 21:04
--- Versão do servidor: 10.1.25-MariaDB
--- PHP Version: 5.6.31
+-- Generation Time: 15-Dez-2017 às 15:09
+-- Versão do servidor: 10.1.26-MariaDB
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -73,12 +73,13 @@ WHERE Pessoa.codPessoa = filtro(Pessoa.codPessoa, idPessoa)$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `cProdutos` (IN `idProduto` INT(11) UNSIGNED ZEROFILL)  NO SQL
 select 
 	produtos.codProduto
+    ,produtos.preco
     ,produtos.descProduto
     ,produtos.codMarca
     ,marca.utilitario as marca
     ,produtos.valorNotacao
     ,notacao.utilitario as notacao
-    ,produtos.preco
+    
 	
 from produtos
 	LEFT JOIN utilitarios as marca ON
@@ -183,7 +184,28 @@ CREATE TABLE `conta` (
 
 INSERT INTO `conta` (`codConta`, `operacao`, `Banco`, `nroConta`, `agencia`, `saldoAtual`) VALUES
 (1, 11, 'BB', '123-125', '2356', 123.00),
-(2, 5, 'caixa', '1235-56', '254', 500.00);
+(2, 5, 'CAIXA', '1235-56', '254', 500.00);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `menus`
+--
+
+CREATE TABLE `menus` (
+  `codMenu` smallint(11) NOT NULL,
+  `nomeMenu` varchar(20) NOT NULL,
+  `codTipoMenu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `menus`
+--
+
+INSERT INTO `menus` (`codMenu`, `nomeMenu`, `codTipoMenu`) VALUES
+(1, 'Clientes', 18),
+(2, 'Produtos', 18),
+(3, 'Vendas', 19);
 
 -- --------------------------------------------------------
 
@@ -233,7 +255,9 @@ INSERT INTO `pessoa` (`codPessoa`, `nome`, `cidade`, `codTipoPessoa`, `codProfis
 (18, 'Jorge carlos limera', 'Limeira ', 1, 4, '45112.5.656-8', 'sfd@ds.com.br', 's', ''),
 (19, 'Janete de vargas', 'Santo Anto', 1, 7, '46516548-55', 'asdasd@ds.com.br', 's', ''),
 (20, 'neimar', 'poa', 5, 1, '15613', '122@dsds', 's', ''),
-(21, 'dsdsdsd', 'null', 1, 1, 'CPF', 'dsds', 'S', '');
+(21, 'dsdsdsd', 'null', 1, 1, 'CPF', 'dsds', 'S', ''),
+(22, 'Neimar', 'Porto alegre', 3, 4, '132366565226', 'niemar@gfms.com', 'S', ''),
+(23, 'neimar', 'porto alegre', 3, 4, '234566-55', 'nuwrrwrwerw@tt', 'S', '');
 
 -- --------------------------------------------------------
 
@@ -259,7 +283,8 @@ INSERT INTO `produtos` (`codProduto`, `descProduto`, `codMarca`, `valorNotacao`,
 (12, 'Geladeira frosfri', 13, 1.00, 12, 200.15),
 (13, 'Celular k10 ', 10, 1.00, 12, 1550.05),
 (14, 'Notebook i7 ', 9, 1.00, 12, 3250.14),
-(70, 'dsdsdsd', 9, 12.56, 18, 12.65);
+(70, 'dsdsdsd', 9, 12.56, 18, 12.65),
+(71, 'pc dell', 9, 34.56, 18, 34.45);
 
 -- --------------------------------------------------------
 
@@ -283,7 +308,10 @@ INSERT INTO `tipoutilitarios` (`codTipoUtilitario`, `descTipoUtilitario`) VALUES
 (14, 'Marca'),
 (15, 'Situação fisica'),
 (16, 'Tipo Movimentação conta'),
-(17, 'Tipo Conta');
+(17, 'Tipo Conta'),
+(18, 'Menu cadastro'),
+(19, 'Menu Opercações'),
+(20, 'Menu Relatorios');
 
 -- --------------------------------------------------------
 
@@ -348,7 +376,11 @@ INSERT INTO `utilitarios` (`codUtilitario`, `utilitario`, `codTipoUtilirario`, `
 (21, 'Poupança', 17, '', 0, 0),
 (22, 'Transferencia', 16, '', 0, 0),
 (23, 'Saque', 16, '', 0, 0),
-(24, 'Deposito', 16, '', 0, 0);
+(24, 'Deposito', 16, '', 0, 0),
+(25, 'Clientes', 18, '', 0, 0),
+(26, 'Produtos', 18, '', 0, 0),
+(27, 'Vendas', 19, '', 0, 0),
+(29, 'Perdido', 18, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -373,20 +405,22 @@ CREATE TABLE `vendaintens` (
 --
 
 INSERT INTO `vendaintens` (`codVendaIntens`, `codVendaPedido`, `codProduto`, `qtVenda`, `desconto`, `acrescimo`, `totalValorBruto`, `valorTotal`, `totalValorLiquido`) VALUES
-(27, 20, 11, 2, 20.11, 0.00, 1000.24, 980.13, 980.13),
-(28, 20, 12, 5, 25.00, 0.00, 1000.75, 975.75, 975.75),
-(29, 20, 13, 2, 152.00, 0.00, 3100.10, 2948.10, 2948.10),
-(30, 20, 14, 1, 215.00, 0.00, 3250.14, 3035.14, 3035.14),
-(31, 21, 13, 1, 0.00, 0.00, 1550.05, 1550.05, 1550.05),
-(32, 21, 11, 1, 0.00, 0.00, 500.12, 500.12, 500.12),
-(33, 22, 14, 1, 1.00, 1.00, 3250.14, 3249.14, 3250.14),
-(34, 23, 12, 2, 0.00, 1.00, 400.30, 400.30, 401.30),
-(35, 24, 5, 1, 1.00, 1.00, 0.00, -1.00, 0.00),
-(36, 24, 11, 1, 0.00, 0.00, 500.12, 500.12, 500.12),
-(37, 24, 12, 1, 0.00, 0.00, 200.15, 200.15, 200.15),
-(38, 25, 5, 5, 5.00, 4.00, 0.00, -5.00, -1.00),
-(39, 25, 6, 1, 1.00, 1.00, 0.00, -1.00, 0.00),
-(40, 25, 11, 5, 23.00, 4.00, 2500.60, 2477.60, 2481.60);
+(88, 68, 13, 5, 0.00, 0.00, 0.00, 0.00, 0.00),
+(89, 68, 13, 5, 0.00, 0.00, 0.00, 0.00, 0.00),
+(90, 69, 12, 1, 0.00, 0.00, 0.00, 0.00, 0.00),
+(91, 70, 14, 1, 0.00, 0.00, 12.00, 12.00, 12.00),
+(92, 70, 14, 34, 0.00, 0.00, 408.00, 408.00, 408.00),
+(93, 70, 14, 34, 0.00, 100.00, 408.00, 408.00, 508.00),
+(94, 70, 14, 34, 350.00, 100.00, 408.00, 58.00, 158.00),
+(95, 71, 12, 4, 0.00, 0.00, 48.00, 48.00, 48.00),
+(96, 72, 12, 45, 0.00, 0.00, 540.00, 540.00, 540.00),
+(97, 72, 12, 45, 45.00, 0.00, 540.00, 495.00, 495.00),
+(98, 72, 12, 45, 45.00, 56.00, 540.00, 495.00, 551.00),
+(99, 77, 12, 3, 0.00, 0.00, 36.00, 36.00, 36.00),
+(100, 77, 12, 3, 0.00, 0.00, 36.00, 36.00, 36.00),
+(101, 77, 12, 3, 4.00, 0.00, 36.00, 32.00, 32.00),
+(102, 77, 12, 3, 4.00, 55.00, 36.00, 32.00, 87.00),
+(103, 78, 71, 4, 20.00, 30.00, 136.00, 116.00, 146.00);
 
 -- --------------------------------------------------------
 
@@ -406,12 +440,17 @@ CREATE TABLE `vendapedido` (
 --
 
 INSERT INTO `vendapedido` (`codVendaPedido`, `codCliente`, `dataVenda`, `idConta`) VALUES
-(20, 17, '2017-02-17', 0),
-(21, 18, '2014-02-15', 0),
-(22, 18, '2014-02-15', 0),
-(23, 17, '2017-02-18', 0),
-(24, 17, '2017-02-17', 0),
-(25, 2, '2014-12-12', 0);
+(68, 18, '2017-12-15', 1),
+(69, 19, '2017-12-15', 1),
+(70, 17, '2017-12-15', 1),
+(71, 20, '2017-12-15', 1),
+(72, 18, '2017-12-15', 1),
+(73, 19, '2017-12-15', 1),
+(74, 19, '2017-12-15', 1),
+(75, 19, '2017-12-15', 1),
+(76, 19, '2017-12-15', 1),
+(77, 19, '2017-12-15', 1),
+(78, 23, '2017-12-15', 1);
 
 --
 -- Indexes for dumped tables
@@ -422,6 +461,12 @@ INSERT INTO `vendapedido` (`codVendaPedido`, `codCliente`, `dataVenda`, `idConta
 --
 ALTER TABLE `conta`
   ADD PRIMARY KEY (`codConta`);
+
+--
+-- Indexes for table `menus`
+--
+ALTER TABLE `menus`
+  ADD PRIMARY KEY (`codMenu`);
 
 --
 -- Indexes for table `movimentacaoconta`
@@ -481,46 +526,61 @@ ALTER TABLE `vendapedido`
 --
 ALTER TABLE `conta`
   MODIFY `codConta` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `menus`
+--
+ALTER TABLE `menus`
+  MODIFY `codMenu` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `movimentacaoconta`
 --
 ALTER TABLE `movimentacaoconta`
   MODIFY `codMoviConta` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `codPessoa` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `codPessoa` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
 --
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `codProduto` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `codProduto` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+
 --
 -- AUTO_INCREMENT for table `tipoutilitarios`
 --
 ALTER TABLE `tipoutilitarios`
-  MODIFY `codTipoUtilitario` smallint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `codTipoUtilitario` smallint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `utilitarios`
 --
 ALTER TABLE `utilitarios`
-  MODIFY `codUtilitario` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `codUtilitario` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
 --
 -- AUTO_INCREMENT for table `vendaintens`
 --
 ALTER TABLE `vendaintens`
-  MODIFY `codVendaIntens` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `codVendaIntens` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+
 --
 -- AUTO_INCREMENT for table `vendapedido`
 --
 ALTER TABLE `vendapedido`
-  MODIFY `codVendaPedido` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;COMMIT;
+  MODIFY `codVendaPedido` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

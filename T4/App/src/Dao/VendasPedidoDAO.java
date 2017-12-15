@@ -18,14 +18,14 @@ public class VendasPedidoDAO extends VendasItensDAO{
     
     public static void carregaVendaPedido(Connection connection,PreparedStatement prepara, VendaPedido vendaPedido) throws SQLException{
         prepara.setInt(Globais.getContador(true, false),vendaPedido.getCodCliente());        
-        prepara.setString(Globais.getContador(true, false),Globais.dataSql(vendaPedido.getDataVenda()));
-   
+        prepara.setString(Globais.getContador(true, false),vendaPedido.getDataVenda());
+        prepara.setInt(Globais.getContador(true, false),vendaPedido.getCodConta());
     }
     
         
     public void inserir (VendaPedido vendaPedido){
  
-        ConnectionFactory.setSql("INSERT INTO vendapedido(codVendaPedido, codCliente, dataVenda) VALUES (?,?,?)");
+        ConnectionFactory.setSql("INSERT INTO vendapedido(codVendaPedido, codCliente, dataVenda, idConta) VALUES (?,?,?,?)");
         try{            
             PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());
             prepara.setInt(Globais.getContador(true, true),0);           
@@ -44,7 +44,7 @@ public class VendasPedidoDAO extends VendasItensDAO{
 
     public void atualiza (VendaPedido vendaPedido){
         
-        ConnectionFactory.setSql("UPDATE vendapedido SET codVendaPedido=?, codCliente=?, dataVenda=? WHERE codVendaPedido=?");
+        ConnectionFactory.setSql("UPDATE vendapedido SET codVendaPedido=?, codCliente=?, dataVenda=? , idConta=? WHERE codVendaPedido=?");
         try{            
             PreparedStatement prepara = con.prepareStatement(ConnectionFactory.getSql());           
             prepara.setInt(Globais.getContador(true, true), vendaPedido.getCodVendaPedido()); //Pula primeira posição da tabela 

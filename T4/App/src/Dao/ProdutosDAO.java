@@ -24,6 +24,11 @@ public class ProdutosDAO implements Serializable{
         return listaDeProdutos;
     }
     private Connection con = ConnectionFactory.getConnection();
+
+    public Connection getCon() {
+        return con;
+    }
+    
     
     public void carregaPessoa(Connection connection,PreparedStatement prepara, Produtos produtos) throws SQLException{
         prepara.setString(Globais.getContador(true, false),produtos.getDescProruto());        

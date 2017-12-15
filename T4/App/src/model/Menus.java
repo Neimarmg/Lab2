@@ -1,11 +1,11 @@
 package model;
 
-public class Menu {
+public class Menus {
     static int cod, codTipoMenu;
     static String descMenu;
 
 
-    public Menu() {
+    public Menus() {
     }
 
     public static int getCod() {
@@ -13,7 +13,7 @@ public class Menu {
     }
 
     public static void setCod(int cod) {
-        Menu.cod = cod;
+        Menus.cod = cod;
     }
 
     public static int getCodTipoMenu() {
@@ -21,7 +21,7 @@ public class Menu {
     }
 
     public static void setCodTipoMenu(int codTipoMenu) {
-        Menu.codTipoMenu = codTipoMenu;
+        Menus.codTipoMenu = codTipoMenu;
     }
 
     public static String getDescMenu() {
@@ -29,9 +29,8 @@ public class Menu {
     }
 
     public static void setDescMenu(String descMenu) {
-        Menu.descMenu = descMenu;
+        Menus.descMenu = descMenu;
     }
 
-  
-   
+
 }

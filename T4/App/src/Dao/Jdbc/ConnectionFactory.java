@@ -61,4 +61,8 @@ public class ConnectionFactory {
         ConnectionFactory.sql = sql;
     }  
 
+    public static void fechaConexao(Connection con) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

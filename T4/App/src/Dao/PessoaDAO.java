@@ -21,6 +21,10 @@ public class PessoaDAO implements Serializable{
     List<Pessoa> listaDePessoas = new ArrayList<Pessoa>();
     private Connection con = ConnectionFactory.getConnection();
     String profissao, tipo;
+
+    public Connection getCon() {
+        return con;
+    }   
     
     public void carregaPessoa(Connection connection,PreparedStatement prepara, Pessoa pessoa) throws SQLException{
         prepara.setString(Globais.getContador(true, false),pessoa.getNome());        

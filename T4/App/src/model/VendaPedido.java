@@ -9,20 +9,30 @@ package model;
  * @author neimarmoises
  */
 public class VendaPedido {
-    int codVendaPedido,codCliente;
+    int codVendaPedido,codCliente, codConta;
     String nomeCliente,dataVenda;
    
 
     public VendaPedido() {
     }
 
-    public VendaPedido(int codVendaPedido, int codCliente, String dataVenda, String nomeCliente) {
+    public VendaPedido(int codVendaPedido, int codCliente, String dataVenda, String nomeCliente, int codConta) {
         this.codVendaPedido = codVendaPedido;
         this.codCliente = codCliente;
         this.dataVenda = dataVenda;
         this.nomeCliente = nomeCliente;
+        this.codConta = codConta;
     }
 
+    public int getCodConta() {
+        return codConta;
+    }
+
+    public void setCodConta(int codConta) {
+        this.codConta = codConta;
+    }
+
+    
     public String getNomeCliente() {
         return nomeCliente;
     }

@@ -120,5 +120,9 @@ public class Pessoa {
     }
     
     
+    @Override
+    public  String toString(){
+        return String.valueOf(codPessoa);
+    }
    
 }

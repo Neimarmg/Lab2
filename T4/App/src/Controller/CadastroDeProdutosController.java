@@ -152,9 +152,7 @@ public class CadastroDeProdutosController implements Initializable {
     @FXML
     public void btnInsereNovo() throws IOException, Exception{
         parametrizaProduto();
-        new ProdutosDAO().inserir(produtos);
-        
-        
+        new ProdutosDAO().inserir(produtos);        
     }
            
     @FXML

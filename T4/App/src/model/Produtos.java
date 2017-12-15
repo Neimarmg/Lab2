@@ -19,6 +19,7 @@ public class Produtos {
     public Produtos() {
     }
 
+    
     public Produtos(int codProduto, int codMarca, int codNotacao, String descProruto,String nomeMarca, float preco, float valorNotacao, String  notacao) {
         this.codProduto = codProduto;
         this.codMarca = codMarca;
@@ -94,19 +95,12 @@ public class Produtos {
         this.notacao = notacao;
     }
 
-    public void setCodMarca(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void setDescProruto(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void setCodMarca(Utilitarios value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
    
-    
+    @Override
+    public  String toString(){
+        
+        return String.valueOf(codProduto);
+    }
   
 }

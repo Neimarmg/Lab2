@@ -111,7 +111,7 @@ public class CadastroDeClientesController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         carregaComboBoxs();
     }    
-     @FXML
+    @FXML
     public List<Utilitarios> listarTodos(String idUtilitario, String idTipoUtilitarios){ //procurar todos nao tem parametr00o
         ConnectionFactory.setSql("call cUtilitarios ("+idUtilitario+","+idTipoUtilitarios+")");
         try{            
